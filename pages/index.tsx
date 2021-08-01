@@ -8,11 +8,12 @@ const Home = () => {
       <Navigation />
       <main className="container px-5">
         <Header />
-        
-        <div className="text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ratione repellat dignissimos, fuga quod repudiandae, magni reprehenderit veritatis saepe ullam rem. Voluptates enim voluptatum in rerum soluta cum quaerat ipsum!
-        </div>
-        
+        <h1>About Me</h1>
+        <p>
+          I
+        </p>
+
+
       </main>
     </>
   )

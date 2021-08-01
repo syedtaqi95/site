@@ -25,7 +25,7 @@ const Navigation = () => {
             |
             <NavLink name="Projects" link="#projects" />
             |
-            <NavLink name="CV" link="#cv" />
+            <NavLink name="CV" link="/CV.pdf" icon="file-arrow-down-fill"/>
             |
             <NavLink name="Contact" link="#contact" />
           </ul>
