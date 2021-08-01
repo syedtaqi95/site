@@ -22,10 +22,6 @@ body {
   color: rgb(110, 110, 110);
 }
 
-.borderCircle {
-  border-radius: 50%;
-}
-
 .navbar-nav {
   flex-direction: row;
 }

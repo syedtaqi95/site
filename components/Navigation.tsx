@@ -1,10 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
+import NavLink from './NavLink'
 
 const Navigation = () => {
   return (
     <nav className="navbar navbar-light">
-      <div className="container my-2 justify-content-center justify-content-lg-between">
+      <div className="container my-2 justify-content-center justify-content-md-between">
 
         <span className="navbar-brand">
           <a href="mailto:syed.taqi95@gmail.com" className="nav-icon mx-3" rel="noreferrer" target="_blank">
@@ -20,29 +21,13 @@ const Navigation = () => {
 
         <div id="navbarSupportedContent">
           <ul className="navbar-nav">
-            <li className="nav-item mx-2">
-              <Link href="/">
-                <a><h5>Home</h5></a>
-              </Link>
-            </li>
+            <NavLink name="Home" link="/" />
             |
-            <li className="nav-item mx-2">
-              <Link href="#projects">
-                <a><h5>Projects</h5></a>
-              </Link>
-            </li>
+            <NavLink name="Projects" link="#projects" />
             |
-            <li className="nav-item mx-2">
-              <Link href="#contact">
-                <a><h5>Contact</h5></a>
-              </Link>
-            </li>
+            <NavLink name="CV" link="#cv" />
             |
-            <li className="nav-item mx-2">
-              <Link href="/blog">
-                <a><h5>Blog</h5></a>
-              </Link>
-            </li>
+            <NavLink name="Contact" link="#contact" />
           </ul>
         </div>
 
