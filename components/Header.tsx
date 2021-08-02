@@ -21,7 +21,9 @@ const Header = () => {
       </div>
 
       <p className="fs-4 my-4">
-        Automotive Engineer. Background in EE. Self-taught Software Developer.
+        🚗 Automotive Software Engineer<br />
+        🎓 Masters in Electrical & Electronic Engineering<br />
+        💻 Self-taught Web Developer
       </p>
     </section>
   )

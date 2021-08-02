@@ -4,18 +4,19 @@ import Link from 'next/link'
 interface Props {
   name: string
   link: string
-  icon?: string
+  newTab?: boolean
 }
 
 const NavLink = (props: Props) => {
+  const target: string = props.newTab ? "_blank" : "_self"
+
   return (
     <li className="nav-item mx-2">
       <Link href={props.link}>
-        <a>
+        <a target={target}>
           <h5>
             {props.name}
-            {props.icon ? <i className={`bi bi-${props.icon} d-none d-md-inline`}/> : null}
-          </h5>          
+          </h5>
         </a>
       </Link>
     </li>
