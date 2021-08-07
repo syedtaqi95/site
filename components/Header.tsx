@@ -16,7 +16,7 @@ const Header = () => {
           />
         </div>
         <div className="p-md-4">
-          <h1 className="fw-bold">Hello world, I'm Syed. 👋</h1>
+          <h1 className="fw-bold">Hello world, I'm Syed.👋</h1>
         </div>
       </div>
 

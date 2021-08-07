@@ -1,6 +1,7 @@
 import React from 'react'
 import Navigation from '../components/Navigation'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const Home = () => {
   return (
@@ -14,6 +15,8 @@ const Home = () => {
            ab obcaecati eveniet debitis ullam maiores nam aliquam, ipsum quia. Corrupti labore incidunt impedit 
            rem, nemo atque beatae!
         </p>
+
+        <Footer />
 
 
       </main>
