@@ -17,7 +17,7 @@ const Timeline = () => {
       year: 2015,
       title: "Software/Electronic Engineering Intern",
       description: "Joint research project between the University of Bristol and Boeing to build \
-      a long-range UAV for volcanology research.",
+      a long-range drone/UAV for volcanology research.",
     },
     {
       month: "Summer",
@@ -37,7 +37,7 @@ const Timeline = () => {
       year: 2017,
       title: "Graduate Engineer",
       description: "Started a 2-year product engineering graduate scheme with Jaguar Land Rover. Placements focused on software development\
-      in areas such as ADAS simulation, ECU development, and prototyping for a future vehicle software architecture.",
+      in areas such as ADAS simulation, ECU development, and proof of concept for a future vehicle software architecture.",
     },
     {
       month: "September",

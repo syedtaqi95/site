@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Header = () => {
   return (
-    <section className="text-center">
+    <section className="text-center mt-5">
 
       <div className="d-flex justify-content-center align-items-center flex-wrap py-4">
         <div>
@@ -23,8 +23,9 @@ const Header = () => {
       <p className="fs-4">
         🚗 Automotive Engineer at Jaguar Land Rover<br />
         💻 Self-taught Software Developer<br />
-        🎓 Master&apos;s degree in Electrical & Electronic Engineering
+        🎓 Masters degree in Electrical & Electronic Engineering
       </p>
+      <hr />
     </section>
   )
 }
