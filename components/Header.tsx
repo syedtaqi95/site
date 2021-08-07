@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <section className="text-center">
 
-      <div className="d-flex justify-content-center align-items-center flex-wrap p-4">
+      <div className="d-flex justify-content-center align-items-center flex-wrap py-4">
         <div>
           <Image
             src='/profile-pic.jpg'
@@ -16,14 +16,14 @@ const Header = () => {
           />
         </div>
         <div className="p-md-4">
-          <h1 className="fw-bold">Hello world, I'm Syed.👋</h1>
+          <h1 className="fw-bold">Hi, I&apos;m Syed.👋</h1>
         </div>
       </div>
 
-      <p className="fs-4 my-4">
-        🚗 Automotive Software Engineer<br />
-        🎓 Masters in Electrical & Electronic Engineering<br />
-        💻 Self-taught Web Developer
+      <p className="fs-4">
+        🚗 Automotive Engineer at Jaguar Land Rover<br />
+        💻 Self-taught Software Developer<br />
+        🎓 Master&apos;s degree in Electrical & Electronic Engineering
       </p>
     </section>
   )
