@@ -9,7 +9,7 @@ const Footer = (props: Props) => {
     <footer>
       <div className="container text-center mb-4 fs-6">
         <hr />
-        Built using Next.js and Bootstrap. Hosted on Github Pages.<br />
+        Built with <strong>Next.js</strong> and <strong>Bootstrap</strong>. Hosted on <strong>Vercel</strong>.<br />
         © Syed Taqi Haider. All Rights Reserved.
       </div>
     </footer>
