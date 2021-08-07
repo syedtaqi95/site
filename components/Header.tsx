@@ -8,7 +8,7 @@ const Header = () => {
       <div className="d-flex justify-content-center align-items-center flex-wrap p-4">
         <div>
           <Image
-            src="/images/profile-pic.jpg"
+            src='/profile-pic.jpg'
             alt="Profile Picture"
             height={150}
             width={150}
