@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <Navigation />
       
-      <main className="container px-5">
+      <main className="container w-75">
         <Header />
         <Skills />
         <AboutMe />

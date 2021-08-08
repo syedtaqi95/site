@@ -14,6 +14,12 @@ a:hover {
 
 /* Navigation bar styles */
 
+.navbar-light {
+  background-color: white;
+  border-bottom: 1px solid black;
+  opacity: 0.9;
+}
+
 .nav-item a {
   text-decoration: none;
 }

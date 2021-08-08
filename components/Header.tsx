@@ -20,7 +20,7 @@ const Header = () => {
         </div>
       </div>
 
-      <h5 className="mt-2 text-center">
+      <h5 className="my-1 text-center">
         🚗 Automotive Software Engineer at Jaguar Land Rover<br />
         💻 Self-taught Software Developer<br />
         🎓 Masters degree in Electrical & Electronic Engineering
