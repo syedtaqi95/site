@@ -10,18 +10,14 @@ import Projects from '../components/Projects'
 
 const Home = () => {
   return (
-    <>
-      <Navigation />
-      
-      <main className="container">
-        <Header />
-        <Skills />
-        <AboutMe />
-        <Projects />
-        <Contact />        
-        <Footer />
-      </main>
-    </>
+    <main className="container">
+      <Header />
+      <Skills />
+      <AboutMe />
+      <Projects />
+      <Contact />
+      <Footer />
+    </main>
   )
 }
 

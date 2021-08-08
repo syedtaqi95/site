@@ -4,6 +4,8 @@ import Head from "next/head";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css'
 
+import Navigation from '../components/Navigation'
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -15,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
+      <Navigation />
       <Component {...pageProps} />
     </>
   )

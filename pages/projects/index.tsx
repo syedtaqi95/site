@@ -3,12 +3,12 @@ import Navigation from '../../components/Navigation'
 
 const ProjectShowcase = () => {
   return (
-    <>
-      <Navigation />
-      <main className="container mt-5">
-        <h1 className="text-center">Projects 🏆</h1>
-      </main>
-    </>
+    <main className="container">
+      <h1 className="text-center my-5 fw-bold">Projects 🏆</h1>
+      <div className="row">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia inventore, quisquam delectus optio adipisci quis commodi culpa ad asperiores molestiae animi! Vitae beatae necessitatibus deserunt magnam commodi illum perferendis blanditiis?
+      </div>
+    </main>
   )
 }
 

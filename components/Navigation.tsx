@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react'
 const Navigation = () => {
   return (
     <nav className="navbar navbar-light sticky-top">
-      <div className="container my-2 justify-content-center justify-content-md-between">
+      <div className="container justify-content-center justify-content-md-between">
 
         <span className="navbar-brand">
           <a href="mailto:syed.taqi95@gmail.com" className="mx-3" rel="noreferrer" target="_blank">
