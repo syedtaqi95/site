@@ -12,25 +12,14 @@ a:hover {
   color: rgb(110, 110, 110);
 }
 
-/* Navigation styles */
+/* Navigation bar styles */
 
 .nav-item a {
   text-decoration: none;
-  color: black;
 }
 
 .nav-item a:hover {
-  color: rgb(110, 110, 110);
   text-decoration: underline;
-}
-
-.nav-icon {
-  color: black;
-  font-size: 1.5rem;
-}
-
-.nav-icon:hover {
-  color: rgb(110, 110, 110);
 }
 
 .navbar-nav {

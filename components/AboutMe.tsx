@@ -14,7 +14,6 @@ const AboutMe = () => {
       <p className="text-center">
         🚀 Exploring more exciting opportunities and projects...
       </p>
-      <hr />
     </section>
   )
 }

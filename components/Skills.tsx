@@ -14,7 +14,6 @@ const Skills = (props: Props) => {
       <p>React, Next.js, ESLint, Node.js, Express, MongoDB, Jest, Cypress, Redux, GraphQL, Github Actions, VSCode
         Flask, Git, Tensorflow
       </p>
-      <hr />
     </section>
   )
 }

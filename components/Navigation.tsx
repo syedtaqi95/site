@@ -1,5 +1,7 @@
 import React from 'react'
-import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 import NavLink from './NavLink'
 
 const Navigation = () => {
@@ -8,14 +10,14 @@ const Navigation = () => {
       <div className="container my-2 justify-content-center justify-content-md-between">
 
         <span className="navbar-brand">
-          <a href="mailto:syed.taqi95@gmail.com" className="nav-icon mx-3" rel="noreferrer" target="_blank">
-            <i className="bi bi-envelope" />
+          <a href="mailto:syed.taqi95@gmail.com" className="mx-3" rel="noreferrer" target="_blank">
+            <FontAwesomeIcon icon={faEnvelope} size="lg" />
           </a>
-          <a href="https://www.linkedin.com/in/syedtaqi-haider/" className="nav-icon mx-3" rel="noreferrer" target="_blank">
-            <i className="bi bi-linkedin" />
+          <a href="https://www.linkedin.com/in/syedtaqi-haider/" className="mx-3" rel="noreferrer" target="_blank">
+            <FontAwesomeIcon icon={faLinkedin} size="lg" />
           </a>
-          <a href="https://github.com/syedtaqi95" className="nav-icon mx-3" rel="noreferrer" target="_blank">
-            <i className="bi bi-github" />
+          <a href="https://github.com/syedtaqi95" className="mx-3" rel="noreferrer" target="_blank">
+            <FontAwesomeIcon icon={faGithub} size="lg" />
           </a>
         </span>
 
