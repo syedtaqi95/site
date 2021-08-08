@@ -21,7 +21,7 @@ const Navigation = () => {
 
         <div id="navbarSupportedContent">
           <ul className="navbar-nav">
-            <NavLink name="Home" link="/" />
+            <NavLink name="Home" link="/#" />
             |
             <NavLink name="Projects" link="#projects" />
             |

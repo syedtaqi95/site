@@ -11,6 +11,7 @@ const AboutMe = () => {
         applications, and my recent interests include web development, machine learning and agile development.
       </p>
       <Timeline />
+      <hr />
     </section>
   )
 }
