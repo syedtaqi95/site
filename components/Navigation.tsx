@@ -23,11 +23,11 @@ const Navigation = () => {
           <ul className="navbar-nav">
             <NavLink name="Home" link="/#" />
             |
-            <NavLink name="Projects" link="#projects" />
+            <NavLink name="Projects" link="/projects" />
             |
             <NavLink name="CV" link="https://drive.google.com/file/d/1cxLhmVItQPVIH_W2iWi0nnykBkt80-rZ/view?usp=sharing" newTab />
             |
-            <NavLink name="Contact" link="#contact" />
+            <NavLink name="Contact" link="/#contact" />
           </ul>
         </div>
 

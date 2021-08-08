@@ -3,11 +3,11 @@ import React from 'react'
 
 const Projects = () => {
   return (
-    <section className="mt-5" id="projects">
+    <section className="my-5" id="projects">
       <h1 className="text-center">Projects 🏆</h1>
-      <p className="mt-5">
+      <p className="mt-5 text-center">
         Some of my publicly available projects can be viewed{' '}
-        <Link href="#">
+        <Link href="/projects">
           <a>here</a>
         </Link>
         . 
