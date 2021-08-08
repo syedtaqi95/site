@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 const Skills = () => {
   return (
     <section className="mt-5">
-      <h1 className="text-center my-5">Skills</h1>
+      <h1 className="text-center my-5">Skills 🔧</h1>
 
       <h3 className="my-5">Programming languages</h3>
       <p className="text-center">

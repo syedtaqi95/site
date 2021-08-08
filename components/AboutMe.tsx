@@ -4,7 +4,7 @@ import Timeline from '../components/Timeline'
 const AboutMe = () => {
   return (
     <section className="mt-5">
-      <h1 className="text-center">About Me</h1>
+      <h1 className="text-center">About Me 👨‍💻</h1>
       <p className="mt-5">
         I&apos;ve had an interest in technology and computer science since I got my first PC as a kid. I enjoy programming
         both professionally and as a hobby. I&apos;ve developed software for embedded, wireless and automotive 
