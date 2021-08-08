@@ -24,7 +24,7 @@ const Timeline = () => {
       year: 2016,
       title: "FPGA Development Intern",
       description: "Summer intern at the Mathworks Glasgow office. Developed Simulink examples for wireless \
-      applications such as radar and FM using System-On-Chip modules.",
+      applications such as radar and FM using the Xilinx Zync System-On-Chip.",
     },
     {
       month: "June",
