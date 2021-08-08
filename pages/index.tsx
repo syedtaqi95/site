@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <Navigation />
       
-      <main className="container w-75">
+      <main className="container">
         <Header />
         <Skills />
         <AboutMe />

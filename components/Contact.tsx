@@ -6,10 +6,10 @@ const Contact = () => {
     <section className="bg-light pb-4" id="contact">
       <h1 className="text-center py-4">Contact ✉️</h1>
 
-      <h5 className="text-center">
+      <p className="text-center">
         I&apos;m always open to connecting about exciting opportunities and projects. Get in touch
         with me through any of the options below.
-      </h5>
+      </p>
 
       <span className="navbar-brand d-flex justify-content-center">
         <a href="mailto:syed.taqi95@gmail.com" className="mx-3" rel="noreferrer" target="_blank">
