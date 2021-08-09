@@ -5,9 +5,6 @@ import { Icon } from '@iconify/react'
 
 const Navbar = () => {
   const [isLargerThan768]: boolean[] = useMediaQuery('(min-width: 768px)')
-  const [isOpen, setIsOpen] = useState(false)
-
-  const handleClose = () => { setIsOpen(false) }
 
   interface navLinkType {
     title: string
@@ -42,7 +39,6 @@ const Navbar = () => {
       <Link key={navLink.title} href={navLink.url} passHref>
         <Button
           as='a'
-          onClick={handleClose}
           target={target}
         >
           {navLink.title}
@@ -92,7 +88,11 @@ const Navbar = () => {
             <MenuList>
               {navLinks.map(nav => {
                 return (
-                  <MenuItem key={nav.title}>
+                  <MenuItem key={nav.title}
+                    as='a'
+                    href={nav.url}
+                    target={nav.newTab ? '_blank' : '_self'}
+                  >
                     {nav.title}
                   </MenuItem>
                 )
