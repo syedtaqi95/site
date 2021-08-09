@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Navigation from '../components/Navigation'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import AboutMe from '../components/AboutMe'
@@ -11,12 +10,12 @@ import Projects from '../components/Projects'
 const Home = () => {
   return (
     <main className="container">
-      <Header />
+      {/* <Header />
       <Skills />
       <AboutMe />
       <Projects />
       <Contact />
-      <Footer />
+      <Footer /> */}
     </main>
   )
 }

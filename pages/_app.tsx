@@ -4,7 +4,7 @@ import { ChakraProvider } from "@chakra-ui/react"
 
 import '../styles/globals.css'
 
-import Navigation from '../components/Navigation'
+import Navbar from '../components/Navbar'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <Navigation />
+      <Navbar />
       <Component {...pageProps} />
     </ChakraProvider>
   )
