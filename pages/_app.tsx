@@ -1,14 +1,14 @@
 import type { AppProps } from 'next/app'
 import Head from "next/head";
+import { ChakraProvider } from "@chakra-ui/react"
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css'
 
 import Navigation from '../components/Navigation'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ChakraProvider>
       <Head>
         <title>Syed Taqi Haider - Portfolio Website</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Navigation />
       <Component {...pageProps} />
-    </>
+    </ChakraProvider>
   )
 }
 export default MyApp
