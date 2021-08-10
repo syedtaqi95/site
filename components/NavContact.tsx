@@ -3,7 +3,11 @@ import { Icon } from "@iconify/react";
 import { Button } from "@chakra-ui/react";
 import { NavContactType } from "../types";
 
-const NavContact = ({ href, icon, bg }: NavContactType) => {
+interface NavContactProps extends NavContactType {
+  bg: string;
+}
+
+const NavContact = ({ href, icon, bg }: NavContactProps) => {
   return (
     <Button as="a" target="_blank" href={href} rel="noreferrer" bg={bg}>
       <Icon icon={icon} inline={true} height="1.4em" />
