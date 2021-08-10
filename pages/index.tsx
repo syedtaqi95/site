@@ -11,7 +11,7 @@ import { VStack } from "@chakra-ui/react";
 
 const Home = () => {
   return (
-    <VStack maxW="4xl">
+    <VStack maxW="4xl" spacing="24px">
       <Hero />
       {/* <Header />
       <Skills />
