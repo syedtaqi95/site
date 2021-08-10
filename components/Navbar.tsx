@@ -10,6 +10,7 @@ import {
   MenuList,
   useColorMode,
   Button,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 import { GetStaticProps } from "next";
@@ -26,9 +27,10 @@ interface Props {
 
 const Navbar = ({ contactLinks, navLinks }: Props) => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const bg = useColorModeValue("white", "gray.800");
 
   return (
-    <Box as="nav" py={4} position="sticky" top="0">
+    <Box as="nav" py={4} position="sticky" top="0" bg={bg}>
       <Container
         maxW="4xl"
         display="flex"
@@ -38,14 +40,14 @@ const Navbar = ({ contactLinks, navLinks }: Props) => {
         {/* All viewports - contact links on the left */}
         <HStack>
           {contactLinks.map(({ href, icon }) => (
-            <NavContact key={href} href={href} icon={icon} />
+            <NavContact key={href} href={href} icon={icon} bg={bg} />
           ))}
         </HStack>
 
         {/* Desktop - website links on the right */}
         <HStack display={{ base: "none", md: "initial" }}>
           {navLinks.map(({ title, url, newTab }) => (
-            <NavLink key={title} title={title} url={url} newTab={newTab} />
+            <NavLink key={title} title={title} url={url} newTab={newTab} bg={bg} />
           ))}
 
           {/* Color mode button */}
@@ -70,9 +72,7 @@ const Navbar = ({ contactLinks, navLinks }: Props) => {
                   icon={
                     <Icon
                       icon={
-                        isOpen
-                          ? "icon-park-outline:close"
-                          : "clarity:menu-line"
+                        isOpen ? "icon-park-outline:close" : "clarity:menu-line"
                       }
                       inline={true}
                       height="1.4em"

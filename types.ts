@@ -8,10 +8,12 @@ export interface TimelineItemType {
 export interface NavContactType {
   href: string;
   icon: string;
+  bg: string;
 }
 
 export interface NavLinkType {
   title: string;
   url: string;
   newTab?: boolean;
+  bg: string
 }
