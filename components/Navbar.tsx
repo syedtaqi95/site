@@ -8,6 +8,8 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  useColorMode,
+  Button,
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 import { GetStaticProps } from "next";
@@ -23,6 +25,8 @@ interface Props {
 }
 
 const Navbar = ({ contactLinks, navLinks }: Props) => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Box as="nav" py={4} position="sticky" top="0">
       <Container
@@ -43,6 +47,15 @@ const Navbar = ({ contactLinks, navLinks }: Props) => {
           {navLinks.map(({ title, url, newTab }) => (
             <NavLink key={title} title={title} url={url} newTab={newTab} />
           ))}
+
+          {/* Color mode button */}
+          <Button onClick={toggleColorMode}>
+            <Icon
+              icon={colorMode === "dark" ? "bi:moon-fill" : "bi:sun"}
+              inline={true}
+              height="1.4em"
+            />
+          </Button>
         </HStack>
 
         {/* Mobile - dropdown menu */}
