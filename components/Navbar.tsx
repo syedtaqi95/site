@@ -51,7 +51,7 @@ const Navbar = ({ contactLinks, navLinks }: Props) => {
           {/* Color mode button */}
           <Button onClick={toggleColorMode}>
             <Icon
-              icon={colorMode === "dark" ? "bi:moon-fill" : "bi:sun"}
+              icon={colorMode === "light" ? "bi:sun" : "bi:moon-fill"}
               inline={true}
               height="1.4em"
             />
@@ -66,15 +66,17 @@ const Navbar = ({ contactLinks, navLinks }: Props) => {
                 <MenuButton
                   as={IconButton}
                   aria-label="menu"
+                  color="white"
                   icon={
                     <Icon
                       icon={
                         isOpen
-                          ? "icon-park:close"
-                          : "icon-park:hamburger-button"
+                          ? "icon-park-outline:close"
+                          : "clarity:menu-line"
                       }
                       inline={true}
                       height="1.4em"
+                      color={colorMode === "light" ? "black" : "white"}
                     />
                   }
                   id="1"
@@ -90,6 +92,17 @@ const Navbar = ({ contactLinks, navLinks }: Props) => {
                       {nav.title}
                     </MenuItem>
                   ))}
+
+                  <MenuItem>
+                    {/* Color mode button */}
+                    <Button onClick={toggleColorMode}>
+                      <Icon
+                        icon={colorMode === "light" ? "bi:sun" : "bi:moon-fill"}
+                        inline={true}
+                        height="1.4em"
+                      />
+                    </Button>
+                  </MenuItem>
                 </MenuList>
               </>
             )}
