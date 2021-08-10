@@ -26,6 +26,7 @@ interface Props {
 }
 
 const Navbar = ({ contactLinks, navLinks }: Props) => {
+  // Color mode utils
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue("white", "gray.800");
 
@@ -47,13 +48,19 @@ const Navbar = ({ contactLinks, navLinks }: Props) => {
         {/* Desktop - website links on the right */}
         <HStack display={{ base: "none", md: "initial" }}>
           {navLinks.map(({ title, url, newTab }) => (
-            <NavLink key={title} title={title} url={url} newTab={newTab} bg={bg} />
+            <NavLink
+              key={title}
+              title={title}
+              url={url}
+              newTab={newTab}
+              bg={bg}
+            />
           ))}
 
           {/* Color mode button */}
           <Button onClick={toggleColorMode}>
             <Icon
-              icon={colorMode === "light" ? "bi:sun" : "bi:moon-fill"}
+              icon={colorMode === "light" ? "bi:moon-fill" : "bi:sun"}
               inline={true}
               height="1.4em"
             />
@@ -97,7 +104,7 @@ const Navbar = ({ contactLinks, navLinks }: Props) => {
                     {/* Color mode button */}
                     <Button onClick={toggleColorMode}>
                       <Icon
-                        icon={colorMode === "light" ? "bi:sun" : "bi:moon-fill"}
+                        icon={colorMode === "light" ? "bi:moon-fill" : "bi:sun"}
                         inline={true}
                         height="1.4em"
                       />

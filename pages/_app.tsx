@@ -1,10 +1,8 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
-
 import "../styles/globals.css";
-import Navbar from "../components/Navbar";
-import { contactLinks, navLinks } from "../content/navbarData";
+import PageContainer from "../components/PageContainer";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -31,8 +29,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
-      <Navbar contactLinks={contactLinks} navLinks={navLinks} />
-      <Component {...pageProps} />
+
+      <PageContainer>
+        <Component {...pageProps} />
+      </PageContainer>
     </ChakraProvider>
   );
 }

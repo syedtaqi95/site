@@ -1,5 +1,4 @@
 import React from "react";
-import { Container } from "@chakra-ui/layout";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -8,10 +7,11 @@ import Skills from "../components/Skills";
 import Contact from "../components/Contact";
 import Projects from "../components/Projects";
 import Hero from "../components/Hero";
+import { VStack } from "@chakra-ui/react";
 
 const Home = () => {
   return (
-    <Container maxW="4xl" p={8}>
+    <VStack maxW="4xl">
       <Hero />
       {/* <Header />
       <Skills />
@@ -19,7 +19,7 @@ const Home = () => {
       <Projects />
       <Contact />
       <Footer /> */}
-    </Container>
+    </VStack>
   );
 };
 
