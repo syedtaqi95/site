@@ -5,9 +5,10 @@ export interface TimelineItemType {
   description: string;
 }
 
-export interface NavContactType {
+export interface ContactLinkType {
   href: string;
   icon: string;
+  title: string;
 }
 
 export interface NavLinkType {

@@ -1,16 +1,19 @@
-import { NavContactType, NavLinkType } from "../types";
+import { ContactLinkType, NavLinkType } from "../types";
 
 // Contact links on the left side
-export const contactLinks: NavContactType[] = [
+export const contactLinks: ContactLinkType[] = [
   {
+    title: "Email",
     href: "mailto:syed.taqi95@gmail.com",
-    icon: "fontisto:email",
+    icon: "dashicons:email",
   },
   {
+    title: "LinkedIn",
     href: "https://www.linkedin.com/in/syedtaqi-haider",
     icon: "cib:linkedin",
   },
   {
+    title: "Github",
     href: "https://github.com/syedtaqi95",
     icon: "akar-icons:github-fill",
   },

@@ -11,21 +11,20 @@ import {
   useColorMode,
   Button,
   useColorModeValue,
+  Image
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 import { GetStaticProps } from "next";
 
-import NavContact from "./NavContact";
 import NavLink from "./NavLink";
-import { NavContactType, NavLinkType } from "../types";
+import { NavLinkType } from "../types";
 import { contactLinks, navLinks } from "../content/navbarData";
 
 interface Props {
-  contactLinks: NavContactType[];
   navLinks: NavLinkType[];
 }
 
-const Navbar = ({ contactLinks, navLinks }: Props) => {
+const Navbar = ({ navLinks }: Props) => {
   // Color mode utils
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue("white", "gray.800");
@@ -38,13 +37,13 @@ const Navbar = ({ contactLinks, navLinks }: Props) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        {/* All viewports - contact links on the left */}
-        <HStack>
-          {contactLinks.map(({ href, icon }) => (
-            <NavContact key={href} href={href} icon={icon} bg={bg} />
-          ))}
-        </HStack>
-
+        {/* All viewports - Brand on the left */}
+        <Image
+          boxSize={{base: "40px", md: "50px"}}
+          src="/favicon.ico"
+          alt="Brand Icon"
+          filter={colorMode === "light" ? 'invert(1)' : undefined}
+        />
         {/* Desktop - website links on the right */}
         <HStack display={{ base: "none", md: "initial" }}>
           {navLinks.map(({ title, url, newTab }) => (
