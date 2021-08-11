@@ -1,7 +1,6 @@
 import {
   Heading,
   Flex,
-  Stack,
   Text,
   useColorModeValue,
   VStack,
@@ -21,7 +20,13 @@ const Hero = ({ contactLinks }: Props) => {
   return (
     <>
       {/* Name with typewriter effect */}
-      <VStack bg={bg} borderRadius={20} px={{base: 4, sm: 8}} py={{base: 6, sm: 12}} alignSelf="stretch">
+      <VStack
+        bg={bg}
+        borderRadius={20}
+        px={{ base: 4, sm: 8 }}
+        py={{ base: 6, sm: 12 }}
+        alignSelf="stretch"
+      >
         <Text
           alignSelf="start"
           fontSize={{ base: "md", sm: "3xl", md: "4xl" }}

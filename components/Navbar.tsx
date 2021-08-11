@@ -11,11 +11,10 @@ import {
   useColorMode,
   Button,
   useColorModeValue,
-  Image
+  Image,
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 import { GetStaticProps } from "next";
-
 import NavLink from "./NavLink";
 import { NavLinkType } from "../types";
 import { contactLinks, navLinks } from "../content/navbarData";
@@ -39,11 +38,12 @@ const Navbar = ({ navLinks }: Props) => {
       >
         {/* All viewports - Brand on the left */}
         <Image
-          boxSize={{base: "40px", md: "50px"}}
+          boxSize={{ base: "40px", md: "50px" }}
           src="/favicon.ico"
           alt="Brand Icon"
-          filter={colorMode === "light" ? 'invert(1)' : undefined}
+          filter={colorMode === "light" ? "invert(1)" : undefined}
         />
+
         {/* Desktop - website links on the right */}
         <HStack display={{ base: "none", md: "initial" }}>
           {navLinks.map(({ title, url, newTab }) => (

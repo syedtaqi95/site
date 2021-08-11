@@ -1,5 +1,4 @@
 import React from "react";
-
 import Footer from "../components/Footer";
 import AboutMe from "../components/AboutMe";
 import Skills from "../components/Skills";

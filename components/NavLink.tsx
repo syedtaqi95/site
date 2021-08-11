@@ -1,11 +1,9 @@
 import React from "react";
-import Link from "next/link";
 import { Button } from "@chakra-ui/react";
-
 import { NavLinkType } from "../types";
 
 interface NavLinkProps extends NavLinkType {
-  bg: string
+  bg: string;
 }
 
 const NavLink = ({ title, url, newTab, bg }: NavLinkProps) => {
