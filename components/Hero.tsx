@@ -1,5 +1,6 @@
 import {
   Heading,
+  Flex,
   Stack,
   Text,
   useColorModeValue,
@@ -15,12 +16,12 @@ interface Props {
 }
 
 const Hero = ({ contactLinks }: Props) => {
-  const nameColour = useColorModeValue("blue.600", "cyan.600");
-  const bg = useColorModeValue("gray.100", "gray.900");
+  const hlColour = useColorModeValue("blue.600", "cyan.600");
+  const bg = useColorModeValue("gray.300", "gray.900");
   return (
-    <VStack spacing="24px">
+    <>
       {/* Name with typewriter effect */}
-      <VStack bg={bg} borderRadius={20} p={6}>
+      <VStack bg={bg} borderRadius={20} px={{base: 4, sm: 8}} py={{base: 6, sm: 12}} alignSelf="stretch">
         <Text
           alignSelf="start"
           fontSize={{ base: "md", sm: "3xl", md: "4xl" }}
@@ -30,14 +31,14 @@ const Hero = ({ contactLinks }: Props) => {
         </Text>
         <Heading
           as="h1"
-          color={nameColour}
+          color={hlColour}
           pt={2}
-          fontSize={{ base: "xl", sm: "4xl", md: "6xl" }}
+          fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
         >
           <Typewriter
             onInit={(typewriter) => {
               typewriter
-                .typeString("Syed Taqi Haider")
+                .typeString("Syed Taqi Haider ")
                 .changeDelay(5)
                 .typeString("👋")
                 .start();
@@ -46,20 +47,30 @@ const Hero = ({ contactLinks }: Props) => {
         </Heading>
       </VStack>
 
-      {/* Bullet points */}
+      {/* Short intro */}
       <Text
         fontSize={{ base: "14px", sm: "md", md: "2xl" }}
         fontWeight="medium"
       >
-        🚗 Automotive Engineer at Jaguar Land Rover
+        🚗{" "}
+        <Text as="span" color={hlColour}>
+          Automotive Engineer
+        </Text>{" "}
+        at Jaguar Land Rover
         <br />
-        💻 Self-taught Software Developer
+        💻 Self-taught{" "}
+        <Text as="span" color={hlColour}>
+          Software Developer
+        </Text>
         <br />
-        🎓 Masters degree in Electrical & Electronic Engineering
+        🎓 Masters degree in{" "}
+        <Text as="span" color={hlColour}>
+          Electrical & Electronic Engineering
+        </Text>
       </Text>
 
       {/* Contact links */}
-      <Stack direction={{base: "column", sm: "row"}}>
+      <Flex>
         {contactLinks.map(({ href, icon, title }) => (
           <ContactLink
             title={title}
@@ -69,8 +80,8 @@ const Hero = ({ contactLinks }: Props) => {
             bg={bg}
           />
         ))}
-      </Stack>
-    </VStack>
+      </Flex>
+    </>
   );
 };
 

@@ -10,7 +10,7 @@ interface ContactLinkProps extends ContactLinkType {
 const ContactLink = ({ href, icon, bg, title }: ContactLinkProps) => {
   return (
     <Button
-      justifyContent="start"
+      m={1}
       fontSize={{ base: "14px", sm: "md" }}
       leftIcon={<Icon icon={icon} inline={true} height="1.4em" />}
       as="a"
