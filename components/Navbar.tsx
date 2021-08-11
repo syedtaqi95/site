@@ -31,7 +31,7 @@ const Navbar = ({ contactLinks, navLinks }: Props) => {
   const bg = useColorModeValue("white", "gray.800");
 
   return (
-    <Box as="nav" py={4} position="sticky" top="0" bg={bg}>
+    <Box as="nav" py={4} position="sticky" top="0" bg={bg} zIndex={1}>
       <Container
         maxW="4xl"
         display="flex"
