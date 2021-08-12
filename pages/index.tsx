@@ -10,7 +10,7 @@ import { contactLinks } from "../content/navbarData";
 
 const Home = () => {
   return (
-    <VStack maxW="4xl" spacing="24px">
+    <VStack spacing="24px">
       <Hero contactLinks={contactLinks} />
       {/* <Header />
       <Skills />

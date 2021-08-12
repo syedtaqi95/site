@@ -11,7 +11,7 @@ const PageContainer = ({ children }: Props) => {
   return (
     <>
       <Navbar navLinks={navLinks} />
-      <Container maxW="4xl" p={8}>
+      <Container maxW="5xl" p={8}>
         {children}
       </Container>
     </>

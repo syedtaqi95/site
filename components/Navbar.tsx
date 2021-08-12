@@ -32,7 +32,7 @@ const Navbar = ({ navLinks }: Props) => {
   return (
     <Box as="nav" py={4} position="sticky" top="0" bg={bg} zIndex={1}>
       <Container
-        maxW="4xl"
+        maxW="5xl"
         display="flex"
         justifyContent="space-between"
         alignItems="center"
