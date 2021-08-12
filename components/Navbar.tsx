@@ -18,6 +18,7 @@ import { GetStaticProps } from "next";
 import NavLink from "./NavLink";
 import { NavLinkType } from "../types";
 import { contactLinks, navLinks } from "../content/navbarData";
+import NextLink from "next/link";
 
 interface Props {
   navLinks: NavLinkType[];
@@ -37,12 +38,16 @@ const Navbar = ({ navLinks }: Props) => {
         alignItems="center"
       >
         {/* All viewports - Brand on the left */}
-        <Image
-          boxSize={{ base: "40px", md: "50px" }}
-          src="/favicon.ico"
-          alt="Brand Icon"
-          filter={colorMode === "light" ? "invert(1)" : undefined}
-        />
+        <NextLink href="/">
+          <a>
+            <Image
+              boxSize={{ base: "40px", md: "50px" }}
+              src="/favicon.ico"
+              alt="Brand Icon"
+              filter={colorMode === "light" ? "invert(1)" : undefined}
+            />
+          </a>
+        </NextLink>
 
         {/* Desktop - website links on the right */}
         <HStack display={{ base: "none", md: "initial" }}>

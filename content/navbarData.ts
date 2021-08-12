@@ -22,10 +22,6 @@ export const contactLinks: ContactLinkType[] = [
 // Website Links on the right side
 export const navLinks: NavLinkType[] = [
   {
-    title: "Home",
-    url: "/#",
-  },
-  {
     title: "Projects",
     url: "/projects",
   },
