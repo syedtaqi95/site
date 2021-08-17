@@ -73,7 +73,7 @@ const Hero = ({ contactLinks }: Props) => {
           Electrical & Electronic Engineering
         </Text>
         {/* Contact links */}
-        <Flex id="contact" justify="center" mt={4}>
+        <Flex justify="center" mt={4}>
           {contactLinks.map(({ href, icon, title }) => (
             <ContactLink
               title={title}

@@ -9,9 +9,9 @@ interface Props {
 
 const SkillIcon = ({ name, icon }: Props) => {
   return (
-    <VStack>
+    <VStack fontSize={{ base: "sm", sm: "md", md: "lg" }} fontWeight="medium"> 
       <Icon icon={icon} inline={true} height="3em" />
-      <Text fontSize={{ base: "sm", sm: "md", md: "lg" }} fontWeight="medium">
+      <Text >
         {name}
       </Text>
     </VStack>

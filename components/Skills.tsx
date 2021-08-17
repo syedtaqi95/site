@@ -2,40 +2,52 @@ import React from "react";
 import {
   Heading,
   useColorModeValue,
-  HStack,
-  StackDivider,
+  Flex,
+  Spacer,
+  Box,
 } from "@chakra-ui/react";
 import SkillIcon from "./SkillIcon";
-import { skills } from "../content/data";
+import { programmingLanguages, libraries, frameworks } from "../content/data";
 
 const Skills = () => {
   const hlColour = useColorModeValue("blue.600", "cyan.600");
-  const dividerColor = "gray.200";
+  const bg = useColorModeValue("gray.300", "gray.700")
 
   return (
     <>
       <Heading
         as="h2"
         color={hlColour}
-        pt={2}
         fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }}
       >
         Skills 🔧
       </Heading>
 
-      <Heading
-        as="h3"
-        color={hlColour}
-        fontSize={{ base: "xl", sm: "2xl", md: "4xl" }}
+      <Box
+        bg={bg}
+        px={{ base: 4, sm: 8 }}
+        py={{ base: 6, sm: 12 }}
+        w={{ base: "100%", sm: "md", md: "2xl" }}
+        borderRadius={20}
       >
-        Programming languages
-      </Heading>
-
-      <HStack spacing={{base: 2, sm: 4, md: 6}}>
-        {skills.map((skill) => (
-          <SkillIcon key={skill.name} name={skill.name} icon={skill.icon} />
-        ))}
-      </HStack>
+        <Flex justify="space-around">
+          {programmingLanguages.map((skill) => (
+            <SkillIcon key={skill.name} name={skill.name} icon={skill.icon} />
+          ))}
+        </Flex>
+        <br />
+        <Flex justify="space-around">
+          {frameworks.map((skill) => (
+            <SkillIcon key={skill.name} name={skill.name} icon={skill.icon} />
+          ))}
+        </Flex>
+        <br />
+        <Flex justify="space-around">
+          {libraries.map((skill) => (
+            <SkillIcon key={skill.name} name={skill.name} icon={skill.icon} />
+          ))}
+        </Flex>
+      </Box>
     </>
 
     // <section className="mt-5">

@@ -37,7 +37,7 @@ export const navLinks: NavLinkType[] = [
 ];
 
 // Skills section icons
-export const skills: skillType[] = [
+export const programmingLanguages: skillType[] = [
   {
     name: "HTML5",
     icon: "logos:html-5",
@@ -58,12 +58,46 @@ export const skills: skillType[] = [
     name: "Python",
     icon: "logos:python",
   },
+];
+
+export const frameworks: skillType[] = [
   {
-    name: "C",
-    icon: "logos:c",
+    name: "React",
+    icon: "logos:react",
   },
   {
-    name: "C++",
-    icon: "logos:c-plusplus",
+    name: "Next.js",
+    icon: "logos:nextjs",
+  },
+  {
+    name: "Node.js",
+    icon: "logos:nodejs",
+  },
+  {
+    name: "Flask",
+    icon: "cib:flask",
+  },
+  {
+    name: "GraphQL",
+    icon: "logos:graphql",
+  },
+];
+
+export const libraries: skillType[] = [
+  {
+    name: "MongoDB",
+    icon: "vscode-icons:file-type-mongo",
+  },
+  {
+    name: "Cypress",
+    icon: "logos:cypress",
+  },
+  {
+    name: "ESLint",
+    icon: "logos:eslint",
+  },
+  {
+    name: "Git",
+    icon: "logos:git-icon",
   },
 ];
