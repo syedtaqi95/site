@@ -17,7 +17,7 @@ import { Icon } from "@iconify/react";
 import { GetStaticProps } from "next";
 import NavLink from "./NavLink";
 import { NavLinkType } from "../types";
-import { contactLinks, navLinks } from "../content/navbarData";
+import { contactLinks, navLinks } from "../content/data";
 import NextLink from "next/link";
 
 interface Props {

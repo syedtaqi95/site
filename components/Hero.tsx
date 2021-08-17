@@ -54,7 +54,7 @@ const Hero = ({ contactLinks }: Props) => {
 
       {/* Short intro */}
       <Text
-        fontSize={{ base: "14px", sm: "md", md: "2xl" }}
+        fontSize={{ base: "sm", sm: "md", md: "xl" }}
         fontWeight="medium"
       >
         🚗{" "}
@@ -72,20 +72,19 @@ const Hero = ({ contactLinks }: Props) => {
         <Text as="span" color={hlColour}>
           Electrical & Electronic Engineering
         </Text>
+        {/* Contact links */}
+        <Flex id="contact" justify="center" mt={4}>
+          {contactLinks.map(({ href, icon, title }) => (
+            <ContactLink
+              title={title}
+              key={href}
+              href={href}
+              icon={icon}
+              bg={bg}
+            />
+          ))}
+        </Flex>
       </Text>
-
-      {/* Contact links */}
-      <Flex>
-        {contactLinks.map(({ href, icon, title }) => (
-          <ContactLink
-            title={title}
-            key={href}
-            href={href}
-            icon={icon}
-            bg={bg}
-          />
-        ))}
-      </Flex>
     </>
   );
 };

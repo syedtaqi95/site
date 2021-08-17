@@ -6,15 +6,14 @@ import Contact from "../components/Contact";
 import Projects from "../components/Projects";
 import Hero from "../components/Hero";
 import { VStack } from "@chakra-ui/react";
-import { contactLinks } from "../content/navbarData";
+import { contactLinks } from "../content/data";
 
 const Home = () => {
   return (
-    <VStack spacing="24px">
+    <VStack spacing={10}>
       <Hero contactLinks={contactLinks} />
-      {/* <Header />
       <Skills />
-      <AboutMe />
+      {/* <AboutMe />
       <Projects />
       <Contact />
       <Footer /> */}

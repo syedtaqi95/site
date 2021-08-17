@@ -16,3 +16,8 @@ export interface NavLinkType {
   url: string;
   newTab?: boolean;
 }
+
+export interface skillType {
+  name: string
+  icon: string
+}

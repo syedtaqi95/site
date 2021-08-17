@@ -1,4 +1,4 @@
-import { ContactLinkType, NavLinkType } from "../types";
+import { ContactLinkType, NavLinkType, skillType } from "../types";
 
 // Contact links on the left side
 export const contactLinks: ContactLinkType[] = [
@@ -33,5 +33,37 @@ export const navLinks: NavLinkType[] = [
   {
     title: "Contact",
     url: "/#contact",
+  },
+];
+
+// Skills section icons
+export const skills: skillType[] = [
+  {
+    name: "HTML5",
+    icon: "logos:html-5",
+  },
+  {
+    name: "CSS3",
+    icon: "logos:css-3",
+  },
+  {
+    name: "JavaScript",
+    icon: "logos:javascript",
+  },
+  {
+    name: "TypeScript",
+    icon: "logos:typescript-icon",
+  },
+  {
+    name: "Python",
+    icon: "logos:python",
+  },
+  {
+    name: "C",
+    icon: "logos:c",
+  },
+  {
+    name: "C++",
+    icon: "logos:c-plusplus",
   },
 ];
