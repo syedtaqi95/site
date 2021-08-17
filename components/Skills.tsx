@@ -11,7 +11,7 @@ import { programmingLanguages, libraries, frameworks } from "../content/data";
 
 const Skills = () => {
   const hlColour = useColorModeValue("blue.600", "cyan.600");
-  const bg = useColorModeValue("gray.300", "gray.700");
+  const bg = useColorModeValue("gray.100", "gray.700");
 
   return (
     <>
