@@ -85,6 +85,10 @@ export const frameworks: skillType[] = [
 
 export const libraries: skillType[] = [
   {
+    name: "Tensorflow",
+    icon: "logos:tensorflow",
+  },
+  {
     name: "MongoDB",
     icon: "vscode-icons:file-type-mongo",
   },
