@@ -29,21 +29,32 @@ const AboutMe = () => {
         px={{ base: 4, sm: 8 }}
         py={{ base: 6, sm: 12 }}
         borderRadius={20}
+        spacing={4}
       >
         <Image
           borderRadius="full"
-          boxSize={{base: "200px", sm: "250px"}}
+          boxSize={{ base: "200px", sm: "250px" }}
           src="/profile-pic.jpg"
           alt="Syed Taqi Haider"
         />
         <Text textAlign="center" fontSize={{ base: "sm", sm: "md", md: "lg" }}>
-          I am a Software Engineer with experience in delivering
-          production-level code for embedded, wireless and automotive
-          applications. Recently, I have developed a passion for building
-          elegant web applications using tools such as React, Node.js and
-          Python. I am now looking for an exciting full stack web development
-          role to pursure my new passion and become a successful developer in
-          this field.
+          I am a{" "}
+          <Text as="span" color={hlColour}>
+            Software Engineer
+          </Text>{" "}
+          with 4 years of experience in delivering production-level software in
+          the automotive industry. Recently, I have developed a{" "}
+          <Text as="span" color={hlColour}>
+            passion for building elegant web applications
+          </Text>{" "}
+          using tools such as React, Node.js and Python. I am now looking for an{" "}
+          <Text as="span" color={hlColour}>
+            exciting Full Stack Developer role
+          </Text>{" "}
+          to pursure my new passion and deliver challenging projects in this
+          field. When I&apos;m not coding, you can find me hiking along one of
+          the UK&apos;s picturesque natural sights, or supporting my boyhood
+          football club Manchester United.
           {/* I&apos;ve had an interest in technology ever since I got my first
           computer as a kid. I&apos;ve developed software for embedded, wireless
           and automotive applications, and my recent interests include web
