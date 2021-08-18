@@ -1,14 +1,17 @@
-import React from 'react'
+import React from "react";
+import { Text, Divider } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
     <>
-      <footer className="container text-center my-5 fs-6">
-        Built with <strong>Next.js</strong> and <strong>Chakra UI</strong>. Hosted on <strong>Vercel</strong>.<br />
-        © Syed Taqi Haider. All Rights Reserved.
-      </footer>
+      <Divider pt={20} colorScheme="blackAlpha" />
+      <Text textAlign="center">
+        Built with <strong>Next.js</strong> and <strong>Chakra UI</strong>.
+        Hosted on <strong>Vercel</strong>.<br />© Syed Taqi Haider. All Rights
+        Reserved.
+      </Text>
     </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

@@ -10,13 +10,13 @@ import { contactLinks } from "../content/data";
 
 const Home = () => {
   return (
-    <VStack spacing={10}>
+    <VStack>
       <Hero contactLinks={contactLinks} />
       <Skills />
-      {/* <AboutMe />
-      <Projects />
-      <Contact />
-      <Footer /> */}
+      <AboutMe />
+      {/*<Projects />
+      <Contact /> */}
+      <Footer />
     </VStack>
   );
 };

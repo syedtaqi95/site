@@ -56,7 +56,7 @@ const Timeline = () => {
   ]
 
   return (
-    <div className="container">
+    <>
       <div className="main-timeline">
 
         {items.map(item => (
@@ -70,7 +70,7 @@ const Timeline = () => {
         )}
 
       </div>
-    </div >
+    </>
   )
 }
 

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Heading,
-  useColorModeValue,
-  Flex,
-  Spacer,
-  Box,
-} from "@chakra-ui/react";
+import { Heading, useColorModeValue, Flex, Box } from "@chakra-ui/react";
 import SkillIcon from "./SkillIcon";
 import { programmingLanguages, libraries, frameworks } from "../content/data";
 
@@ -16,6 +10,7 @@ const Skills = () => {
   return (
     <>
       <Heading
+        pt={20}
         as="h2"
         color={hlColour}
         fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }}

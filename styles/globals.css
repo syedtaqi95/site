@@ -141,7 +141,8 @@
 
 .main-timeline .month {
   font-size: 18px;
-  font-weight: 700
+  font-weight: 700;
+  color: #232323;
 }
 
 .main-timeline .year {
