@@ -32,16 +32,22 @@ const AboutMe = () => {
       >
         <Image
           borderRadius="full"
-          boxSize="150px"
+          boxSize={{base: "200px", sm: "250px"}}
           src="/profile-pic.jpg"
           alt="Syed Taqi Haider"
         />
         <Text textAlign="center" fontSize={{ base: "sm", sm: "md", md: "lg" }}>
-          I&apos;ve had an interest in technology ever since I got my first
-          computer as a kid. I enjoy programming both professionally and as a
-          hobby. I&apos;ve developed software for embedded, wireless and
-          automotive applications, and my recent interests include web
-          development and agile development.
+          I am a Software Engineer with experience in delivering
+          production-level code for embedded, wireless and automotive
+          applications. Recently, I have developed a passion for building
+          elegant web applications using tools such as React, Node.js and
+          Python. I am now looking for an exciting full stack web development
+          role to pursure my new passion and become a successful developer in
+          this field.
+          {/* I&apos;ve had an interest in technology ever since I got my first
+          computer as a kid. I&apos;ve developed software for embedded, wireless
+          and automotive applications, and my recent interests include web
+          development and agile development. */}
         </Text>
       </Stack>
     </>

@@ -22,7 +22,7 @@ const Skills = () => {
         bg={bg}
         px={{ base: 4, sm: 8 }}
         py={{ base: 6, sm: 12 }}
-        w={{ base: "100%", sm: "md", md: "2xl" }}
+        w="100%"
         borderRadius={20}
       >
         <Flex justify="space-around">
