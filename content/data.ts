@@ -55,12 +55,16 @@ export const programmingLanguages: skillType[] = [
     icon: "logos:typescript-icon",
   },
   {
-    name: "Python",
-    icon: "logos:python",
+    name: "C/C++",
+    icon: "logos:c-plusplus",
   },
 ];
 
 export const frameworks: skillType[] = [
+  {
+    name: "Python",
+    icon: "logos:python",
+  },
   {
     name: "React",
     icon: "logos:react",
@@ -77,16 +81,12 @@ export const frameworks: skillType[] = [
     name: "Flask",
     icon: "cib:flask",
   },
-  {
-    name: "GraphQL",
-    icon: "logos:graphql",
-  },
 ];
 
 export const libraries: skillType[] = [
   {
-    name: "Tensorflow",
-    icon: "logos:tensorflow",
+    name: "GraphQL",
+    icon: "logos:graphql",
   },
   {
     name: "MongoDB",

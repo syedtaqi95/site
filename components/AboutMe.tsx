@@ -14,7 +14,6 @@ const AboutMe = () => {
     <>
       <Heading
         pt={20}
-        pb={5}
         as="h2"
         color={hlColour}
         fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }}
@@ -38,9 +37,9 @@ const AboutMe = () => {
           alt="Syed Taqi Haider"
         />
         <Text textAlign="center" fontSize={{ base: "sm", sm: "md", md: "lg" }}>
-          I am a{" "}
+          I am an{" "}
           <Text as="span" color={hlColour}>
-            Software Engineer
+            Automotive Engineer
           </Text>{" "}
           with 4 years of experience in delivering production-level software in
           the automotive industry. Recently, I have developed a{" "}

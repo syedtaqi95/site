@@ -25,23 +25,20 @@ const Skills = () => {
         w="100%"
         borderRadius={20}
       >
-        <Flex justify="space-around">
-          {programmingLanguages.map((skill) => (
-            <SkillIcon key={skill.name} name={skill.name} icon={skill.icon} />
-          ))}
-        </Flex>
-        <br />
-        <Flex justify="space-around">
-          {frameworks.map((skill) => (
-            <SkillIcon key={skill.name} name={skill.name} icon={skill.icon} />
-          ))}
-        </Flex>
-        <br />
-        <Flex justify="space-around">
-          {libraries.map((skill) => (
-            <SkillIcon key={skill.name} name={skill.name} icon={skill.icon} />
-          ))}
-        </Flex>
+        {[programmingLanguages, frameworks, libraries].map((skillSet, idx) => (
+          <>
+            <Flex key={idx} justify="space-around">
+              {skillSet.map((skill) => (
+                <SkillIcon
+                  key={skill.name}
+                  name={skill.name}
+                  icon={skill.icon}
+                />
+              ))}
+            </Flex>
+            {idx !== 2 ? <br /> : null}
+          </>
+        ))}
       </Box>
     </>
   );
