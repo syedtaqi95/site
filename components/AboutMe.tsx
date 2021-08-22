@@ -37,27 +37,33 @@ const AboutMe = () => {
           alt="Syed Taqi Haider"
         />
         <Text textAlign="center" fontSize={{ base: "sm", sm: "md", md: "lg" }}>
-          I am an{" "}
+          I am a{" "}
           <Text as="span" color={hlColour}>
-            Automotive Engineer
+            Software Delivery Engineer
           </Text>{" "}
           with 4 years of experience in delivering production-level software in
-          the automotive industry. Recently, I have developed a{" "}
+          the automotive industry. In addition, I am a{" "}
           <Text as="span" color={hlColour}>
-            passion for building elegant web applications
+            Professional Scrum Master
           </Text>{" "}
-          using tools such as React, Node.js and Python. I am now looking for an{" "}
+          and have led my team&apos;s transition to agile ways of working using
+          the Scrum framework. Recently, I have developed a passion for building
+          elegant web applications using tools such as{" "}
           <Text as="span" color={hlColour}>
-            exciting Full Stack Developer role
+            React, Node.js
           </Text>{" "}
-          to pursure my new passion and deliver challenging projects in this
-          field. When I&apos;m not coding, you can find me hiking along one of
-          the UK&apos;s picturesque natural sights, or supporting my boyhood
+          and{" "}
+          <Text as="span" color={hlColour}>
+            Python
+          </Text>
+          . I am now looking for an exciting{" "}
+          <Text as="span" color={hlColour}>
+            Full Stack Developer
+          </Text>{" "}
+          role to pursure my new passion and deliver challenging projects in
+          this field. When I&apos;m not coding, you can find me hiking along one
+          of the UK&apos;s picturesque natural sights, or supporting my boyhood
           football club Manchester United.
-          {/* I&apos;ve had an interest in technology ever since I got my first
-          computer as a kid. I&apos;ve developed software for embedded, wireless
-          and automotive applications, and my recent interests include web
-          development and agile development. */}
         </Text>
       </Stack>
     </>

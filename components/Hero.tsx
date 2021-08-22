@@ -59,13 +59,13 @@ const Hero = ({ contactLinks }: Props) => {
       >
         🚗{" "}
         <Text as="span" color={hlColour}>
-          Automotive Engineer
+          Software Delivery Engineer
         </Text>{" "}
         at Jaguar Land Rover
         <br />
         💻 Self-taught{" "}
         <Text as="span" color={hlColour}>
-          Software Developer
+          Full Stack Developer
         </Text>
         <br />
         🎓 Masters degree in{" "}

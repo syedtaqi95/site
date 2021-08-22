@@ -20,24 +20,16 @@ const Skills = () => {
 
       <Box
         bg={bg}
-        px={{ base: 4, sm: 8 }}
-        py={{ base: 6, sm: 12 }}
+        p={{ base: 4, sm: 8 }}
         w="100%"
         borderRadius={20}
       >
         {[programmingLanguages, frameworks, libraries].map((skillSet, idx) => (
-          <>
-            <Flex key={idx} justify="space-around">
-              {skillSet.map((skill) => (
-                <SkillIcon
-                  key={skill.name}
-                  name={skill.name}
-                  icon={skill.icon}
-                />
-              ))}
-            </Flex>
-            {idx !== 2 ? <br /> : null}
-          </>
+          <Flex key={idx} justify="space-around">
+            {skillSet.map((skill) => (
+              <SkillIcon key={skill.name} name={skill.name} icon={skill.icon} />
+            ))}
+          </Flex>
         ))}
       </Box>
     </>
