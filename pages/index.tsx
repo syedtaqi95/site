@@ -12,8 +12,8 @@ const Home = () => {
   return (
     <VStack>
       <Hero contactLinks={contactLinks} />
-      <Skills />
       <AboutMe />
+      <Skills />
       <Projects />
       {/*<Contact /> */}
       <Footer />
