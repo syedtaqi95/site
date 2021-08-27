@@ -18,14 +18,9 @@ const Skills = () => {
         Skills 🔧
       </Heading>
 
-      <Box
-        bg={bg}
-        p={{ base: 4, sm: 8 }}
-        w="100%"
-        borderRadius={20}
-      >
+      <Box bg={bg} p={{ base: 4, sm: 8 }} w="100%" borderRadius={20}>
         {[programmingLanguages, frameworks, libraries].map((skillSet, idx) => (
-          <Flex key={idx} justify="space-around">
+          <Flex key={idx} justify="space-around" m={{ base: 0, sm: 4 }}>
             {skillSet.map((skill) => (
               <SkillIcon key={skill.name} name={skill.name} icon={skill.icon} />
             ))}

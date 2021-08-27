@@ -25,8 +25,7 @@ const AboutMe = () => {
         direction={{ base: "column", md: "row" }}
         align="center"
         bg={bg}
-        px={{ base: 4, sm: 8 }}
-        py={{ base: 6, sm: 12 }}
+        p={{ base: 4, sm: 8 }}
         borderRadius={20}
         spacing={4}
       >
