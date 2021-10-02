@@ -31,7 +31,16 @@ const Navbar = ({ navLinks }: Props) => {
   const buttonBg = useColorModeValue("gray.100", "gray.900");
 
   return (
-    <Box as="nav" py={4} position="sticky" top="0" bg={bg} zIndex={1}>
+    <Box
+      as="nav"
+      py={4}
+      position="sticky"
+      top="0"
+      bg={bg}
+      zIndex={1}
+      borderWidth="1px"
+      borderColor={buttonBg}
+    >
       <Container
         maxW="5xl"
         display="flex"
