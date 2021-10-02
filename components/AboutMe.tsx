@@ -16,7 +16,7 @@ const AboutMe = () => {
         pt={20}
         as="h2"
         color={hlColour}
-        fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }}
+        fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
       >
         About Me 👨‍💻
       </Heading>

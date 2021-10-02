@@ -15,7 +15,7 @@ const Home = () => {
       <AboutMe />
       <Skills />
       <Projects />
-      {/*<Contact /> */}
+      <Contact contactLinks={contactLinks} />
       <Footer />
     </VStack>
   );

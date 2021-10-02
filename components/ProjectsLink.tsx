@@ -9,14 +9,14 @@ const Projects = () => {
         pt={20}
         as="h2"
         color={hlColour}
-        fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }}
+        fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
       >
         Projects 🏆
       </Heading>
 
       <Text fontSize={{ base: "sm", sm: "md", md: "lg" }}>
         Check out some of my publicly available projects{" "}
-        <Link color={hlColour} href="/projects">
+        <Link color={hlColour} fontWeight="bold" href="/projects">
           here
         </Link>
         .
