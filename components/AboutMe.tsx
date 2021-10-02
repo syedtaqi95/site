@@ -9,7 +9,7 @@ import {
 
 const AboutMe = () => {
   const hlColour = useColorModeValue("blue.600", "cyan.600");
-  const bg = useColorModeValue("gray.100", "gray.700");
+  const bg = useColorModeValue("gray.100", "gray.900");
   return (
     <>
       <Heading
