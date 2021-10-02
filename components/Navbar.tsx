@@ -28,6 +28,7 @@ const Navbar = ({ navLinks }: Props) => {
   // Color mode utils
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue("white", "gray.800");
+  const buttonBg = useColorModeValue("gray.100", "gray.900");
 
   return (
     <Box as="nav" py={4} position="sticky" top="0" bg={bg} zIndex={1}>
@@ -57,12 +58,12 @@ const Navbar = ({ navLinks }: Props) => {
               title={title}
               url={url}
               newTab={newTab}
-              bg={bg}
+              bg={buttonBg}
             />
           ))}
 
           {/* Color mode button */}
-          <Button onClick={toggleColorMode}>
+          <Button onClick={toggleColorMode} bg={buttonBg}>
             <Icon
               icon={colorMode === "light" ? "bi:moon-fill" : "bi:sun"}
               inline={true}
@@ -106,7 +107,7 @@ const Navbar = ({ navLinks }: Props) => {
 
                   <MenuItem>
                     {/* Color mode button */}
-                    <Button onClick={toggleColorMode}>
+                    <Button onClick={toggleColorMode} bg={buttonBg}>
                       <Icon
                         icon={colorMode === "light" ? "bi:moon-fill" : "bi:sun"}
                         inline={true}
