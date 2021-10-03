@@ -1,14 +1,13 @@
-import React from 'react'
+import React from "react";
+import { VStack } from "@chakra-ui/react";
+import ProjectShowcase from "../../components/ProjectShowcase";
 
-const ProjectShowcase = () => {
+const ProjectsPage = () => {
   return (
-    <main className="container">
-      <h1 className="text-center my-5 fw-bold">Projects 🏆</h1>
-      <div className="row">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia inventore, quisquam delectus optio adipisci quis commodi culpa ad asperiores molestiae animi! Vitae beatae necessitatibus deserunt magnam commodi illum perferendis blanditiis?
-      </div>
-    </main>
-  )
-}
+    <VStack>
+      <ProjectShowcase />
+    </VStack>
+  );
+};
 
-export default ProjectShowcase
+export default ProjectsPage;
