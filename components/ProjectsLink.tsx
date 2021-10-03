@@ -1,7 +1,7 @@
 import React from "react";
 import { useColorModeValue, Heading, Text, Link } from "@chakra-ui/react";
 
-const Projects = () => {
+const ProjectsLink = () => {
   const hlColour = useColorModeValue("blue.600", "cyan.600");
   return (
     <>
@@ -25,4 +25,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsLink;

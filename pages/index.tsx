@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import AboutMe from "../components/AboutMe";
 import Skills from "../components/Skills";
 import Contact from "../components/Contact";
-import Projects from "../components/ProjectsLink";
+import ProjectsLink from "../components/ProjectsLink";
 import Hero from "../components/Hero";
 import { VStack } from "@chakra-ui/react";
 import { contactLinks } from "../content/data";
@@ -14,7 +14,7 @@ const Home = () => {
       <Hero contactLinks={contactLinks} />
       <AboutMe />
       <Skills />
-      <Projects />
+      <ProjectsLink />
       <Contact contactLinks={contactLinks} />
       <Footer />
     </VStack>
