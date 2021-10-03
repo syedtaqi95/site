@@ -21,7 +21,7 @@ const Contact = ({ contactLinks }: Props) => {
         Get in touch ✉️
       </Heading>
 
-      <Box bg={bg} p={{ base: 4, sm: 8 }} w="100%" borderRadius={20}>
+      <Box bg={bg} p={{ base: 4, sm: 8 }} w="100%" borderRadius={20} id="contact">
         <Text textAlign="center" fontSize={{ base: "sm", sm: "md", md: "lg" }}>
           I&apos;m always open to connecting about exciting opportunities and
           projects. Get in touch with me through any of the options below.
