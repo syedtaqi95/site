@@ -16,6 +16,7 @@ export const getProjects = async (): Promise<Project[]> => {
       name,
       "slug": slug.current,
       "image": image.asset->url,
+      "alt": image.fields.alt,
       url,
       content
     }`
