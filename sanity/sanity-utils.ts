@@ -1,4 +1,4 @@
-import { Project } from "@/app/types/Project";
+import { Project } from "@/types/Project";
 import { createClient, groq } from "next-sanity";
 
 export const getProjects = async (): Promise<Project[]> => {
