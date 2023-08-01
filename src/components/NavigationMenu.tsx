@@ -10,17 +10,29 @@ const NavigationMenu = () => {
 
         <div>
           <ol className="flex justify-between gap-8">
-            <li className="inline hover:underline">
-              <a href="/">Home</a>
+            <li className="inline">
+              <a href="/" className="group transition">
+                Home
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black" />
+              </a>
             </li>
-            <li className="inline hover:underline">
-              <a href="/">About</a>
+            <li className="inline">
+              <a href="/" className="group transition">
+                About
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black" />
+              </a>
             </li>
-            <li className="inline hover:underline">
-              <a href="/">Notes</a>
+            <li className="inline">
+              <a href="/" className="group transition">
+                Notes
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black" />
+              </a>
             </li>
-            <li className="inline hover:underline">
-              <a href="/">Blog</a>
+            <li className="inline">
+              <a href="/" className="group transition">
+                Blog
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black" />
+              </a>
             </li>
           </ol>
         </div>
