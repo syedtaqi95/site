@@ -8,90 +8,16 @@ import Layout from "../layouts/Layout.astro";
     <Hero />
     <section class="flex flex-col gap-8 container mx-auto">
       <ol>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
-        <li>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </li>
+        {
+          Array.from({ length: 25 }).map(() => (
+            <li>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
+              fugit tenetur tempora odit facilis eligendi, consequuntur
+              praesentium aliquid. Maiores laudantium placeat numquam ipsa
+              corporis sequi non, reprehenderit iusto natus sapiente!
+            </li>
+          ))
+        }
       </ol>
     </section>
   </main>
