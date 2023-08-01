@@ -12,8 +12,8 @@ const NavListItem = ({ title, href }: { title: string; href: string }) => (
 
 const NavigationMenu = () => {
   return (
-    <header className="px-6 md:px-10 lg:px-14 pt-2">
-      <nav className="flex items-center justify-between">
+    <header className="px-6 md:px-10 lg:px-14 py-2 sticky top-0 backdrop-blur">
+      <nav className="flex items-center justify-between ">
         <a href="/" aria-label="home">
           <img alt="logo" src="favicon.ico" />
         </a>
