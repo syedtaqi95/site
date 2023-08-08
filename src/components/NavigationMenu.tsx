@@ -1,5 +1,5 @@
 import navLinks from "@/lib/navLinks.json";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const NavListItem = ({ title, href }: { title: string; href: string }) => {
   return (
@@ -14,6 +14,27 @@ const NavListItem = ({ title, href }: { title: string; href: string }) => {
 
 const NavigationMenu = () => {
   const [isMenuOpen, setMenuIsOpen] = useState<boolean>(false);
+  const sidebarRef = useRef<HTMLElement>(null);
+  const hamburgerIconRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: { target: any }) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        hamburgerIconRef.current &&
+        !hamburgerIconRef.current.contains(event.target)
+      ) {
+        setMenuIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="px-6 md:px-10 lg:px-14 py-3 sticky top-0 backdrop-blur">
@@ -34,6 +55,7 @@ const NavigationMenu = () => {
 
         {/* Hamburger icon - displayed on small screen widths */}
         <button
+          ref={hamburgerIconRef}
           className="flex md:hidden z-10"
           onClick={() => {
             setMenuIsOpen(!isMenuOpen);
@@ -72,6 +94,7 @@ const NavigationMenu = () => {
 
         {/* Sidebar menu - displayed on small screen widths */}
         <aside
+          ref={sidebarRef}
           autoFocus
           className={`${
             isMenuOpen ? "" : "scale-x-0"
