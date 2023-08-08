@@ -73,10 +73,10 @@ const NavigationMenu = () => {
         <aside
           autoFocus
           className={`${
-            isMenuOpen ? "block -translate-x-0" : "translate-x-full"
-          } transition-transform duration-300 md:hidden fixed right-0 top-0 h-screen w-1/3 bg-sky-300 `}
+            isMenuOpen ? "-translate-x-0" : "scale-x-0 translate-x-full"
+          } flex md:hidden transition-transform duration-300 fixed right-0 top-0 h-screen w-1/3 bg-sky-300 `}
         >
-          <ol className="flex flex-col items-center justify-center gap-8 w-full p-3 mt-28">
+          <ol className="flex flex-col items-center justify-start gap-8 w-full p-3 mt-20">
             {navLinks.map(({ title, href }) => (
               <NavListItem key={title} title={title} href={href} />
             ))}
