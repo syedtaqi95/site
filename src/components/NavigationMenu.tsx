@@ -5,10 +5,10 @@ const NavListItem = ({ title, href }: { title: string; href: string }) => {
   return (
     <li className="inline">
       <a href={href} className="group text-lg md:text-base">
-        <div className="group-hover:-translate-y-1 transition-transform duration-300">
+        <div className="group-hover:-translate-y-1 group-hover:text-green-350 transition-transform duration-300">
           {title}
         </div>
-        <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-black" />
+        <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-green-350" />
       </a>
     </li>
   );
@@ -86,7 +86,7 @@ const NavigationMenu = () => {
               y1="50%"
               x2="100%"
               y2="50%"
-              className={`stroke-black stroke-2 transition-transform duration-300 origin-center ${
+              className={`stroke-green-350 stroke-2 transition-transform duration-300 origin-center ${
                 isMenuOpen ? "rotate-45" : "-translate-y-1/3"
               }`}
             />
@@ -95,7 +95,7 @@ const NavigationMenu = () => {
               y1="50%"
               x2="100%"
               y2="50%"
-              className={`stroke-black stroke-2 transition-transform duration-300 origin-center ${
+              className={`stroke-green-350 stroke-2 transition-transform duration-300 origin-center ${
                 isMenuOpen ? "scale-x-0" : ""
               }`}
             />
@@ -104,7 +104,7 @@ const NavigationMenu = () => {
               y1="50%"
               x2="100%"
               y2="50%"
-              className={`stroke-black stroke-2 transition-transform duration-300 origin-center ${
+              className={`stroke-green-350 stroke-2 transition-transform duration-300 origin-center ${
                 isMenuOpen ? "-rotate-45" : "translate-y-1/3"
               }`}
             />
@@ -117,9 +117,9 @@ const NavigationMenu = () => {
           autoFocus
           className={`${
             isMenuOpen ? "" : "scale-x-0"
-          } origin-right flex md:hidden transition-transform duration-300 fixed right-0 top-0 h-screen w-1/2 sm:w-1/3 bg-sky-300 `}
+          } origin-right flex md:hidden transition-transform duration-300 fixed right-0 top-0 h-screen w-1/2 sm:w-1/3 bg-light-navy`}
         >
-          <ol className="flex flex-col items-center justify-start gap-8 w-full p-3 mt-20">
+          <ol className="flex flex-col items-center justify-center gap-10 w-full p-3">
             {navLinks.map(({ title, href }) => (
               <NavListItem key={title} title={title} href={href} />
             ))}
