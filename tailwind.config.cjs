@@ -8,6 +8,16 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
+      animation: {
+        'spin-slow': 'spin-slow 10s linear infinite',
+      },
+      keyframes: {
+        'spin-slow': {
+          '0%': { transform: 'scale(1.1) rotate(0deg)' },
+          '100%': { transform: 'scale(1.1) rotate(360deg)' },
+
+        }
+      }
     },
   },
   plugins: [],
