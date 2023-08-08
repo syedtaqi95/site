@@ -117,7 +117,7 @@ const NavigationMenu = () => {
           autoFocus
           className={`${
             isMenuOpen ? "" : "scale-x-0"
-          } origin-right flex md:hidden transition-transform duration-300 fixed right-0 top-0 h-screen w-1/3 bg-sky-300 `}
+          } origin-right flex md:hidden transition-transform duration-300 fixed right-0 top-0 h-screen w-1/2 sm:w-1/3 bg-sky-300 `}
         >
           <ol className="flex flex-col items-center justify-start gap-8 w-full p-3 mt-20">
             {navLinks.map(({ title, href }) => (
