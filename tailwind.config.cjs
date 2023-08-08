@@ -21,8 +21,8 @@ module.exports = {
       },
       keyframes: {
         "spin-slow": {
-          "0%": { transform: "scale(1.1) rotate(0deg)" },
-          "100%": { transform: "scale(1.1) rotate(360deg)" },
+          "0%": { transform: "scale(1.25) rotate(0deg)" },
+          "100%": { transform: "scale(1.25) rotate(360deg)" },
         },
       },
     },
