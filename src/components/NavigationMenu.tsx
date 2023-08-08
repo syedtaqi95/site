@@ -22,7 +22,7 @@ const NavigationMenu = () => {
           <img alt="logo" src="apple-touch-icon.png" className="w-10 h-10" />
         </a>
 
-        {/* Displayed on wider screen widths */}
+        {/* Links displayed on - wide screen widths */}
         <ol className="hidden md:flex justify-between gap-8">
           {navLinks.map(({ title, href }) => (
             <NavListItem key={title} title={title} href={href} />
@@ -32,7 +32,7 @@ const NavigationMenu = () => {
           </li>
         </ol>
 
-        {/* Displayed on smaller screen widths */}
+        {/* Hamburger icon - displayed on small screen widths */}
         <button
           className="flex md:hidden z-10"
           onClick={() => {
@@ -70,11 +70,12 @@ const NavigationMenu = () => {
           </svg>
         </button>
 
+        {/* Sidebar menu - displayed on small screen widths */}
         <aside
           autoFocus
           className={`${
-            isMenuOpen ? "-translate-x-0" : "scale-x-0 translate-x-full"
-          } flex md:hidden transition-transform duration-300 fixed right-0 top-0 h-screen w-1/3 bg-sky-300 `}
+            isMenuOpen ? "" : "scale-x-0"
+          } origin-right flex md:hidden transition-transform duration-300 fixed right-0 top-0 h-screen w-1/3 bg-sky-300 `}
         >
           <ol className="flex flex-col items-center justify-start gap-8 w-full p-3 mt-20">
             {navLinks.map(({ title, href }) => (
