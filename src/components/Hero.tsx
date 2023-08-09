@@ -19,7 +19,7 @@ const Hero = () => {
           className={clsx(
             "text-2xl md:text-4xl lg:text-6xl",
             "font-extrabold py-2 text-transparent bg-clip-text",
-            "bg-gradient-to-r from-blue-500 to-green-600"
+            "bg-gradient-to-r from-blue-500 to-fuchsia-500"
           )}
         >
           Syed Taqi Haider.
