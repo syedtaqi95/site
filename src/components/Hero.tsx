@@ -3,8 +3,10 @@ import Link from "@/components/Link";
 
 const Hero = () => {
   return (
-    <section className={clsx("flex flex-col items-center justify-center h-[94vh]")}>
-      <div>
+    <section
+      className={clsx("flex flex-col items-center justify-center min-h-[94vh]")}
+    >
+      <div className="mb-8">
         <p
           className={clsx(
             "mb-2 font-mono text-lg font-medium",
@@ -48,10 +50,10 @@ const Hero = () => {
           TypeScript, React, Node.js and Python.
           <p className="max-w-prose">
             This website is my little corner of the internet, where I spill the
-            beans about my adventures in software and tech. This website isn't
-            some fancy show-off space; think of it more like a cosy hangout
-            where I share my wins, faceplants, and eureka moments from dabbling
-            in all things code. Welcome!
+            beans about my adventures in software and tech. It isn't some fancy
+            show-off space; think of it more like a cosy hangout where I share
+            my wins, faceplants, and eureka moments from dabbling in all things
+            code. Welcome!
           </p>
         </p>
       </div>

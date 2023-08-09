@@ -1,20 +1,10 @@
 ---
 import Hero from "@/components/Hero";
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
+import About from "@/components/About";
 ---
 
 <Layout title="Syed Taqi Haider">
   <Hero />
-  <section class="flex flex-col gap-8">
-    {
-      Array.from({ length: 25 }).map(() => (
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
-          tenetur tempora odit facilis eligendi, consequuntur praesentium
-          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
-          reprehenderit iusto natus sapiente!
-        </p>
-      ))
-    }
-  </section>
+  <About />
 </Layout>

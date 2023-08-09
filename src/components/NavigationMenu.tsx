@@ -91,7 +91,7 @@ const NavigationMenu = () => {
         {/* Hamburger icon - displayed on small screen widths */}
         <button
           ref={hamburgerIconRef}
-          className="flex md:hidden z-10"
+          className="flex md:hidden z-20"
           onClick={() => {
             setMenuIsOpen(!isMenuOpen);
           }}
@@ -139,7 +139,7 @@ const NavigationMenu = () => {
           autoFocus
           className={clsx(
             "flex md:hidden transition-transform duration-300 origin-right",
-            "fixed right-0 top-0 h-screen w-1/2 sm:w-1/3",
+            "fixed right-0 top-0 h-screen w-1/2 sm:w-1/3 z-10",
             "bg-slate-200 dark:bg-light-navy",
             `${isMenuOpen ? "" : "scale-x-0"}`
           )}
