@@ -33,14 +33,31 @@ const Hero = () => {
             "font-extrabold py-2 mb-4"
           )}
         >
-          I turn caffeine into lines of code.
+          I turn caffeine into code for a living.
         </h1>
-        <p className="max-w-prose">
-          I'm a software engineer that enjoys working across the technology
-          stack - from low-power embedded devices to distributed full-stack web
-          applications running in the cloud. Currently, I'm developing software
-          for the next generation of innovative scientific instruments at{" "}
-          <Link href="https://cambustion.com" text="Cambustion" />.
+        <p className="max-w-prose mb-4">
+          I'm a software engineer dedicated to building well-engineered and
+          user-friendly products, from{" "}
+          <span
+            className={clsx(
+              "inline-block transition-transform duration-300 hover:scale-75",
+              "text-teal-700 dark:text-green-350"
+            )}
+          >
+            tiny
+          </span>{" "}
+          embedded devices to distributed full-stack web apps running in the
+          cloud. Currently, I'm developing software for the next wave of
+          groundbreaking scientific instruments at{" "}
+          <Link href="https://cambustion.com" text="Cambustion" /> using
+          TypeScript, React, Node.js and Python.
+          <p className="max-w-prose">
+            This website is my little corner of the internet, where I spill the
+            beans about my adventures in software and tech. This website isn't
+            some fancy show-off space; think of it more like a cosy hangout
+            where I share my wins, faceplants, and eureka moments from dabbling
+            in all things code. Welcome!
+          </p>
         </p>
       </div>
     </section>
