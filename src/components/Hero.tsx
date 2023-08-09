@@ -3,12 +3,7 @@ import Link from "@/components/Link";
 
 const Hero = () => {
   return (
-    <section
-      className={clsx(
-        "flex flex-col items-center justify-center",
-        "h-[92vh] px-6 md:px-24 lg:px-32"
-      )}
-    >
+    <section className={clsx("flex flex-col items-center justify-center h-[94vh]")}>
       <div>
         <p
           className={clsx(
@@ -40,7 +35,7 @@ const Hero = () => {
           user-friendly products, from{" "}
           <span
             className={clsx(
-              "inline-block transition-transform duration-300 hover:scale-75",
+              "inline-block transition-transform duration-300 hover:scale-50",
               "text-teal-700 dark:text-green-350"
             )}
           >

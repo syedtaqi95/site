@@ -4,21 +4,17 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Syed Taqi Haider">
-  <main>
-    <Hero />
-    <section class="flex flex-col gap-8 container mx-auto">
-      <ol>
-        {
-          Array.from({ length: 25 }).map(() => (
-            <li>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
-              fugit tenetur tempora odit facilis eligendi, consequuntur
-              praesentium aliquid. Maiores laudantium placeat numquam ipsa
-              corporis sequi non, reprehenderit iusto natus sapiente!
-            </li>
-          ))
-        }
-      </ol>
-    </section>
-  </main>
+  <Hero />
+  <section class="flex flex-col gap-8">
+    {
+      Array.from({ length: 25 }).map(() => (
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum fugit
+          tenetur tempora odit facilis eligendi, consequuntur praesentium
+          aliquid. Maiores laudantium placeat numquam ipsa corporis sequi non,
+          reprehenderit iusto natus sapiente!
+        </p>
+      ))
+    }
+  </section>
 </Layout>
