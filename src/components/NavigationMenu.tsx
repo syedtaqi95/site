@@ -2,17 +2,48 @@ import navLinks from "@/lib/navLinks.json";
 import { useState, useEffect, useRef } from "react";
 import ThemeToggle from "./ThemeToggle";
 import useColourMode from "@/lib/hooks/useColourMode";
+import clsx from "clsx";
 
 const NavListItem = ({ title, href }: { title: string; href: string }) => {
   return (
     <li className="inline">
       <a href={href} className="group text-lg md:text-base">
-        <div className="group-hover:-translate-y-1 group-hover:text-teal-700 dark:group-hover:text-green-350 transition-transform duration-300">
+        <div
+          className={clsx(
+            "group-hover:-translate-y-1 group-hover:text-teal-700",
+            "dark:group-hover:text-green-350 transition-transform duration-300"
+          )}
+        >
           {title}
         </div>
-        <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-teal-700 dark:bg-green-350" />
+        <span
+          className={clsx(
+            "block max-w-0 group-hover:max-w-full",
+            "transition-all duration-300",
+            "h-0.5 bg-teal-700 dark:bg-green-350"
+          )}
+        />
       </a>
     </li>
+  );
+};
+
+const NavLinks = ({
+  theme,
+  setTheme,
+}: {
+  theme: string;
+  setTheme: React.Dispatch<React.SetStateAction<string>>;
+}) => {
+  return (
+    <>
+      {navLinks.map(({ title, href }) => (
+        <NavListItem key={title} title={title} href={href} />
+      ))}
+      <li>
+        <ThemeToggle theme={theme} setTheme={setTheme} />
+      </li>
+    </>
   );
 };
 
@@ -54,12 +85,7 @@ const NavigationMenu = () => {
 
         {/* Links - displayed on wide screen widths */}
         <ol className="hidden md:flex justify-between gap-8">
-          {navLinks.map(({ title, href }) => (
-            <NavListItem key={title} title={title} href={href} />
-          ))}
-          <li>
-            <ThemeToggle theme={theme} setTheme={setTheme} />
-          </li>
+          <NavLinks theme={theme} setTheme={setTheme} />
         </ol>
 
         {/* Hamburger icon - displayed on small screen widths */}
@@ -76,27 +102,33 @@ const NavigationMenu = () => {
               y1="50%"
               x2="100%"
               y2="50%"
-              className={`stroke-gray-700 dark:stroke-green-350 stroke-2 transition-transform duration-300 origin-center ${
-                isMenuOpen ? "rotate-45" : "-translate-y-1/3"
-              }`}
+              className={clsx(
+                "stroke-gray-700 dark:stroke-green-350 stroke-2",
+                "transition-transform duration-300 origin-center",
+                `${isMenuOpen ? "rotate-45" : "-translate-y-1/3"}`
+              )}
             />
             <line
               x1="0"
               y1="50%"
               x2="100%"
               y2="50%"
-              className={`stroke-gray-700 dark:stroke-green-350 stroke-2 transition-transform duration-300 origin-center ${
-                isMenuOpen ? "scale-x-0" : ""
-              }`}
+              className={clsx(
+                "stroke-gray-700 dark:stroke-green-350 stroke-2",
+                "transition-transform duration-300 origin-center",
+                `${isMenuOpen ? "scale-x-0" : ""}`
+              )}
             />
             <line
               x1="0"
               y1="50%"
               x2="100%"
               y2="50%"
-              className={`stroke-gray-700 dark:stroke-green-350 stroke-2 transition-transform duration-300 origin-center ${
-                isMenuOpen ? "-rotate-45" : "translate-y-1/3"
-              }`}
+              className={clsx(
+                "stroke-gray-700 dark:stroke-green-350 stroke-2",
+                "transition-transform duration-300 origin-center",
+                `${isMenuOpen ? "-rotate-45" : "translate-y-1/3"}`
+              )}
             />
           </svg>
         </button>
@@ -105,17 +137,19 @@ const NavigationMenu = () => {
         <aside
           ref={sidebarRef}
           autoFocus
-          className={`${
-            isMenuOpen ? "" : "scale-x-0"
-          } origin-right flex md:hidden transition-transform duration-300 fixed right-0 top-0 h-screen w-1/2 sm:w-1/3 bg-slate-200 dark:bg-light-navy`}
+          className={clsx(
+            "flex md:hidden transition-transform duration-300 origin-right",
+            "fixed right-0 top-0 h-screen w-1/2 sm:w-1/3",
+            "bg-slate-200 dark:bg-light-navy",
+            `${isMenuOpen ? "" : "scale-x-0"}`
+          )}
         >
-          <ol className="flex flex-col items-center justify-center gap-10 w-full p-3">
-            {navLinks.map(({ title, href }) => (
-              <NavListItem key={title} title={title} href={href} />
-            ))}
-            <li>
-              <ThemeToggle theme={theme} setTheme={setTheme} />
-            </li>
+          <ol
+            className={clsx(
+              "flex flex-col items-center justify-center gap-10 w-full p-3"
+            )}
+          >
+            <NavLinks theme={theme} setTheme={setTheme} />
           </ol>
         </aside>
       </nav>

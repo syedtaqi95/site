@@ -1,27 +1,46 @@
+import clsx from "clsx";
+import Link from "@/components/Link";
+
 const Hero = () => {
   return (
-    <section className="flex flex-col items-center justify-center h-[92vh] px-6 md:px-24 lg:px-32">
+    <section
+      className={clsx(
+        "flex flex-col items-center justify-center",
+        "h-[92vh] px-6 md:px-24 lg:px-32"
+      )}
+    >
       <div>
-        <p className="font-mono text-lg font-medium text-teal-700 dark:text-green-350 mb-2">
+        <p
+          className={clsx(
+            "mb-2 font-mono text-lg font-medium",
+            "text-teal-700 dark:text-green-350"
+          )}
+        >
           Hello world, I am
         </p>
-        <h1 className="text-2xl md:text-4xl lg:text-6xl font-extrabold py-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-600">
+        <h1
+          className={clsx(
+            "text-2xl md:text-4xl lg:text-6xl",
+            "font-extrabold py-2 text-transparent bg-clip-text",
+            "bg-gradient-to-r from-blue-500 to-green-600"
+          )}
+        >
           Syed Taqi Haider.
         </h1>
-        <h1 className="text-2xl md:text-4xl lg:text-6xl font-extrabold py-2 mb-4">
+        <h1
+          className={clsx(
+            "text-2xl md:text-4xl lg:text-6xl",
+            "font-extrabold py-2 mb-4"
+          )}
+        >
           I turn caffeine into lines of code.
         </h1>
         <p className="max-w-prose">
           I'm a software engineer that enjoys working across the technology
-          stack - from low-power embedded devices to scalable full-stack web
+          stack - from low-power embedded devices to distributed full-stack web
           applications running in the cloud. Currently, I'm developing software
-          for the next generation of innovative laboratory instruments at{" "}
-          <a href="https://cambustion.com" target="_blank">
-            <span className="text-teal-700 hover:text-teal-500 dark:text-green-350 dark:hover:text-emerald-500">
-              Cambustion
-            </span>
-          </a>{" "}
-          using TypeScript, React, Node.js and Python.
+          for the next generation of innovative scientific instruments at{" "}
+          <Link href="https://cambustion.com" text="Cambustion" />.
         </p>
       </div>
     </section>

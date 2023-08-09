@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 
 const ThemeToggle = ({
@@ -21,7 +22,10 @@ const ThemeToggle = ({
     <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
       {theme === "dark" ? (
         <svg
-          className="transition-all duration-300 origin-center hover:animate-spin-slow"
+          className={clsx(
+            "transition-all duration-300 origin-center",
+            "hover:animate-spin-slow"
+          )}
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -34,7 +38,10 @@ const ThemeToggle = ({
         </svg>
       ) : (
         <svg
-          className="transition-all duration-300 origin-center hover:scale-125 fill-gray-700 hover:fill-teal-700"
+          className={clsx(
+            "transition-all duration-300 origin-center",
+            "hover:scale-125 fill-gray-700 hover:fill-teal-700"
+          )}
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
