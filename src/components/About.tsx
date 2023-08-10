@@ -17,7 +17,7 @@ const About = () => {
       </h2>
       <div className="flex flex-col justify-center items-center md:items-start md:flex-row-reverse gap-4">
         <p className="">Photo placeholder</p>
-        <div className="">
+        <div className="text-start md:text-justify">
           <p className="mb-8">
             Born under the sunny skies of Muscat, Oman, I embarked on a journey
             that led me to the heart of the United Kingdom. In 2013, I crossed
