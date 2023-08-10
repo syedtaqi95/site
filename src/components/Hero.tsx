@@ -43,9 +43,18 @@ const Hero = () => {
           >
             tiny
           </span>{" "}
-          embedded devices to distributed full-stack web apps running in the
-          cloud. Currently, I'm developing software for the next wave of
-          groundbreaking scientific instruments at{" "}
+          embedded devices in{" "}
+          <span
+            className={clsx(
+              "inline-block transition-transform duration-300 hover:scale-125",
+              "text-teal-700 dark:text-green-350"
+            )}
+          >
+            large
+          </span>{" "}
+          automobiles to distributed full-stack web apps running in the cloud.
+          Currently, I'm developing software for the next wave of groundbreaking
+          scientific instruments at{" "}
           <Link href="https://cambustion.com" text="Cambustion" /> using
           TypeScript, React, Node.js and Python.
           <p className="max-w-prose">
