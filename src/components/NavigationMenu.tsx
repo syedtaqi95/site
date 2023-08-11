@@ -54,12 +54,12 @@ const NavigationMenu = () => {
   const [theme, setTheme] = useColourMode();
 
   useEffect(() => {
-    const handleClickOutside = (event: { target: any }) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         sidebarRef.current &&
-        !sidebarRef.current.contains(event.target) &&
+        !sidebarRef.current.contains(event.target as Node) &&
         hamburgerIconRef.current &&
-        !hamburgerIconRef.current.contains(event.target)
+        !hamburgerIconRef.current.contains(event.target as Node)
       ) {
         setMenuIsOpen(false);
       }
@@ -67,8 +67,25 @@ const NavigationMenu = () => {
 
     document.addEventListener("mousedown", handleClickOutside);
 
+    const handleStopScrollInsideNav = (event: WheelEvent | TouchEvent) => {
+      if (
+        sidebarRef.current &&
+        sidebarRef.current.contains(event.target as Node)
+      ) {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener("wheel", handleStopScrollInsideNav, {
+      passive: false,
+    });
+    document.addEventListener("touchmove", handleStopScrollInsideNav, {
+      passive: false,
+    });
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("wheel", handleStopScrollInsideNav);
     };
   }, []);
 
