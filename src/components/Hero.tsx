@@ -30,11 +30,12 @@ const Hero = () => {
             "font-extrabold py-2 mb-4"
           )}
         >
-          I turn caffeine into code for a living.
+          I turn caffeine into code.
         </h1>
         <p className="max-w-prose mb-4">
-          I'm a software engineer dedicated to building well-engineered and
-          user-friendly products, from{" "}
+          I'm a software engineer with a background in electronic engineering
+          dedicated to building well-engineered and user-friendly products -
+          from{" "}
           <span
             className={clsx(
               "inline-block transition-transform duration-300 hover:scale-50",
@@ -57,13 +58,6 @@ const Hero = () => {
           scientific instruments at{" "}
           <Link href="https://cambustion.com" text="Cambustion" /> using
           TypeScript, React, Node.js and Python.
-          <p className="max-w-prose">
-            This website is my little corner of the internet, where I spill the
-            beans about my adventures in software and tech. It isn't some fancy
-            show-off space; think of it more like a cosy hangout where I share
-            my wins, faceplants, and eureka moments from dabbling in all things
-            code. Welcome!
-          </p>
         </p>
       </div>
     </section>
