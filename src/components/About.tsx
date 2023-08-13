@@ -8,7 +8,7 @@ const About = () => {
       <h2
         className={clsx(
           "text-3xl font-semibold mb-12",
-          "after:block after:relative after:-top-4 after:ml-40",
+          "after:block after:relative after:-top-5 after:ml-40",
           "after:max-w-full after:h-0.5",
           "after:bg-gradient-to-r after:from-blue-500 after:to-fuchsia-600",
           "after:-z-10"
@@ -16,24 +16,68 @@ const About = () => {
       >
         About Me
       </h2>
-      <div className="flex flex-col justify-center items-center md:items-start md:flex-row gap-8">
+      <div
+        className={clsx(
+          "flex flex-col md:flex-row items-center md:items-start",
+          "justify-center gap-8"
+        )}
+      >
         <img
           src="/profile-pic.jpg"
           className={clsx(
-            "rounded-full w-2/3 md:max-w-[30vw]",
+            "rounded-full w-72",
             "ring ring-teal-700 dark:ring-green-350"
           )}
         />
         <div className="text-start md:text-justify">
-          <p className="mb-8">
+          <p className="mb-4">
             I'm a{" "}
-            <Link
-              href="https://en.wikipedia.org/wiki/Third_culture_kid"
-              text="third culture kid"
-            />{" "}
-            who grew up in sunny Muscat, Oman and moved to the UK in 2013 to
-            complete my MEng degree in Electrical and Electronic Engineering at
-            the University of Bristol.
+            <Link href="https://en.wikipedia.org/wiki/Third_culture_kid">
+              third culture kid
+            </Link>{" "}
+            that grew up in sunny Muscat, Oman and moved to the rainy UK in 2013
+            to study Electrical and Electronic Engineering at the University of
+            Bristol. It was my time here that ignited my interest in technology
+            - particularly at the intersection between software and hardware. I
+            graduated top of my class, was lucky enough to receive a scholarship
+            along the way, and I even built a{" "}
+            <Link href="https://www.bristol.ac.uk/news/2015/september/unmanned-airborne-system.html">
+              drone
+            </Link>{" "}
+            that flew into volcanoes!
+            <p className="mb-4">
+              Fresh out of university in 2017, I fulfilled my childhood dream of
+              working with cars for a living by joining Jaguar Land Rover's
+              graduate engineering programme in Warwickshire. I undertook
+              various engineering roles during my 5.5 years there including
+              software developer, systems engineer and scrum master. It gave a
+              real appreciation for large-scale software development, as I led a
+              number of interesting projects from concept to production (my
+              personal highlight being the new{" "}
+              <Link href="https://www.landrover.co.uk/defender/index.html">
+                Defender
+              </Link>
+              ).
+            </p>
+            <p className="mb-4">
+              Although I learnt a lot during my time at JLR, I realised that I
+              wanted to continue improving my programming skills and so I began
+              learning web development and built open-source projects in my free
+              time (like{" "}
+              <Link href="https://github.com/syedtaqi95/business-activity-frontend">
+                this
+              </Link>
+              ).
+            </p>
+            <p className="mb-4">
+              In 2023, I finally bit the bullet and became a full-time software
+              engineer when I joined the team at{" "}
+              <Link href="https://cambustion.com">Cambustion</Link> in
+              Cambridge. These days, I channel my creativity and expertise into
+              crafting elegant user interfaces and full-stack applications that
+              drive data processing and visualisation for groundbreaking
+              scientific instruments.
+            </p>
           </p>
         </div>
       </div>

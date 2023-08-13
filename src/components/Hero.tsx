@@ -56,7 +56,7 @@ const Hero = () => {
           automobiles to distributed full-stack web apps running in the cloud.
           Currently, I'm developing software for the next wave of groundbreaking
           scientific instruments at{" "}
-          <Link href="https://cambustion.com" text="Cambustion" /> using
+          <Link href="https://cambustion.com">Cambustion</Link> using
           TypeScript, React, Node.js and Python.
         </p>
       </div>

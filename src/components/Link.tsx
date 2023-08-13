@@ -1,6 +1,7 @@
 import clsx from "clsx";
+import type { ReactNode } from "react";
 
-const Link = ({ href, text }: { href: string; text: string }) => {
+const Link = ({ href, children }: { href: string; children: ReactNode }) => {
   return (
     <a href={href} target="_blank">
       <span
@@ -10,7 +11,7 @@ const Link = ({ href, text }: { href: string; text: string }) => {
           "transition-transform duration-300 hover:-translate-y-0.5"
         )}
       >
-        {text}
+        {children}
       </span>
     </a>
   );
