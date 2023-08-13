@@ -60,7 +60,7 @@ const About = () => {
             learning web development and built open-source projects in my free
             time (like{" "}
             <Link href="https://github.com/syedtaqi95/business-activity-frontend">
-              this
+              this dashboard
             </Link>
             ).
           </p>
