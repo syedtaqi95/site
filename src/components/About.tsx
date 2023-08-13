@@ -4,7 +4,7 @@ import Link from "@/components/Link";
 
 const About = () => {
   return (
-    <section>
+    <section className="py-20">
       <h2
         className={clsx(
           "text-3xl font-semibold mb-12",
