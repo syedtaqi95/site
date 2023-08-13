@@ -3,7 +3,7 @@ import React from "react";
 
 const Technologies = () => {
   return (
-    <section className="py-20">
+    <section className="pb-20">
       <h2
         className={clsx(
           "text-3xl font-semibold mb-12",
