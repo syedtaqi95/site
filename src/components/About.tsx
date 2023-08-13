@@ -19,6 +19,7 @@ const About = () => {
       <div>
         <img
           src="/profile-pic.jpg"
+          alt="profile photo"
           className={clsx(
             "rounded-full w-72 md:float-left mx-auto md:mx-8 my-8",
             "ring ring-teal-700 dark:ring-green-350"
