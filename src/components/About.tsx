@@ -35,12 +35,12 @@ const About = () => {
             <Link href="https://en.wikipedia.org/wiki/Third_culture_kid">
               third culture kid
             </Link>{" "}
-            that grew up in sunny Muscat, Oman and moved to the rainy UK in 2013
-            to study Electrical and Electronic Engineering at the University of
+            that grew up in sunny Muscat, Oman and moved to rainy UK in 2013 to
+            study Electrical and Electronic Engineering at the University of
             Bristol. It was my time here that ignited my interest in technology
             - particularly at the intersection between software and hardware. I
-            graduated top of my class, was lucky enough to receive a scholarship
-            along the way, and I even built a{" "}
+            graduated at the top of my class, was lucky enough to receive a
+            scholarship along the way, and I even built a{" "}
             <Link href="https://www.bristol.ac.uk/news/2015/september/unmanned-airborne-system.html">
               drone
             </Link>{" "}
@@ -50,9 +50,9 @@ const About = () => {
               working with cars for a living by joining Jaguar Land Rover's
               graduate engineering programme in Warwickshire. I undertook
               various engineering roles during my 5.5 years there including
-              software developer, systems engineer and scrum master. It gave a
-              real appreciation for large-scale software development, as I led a
-              number of interesting projects from concept to production (my
+              software developer, systems engineer and scrum master. It gave me
+              a real appreciation for large-scale software development, as I led
+              a number of interesting projects from concept to production (my
               personal highlight being the new{" "}
               <Link href="https://www.landrover.co.uk/defender/index.html">
                 Defender
@@ -70,7 +70,7 @@ const About = () => {
               ).
             </p>
             <p className="mb-4">
-              In 2023, I finally bit the bullet and became a full-time software
+              In 2023, I finally took the plunge and became a full-time software
               engineer when I joined the team at{" "}
               <Link href="https://cambustion.com">Cambustion</Link> in
               Cambridge. These days, I channel my creativity and expertise into
