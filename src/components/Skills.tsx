@@ -33,7 +33,7 @@ const SkillsList = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const Technologies = () => {
+const Skills = () => {
   return (
     <section className="pb-20">
       <h2
@@ -87,4 +87,4 @@ const Technologies = () => {
   );
 };
 
-export default Technologies;
+export default Skills;
