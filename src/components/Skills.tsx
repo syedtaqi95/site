@@ -57,7 +57,7 @@ const Skills = () => {
           </SkillsList>
         </Card>
         <Card>
-          <CardHeading>Web Development</CardHeading>
+          <CardHeading>Web Technologies</CardHeading>
           <SkillsList>
             <li>React</li>
             <li>Next.js</li>
@@ -73,7 +73,9 @@ const Skills = () => {
         <Card>
           <CardHeading>Competencies</CardHeading>
           <SkillsList>
-            <li>Software Development</li>
+            <li>Full-Stack Development</li>
+            <li>Data Processing</li>
+            <li>Data Visualisation</li>
             <li>System Design</li>
             <li>Agile (Scrum)</li>
             <li>TDD</li>
