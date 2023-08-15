@@ -16,7 +16,7 @@ const CardHeading = ({ children }: { children: ReactNode }) => {
 
 const Card = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="bg-slate-200 dark:bg-light-navy rounded-md p-4">
+    <div className="bg-slate-200 dark:bg-light-navy rounded-xl p-4">
       {children}
     </div>
   );
@@ -24,10 +24,7 @@ const Card = ({ children }: { children: ReactNode }) => {
 
 const SkillsList = ({ children }: { children: ReactNode }) => {
   return (
-    <ul
-      role="web-skills"
-      className="text-center text-lg font-medium leading-loose"
-    >
+    <ul className="px-12 list-disc font-medium text-sm sm:text-base">
       {children}
     </ul>
   );
@@ -76,9 +73,9 @@ const Skills = () => {
         <Card>
           <CardHeading>Competencies</CardHeading>
           <SkillsList>
+            <li>Software Development</li>
             <li>System Design</li>
-            <li>Agile Development</li>
-            <li>Scrum Master</li>
+            <li>Agile (Scrum)</li>
             <li>TDD</li>
           </SkillsList>
         </Card>

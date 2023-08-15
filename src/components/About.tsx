@@ -41,39 +41,39 @@ const About = () => {
             drone
           </Link>{" "}
           that flew into volcanoes!
-          <p className="mb-4">
-            Fresh out of university in 2017, I fulfilled my childhood dream of
-            working with cars for a living by joining Jaguar Land Rover's
-            graduate engineering programme in Warwickshire. I undertook various
-            engineering roles during my 5.5 years there including software
-            developer, systems engineer and scrum master. It gave me a real
-            appreciation for large-scale software development, as I led a number
-            of interesting projects from concept to production (my personal
-            highlight was delivering the instrument cluster in the new{" "}
-            <Link href="https://www.landrover.co.uk/defender/index.html">
-              Defender
-            </Link>
-            ).
-          </p>
-          <p className="mb-4">
-            Although I learnt a lot during my time at JLR, I realised that I
-            wanted to continue improving my programming skills and so I began
-            learning web development and built open-source projects in my free
-            time (like{" "}
-            <Link href="https://github.com/syedtaqi95/business-activity-frontend">
-              this dashboard
-            </Link>
-            ).
-          </p>
-          <p>
-            In 2023, I finally took the plunge and became a full-time software
-            engineer when I joined the team at{" "}
-            <Link href="https://cambustion.com">Cambustion</Link> in Cambridge.
-            These days, I channel my creativity and expertise into crafting
-            elegant user interfaces and full-stack applications that drive data
-            processing and visualisation for groundbreaking scientific
-            instruments.
-          </p>
+        </p>
+        <p className="mb-4">
+          Fresh out of university in 2017, I fulfilled my childhood dream of
+          working with cars for a living by joining Jaguar Land Rover's graduate
+          engineering programme in Warwickshire. I undertook various engineering
+          roles during my 5.5 years there including software developer, systems
+          engineer and scrum master. It gave me a real appreciation for
+          large-scale software development, as I led a number of interesting
+          projects from concept to production (my personal highlight was
+          delivering the instrument cluster in the new{" "}
+          <Link href="https://www.landrover.co.uk/defender/index.html">
+            Defender
+          </Link>
+          ).
+        </p>
+        <p className="mb-4">
+          Although I learnt a lot during my time at JLR, I realised that I
+          wanted to continue improving my programming skills and so I began
+          learning web development and built open-source projects in my free
+          time (like{" "}
+          <Link href="https://github.com/syedtaqi95/business-activity-frontend">
+            this dashboard
+          </Link>
+          ).
+        </p>
+        <p>
+          In 2023, I finally took the plunge and became a full-time software
+          engineer when I joined the team at{" "}
+          <Link href="https://cambustion.com">Cambustion</Link> in Cambridge.
+          These days, I channel my creativity and expertise into crafting
+          elegant user interfaces and full-stack applications that drive data
+          processing and visualisation for groundbreaking scientific
+          instruments.
         </p>
       </div>
     </section>
