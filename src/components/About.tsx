@@ -16,6 +16,7 @@ const About = () => {
       >
         About Me
       </h2>
+
       <div>
         <img
           src="/profile-pic.jpg"
