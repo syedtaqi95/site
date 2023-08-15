@@ -1,4 +1,4 @@
-import navLinks from "@/lib/navLinks.json";
+import navLinks from "@/data/navLinks.json";
 import { useState, useEffect, useRef } from "react";
 import ThemeToggle from "./ThemeToggle";
 import useColourMode from "@/lib/hooks/useColourMode";
