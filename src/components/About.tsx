@@ -17,7 +17,7 @@ const About = () => {
         About Me
       </h2>
 
-      <div>
+      <div className="mb-8">
         <img
           src="/profile-pic.jpg"
           alt="profile photo"

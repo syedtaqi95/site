@@ -74,7 +74,7 @@ const Skills = () => {
           <CardHeading>Competencies</CardHeading>
           <SkillsList>
             <li>Full-Stack Development</li>
-            <li>Data Processing</li>
+            <li>Scientific Computing</li>
             <li>Data Visualisation</li>
             <li>System Design</li>
             <li>Agile (Scrum)</li>

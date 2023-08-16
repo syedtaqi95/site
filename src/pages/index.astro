@@ -4,11 +4,13 @@ import Layout from "@/layouts/Layout.astro";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Footer from "@/components/Footer";
+import Experience from "@/components/Experience";
 ---
 
 <Layout title="Syed Taqi Haider">
   <Hero />
   <About />
   <Skills />
+  <Experience client:visible />
   <Footer />
 </Layout>
