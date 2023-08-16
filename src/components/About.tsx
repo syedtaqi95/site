@@ -31,12 +31,12 @@ const About = () => {
           <Link href="https://en.wikipedia.org/wiki/Third_culture_kid">
             third culture kid
           </Link>{" "}
-          that grew up in sunny Muscat, Oman and moved to rainy UK in 2013 to
+          that grew up in sunny Muscat, Oman and moved to a rainy UK in 2013 to
           study Electrical and Electronic Engineering at the University of
           Bristol. It was my time here that ignited my interest in technology -
           particularly at the intersection between software and hardware. I
-          graduated at the top of my class, was lucky enough to receive a
-          scholarship along the way, and I even built a{" "}
+          graduated as one of the top students in my class, was lucky enough to
+          receive a scholarship along the way, and I even built a{" "}
           <Link href="https://www.bristol.ac.uk/news/2015/september/unmanned-airborne-system.html">
             drone
           </Link>{" "}
@@ -49,12 +49,12 @@ const About = () => {
           roles during my 5.5 years there including software developer, systems
           engineer and scrum master. It gave me a real appreciation for
           large-scale software development, as I led a number of interesting
-          projects from concept to production (my personal highlight was
-          delivering the instrument cluster in the new{" "}
-          <Link href="https://www.landrover.co.uk/defender/index.html">
-            Defender
+          projects from concept to production. My personal highlight was leading
+          the software development of the new instrument cluster in the 2023{" "}
+          <Link href="https://www.landrover.co.uk/range-rover/index.html">
+            Range Rover
           </Link>
-          ).
+          .
         </p>
         <p className="mb-4">
           Although I learnt a lot during my time at JLR, I realised that I
@@ -72,8 +72,8 @@ const About = () => {
           <Link href="https://cambustion.com">Cambustion</Link> in Cambridge.
           These days, I channel my creativity and expertise into crafting
           elegant user interfaces and full-stack applications that drive data
-          processing and visualisation for groundbreaking scientific
-          instruments.
+          visualisation and scientific computing for groundbreaking scientific
+          instruments used by customers in both academia and industry.
         </p>
       </div>
     </section>
