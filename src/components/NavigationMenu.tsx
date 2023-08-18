@@ -86,6 +86,7 @@ const NavigationMenu = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("wheel", handleStopScrollInsideNav);
+      document.removeEventListener("touchmove", handleStopScrollInsideNav);
     };
   }, []);
 
