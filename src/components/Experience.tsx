@@ -1,29 +1,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import Link from "./Link";
-
-const experiences = [
-  {
-    employer: "Cambustion",
-    jobTitle: "Software Engineer",
-    url: "https://www.cambustion.com",
-  },
-  {
-    employer: "Jaguar Land Rover",
-    jobTitle: "Software & Systems Engineer",
-    url: "https://www.jaguarlandrover.com",
-  },
-  {
-    employer: "MathWorks",
-    jobTitle: "FPGA Development Intern",
-    url: "https://www.mathworks.com",
-  },
-  {
-    employer: "University of Bristol",
-    jobTitle: "Software and Electronics Intern",
-    url: "https://bristol.ac.uk",
-  },
-];
+import experiences from "@/data/experiences.json";
 
 const JobButton = ({
   employer,
@@ -74,7 +52,8 @@ const Experience = () => {
         Where I've Worked
       </h2>
 
-      <div className="flex flex-col gap-4 md:flex-row items-center justify-center">
+      {/* Slider */}
+      <div className="flex flex-col gap-4 md:flex-row items-start justify-center">
         <div
           className={clsx(
             "flex flex-row md:flex-col overflow-x-auto",
@@ -91,11 +70,27 @@ const Experience = () => {
             />
           ))}
         </div>
-        <div className="w-full self-start p-2">
+
+        {/* Detailed description */}
+        <div className="w-full p-2">
           <p className="font-semibold text-lg">
             {experience.jobTitle}{" "}
             <Link href={experience.url}>@ {experience.employer}</Link>
           </p>
+
+          <div className="text-sm mt-4">
+            <p className="font-mono">{experience.tenure}</p>
+            <p className="font-mono text-sm">{experience.location}</p>
+            <ul className="list-disc space-y-4 ml-4 mt-8">
+              {experience.bulletPoints.map((bulletPoint) => {
+                return (
+                  <li key={bulletPoint} className="dark:text-gray-400">
+                    {bulletPoint}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

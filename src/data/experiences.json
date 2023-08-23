@@ -1,0 +1,46 @@
+[
+  {
+    "employer": "Cambustion",
+    "jobTitle": "Software Engineer",
+    "url": "https://www.cambustion.com",
+    "tenure": "March 2023 - Present",
+    "location": "Cambridge, United Kingdom",
+    "bulletPoints": [
+      "Spearheaded the development of elegant web user interfaces and desktop applications integral to cutting-edge scientific instruments, including advanced gas and particle analysers.",
+      "Collaborated closely with scientists and engineers to design and deliver robust software that fulfills business and technical requirements.",
+      "Shipped exciting new customer-centric features into the UI of a novel product using React, Next.js, Zendesk Garden, TypeScript, Node.js and GraphQL. This endeavor not only augmented the UX but also elevated the product's market appeal.",
+      "Assumed a leadership role in the complete software lifecycle of a high-performance, multi-threaded desktop application for live data capture and visualisation, developed using Python, PySide6 (Qt), Scipy and Numpy. This application speeded up the mechanical development of a new product by 10x."
+    ]
+  },
+
+  {
+    "employer": "Jaguar Land Rover",
+    "jobTitle": "Software & Systems Engineer",
+    "url": "https://www.jaguarlandrover.com",
+    "tenure": "September 2017 - February 2023",
+    "location": "Warwickshire, United Kingdom",
+    "bulletPoints": [
+      "Delivered 4 multi-million pound software projects for instrument clusters and other automotive systems across 10+ vehicle programmes (2M+ production vehicles) by managing projects, collaborating with suppliers, planning sprints, resolving defects, and releasing software to production.",
+      "Reduced the software download time by 98% by introducing Diagnostics-over-IP (DoIP) which involved gathering stakeholder requirements, authoring software specifications, and running unit/integration/end-to-end tests.",
+      "Reduced 200K+ man-hours of service dealership costs and improved the customer experience by delivering over-the-air software update capabilities.",
+      "Fixed 800+ software defects by leading defect reviews in Jira, analysing logs, reproducing issues, finding root cause, and validating fixes.",
+      "Met new scalability and real-time requirements by migrating the software stack to a new platform utilising a service-oriented architecture by architecting software, and designing algorithms/APIs using SOME-IP and DDS."
+    ]
+  },
+  {
+    "employer": "MathWorks",
+    "jobTitle": "FPGA Development Intern",
+    "url": "https://www.mathworks.com",
+    "tenure": "Summer 2016",
+    "location": "Glasgow, United Kingdom",
+    "bulletPoints": []
+  },
+  {
+    "employer": "University of Bristol",
+    "jobTitle": "Software and Electronics Intern",
+    "url": "https://bristol.ac.uk",
+    "tenure": "Summer 2015",
+    "location": "Bristol, United Kingdom",
+    "bulletPoints": []
+  }
+]
