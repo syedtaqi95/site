@@ -4,14 +4,21 @@ import ThemeToggle from "./ThemeToggle";
 import useColourMode from "@/lib/hooks/useColourMode";
 import clsx from "clsx";
 
-const NavListItem = ({ title, href }: { title: string; href: string }) => {
+export const NavListItem = ({
+  title,
+  href,
+}: {
+  title: string;
+  href: string;
+}) => {
   return (
     <li className="inline">
       <a href={href} className="group text-lg md:text-base">
         <div
           className={clsx(
-            "group-hover:-translate-y-1 group-hover:text-teal-700",
-            "dark:group-hover:text-green-350 transition-transform duration-300"
+            "group-hover:-translate-y-1",
+            "group-hover:text-teal-700 dark:group-hover:text-green-350",
+            "transition-transform duration-300"
           )}
         >
           {title}
