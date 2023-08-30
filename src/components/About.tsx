@@ -67,13 +67,13 @@ const About = () => {
           ).
         </p>
         <p>
-          In 2023, I finally took the plunge and became a full-time software
-          engineer when I joined the team at{" "}
+          In 2023, I took the plunge and became a full-time software engineer
+          when I joined the team at{" "}
           <Link href="https://cambustion.com">Cambustion</Link> in Cambridge.
-          These days, I channel my creativity and expertise into crafting
-          elegant user interfaces and full-stack applications that drive data
-          visualisation and scientific computing for groundbreaking scientific
-          instruments used by customers in both academia and industry.
+          These days, I channel my creativity into crafting full-stack web apps
+          as well as cross-platform apps that drive data visualisation and
+          scientific computing for groundbreaking scientific instruments, used
+          by customers across academia and industry.
         </p>
       </div>
     </section>

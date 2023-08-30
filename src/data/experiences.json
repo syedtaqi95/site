@@ -6,10 +6,11 @@
     "tenure": "March 2023 - Present",
     "location": "Cambridge, United Kingdom",
     "bulletPoints": [
-      "Spearheaded the development of elegant web user interfaces and desktop applications integral to cutting-edge scientific instruments, including advanced gas and particle analysers.",
-      "Collaborated closely with scientists and engineers to design and deliver robust software that fulfills business and technical requirements.",
-      "Shipped exciting new customer-centric features into the UI of a novel product using React, Next.js, Zendesk Garden, TypeScript, Node.js and GraphQL. This endeavor not only augmented the UX but also elevated the product's market appeal.",
-      "Assumed a leadership role in the complete software lifecycle of a high-performance, multi-threaded desktop application for live data capture and visualisation, developed using Python, PySide6 (Qt), Scipy and Numpy. This application speeded up the mechanical development of a new product by 10x."
+      "Spearheaded the development of web user interfaces and cross-platform applications integral to cutting-edge scientific instruments, including advanced gas and particle analysers.",
+      "Collaborated closely with scientists and engineers to design and deliver robust software that fulfills complex business and technical requirements.",
+      "Shipped exciting new customer-centric features into the UI of a novel product using React, Next.js, Zendesk Garden, TypeScript, Node.js and GraphQL.",
+      "Assumed a leadership role in the complete software lifecycle of a high-performance, multi-threaded desktop application for live data capture and visualisation, developed using Python, PySide6 (Qt), Scipy and Numpy. This application speeded up the mechanical development of a new product by 10x.",
+      "Maintained the company website developed using Next.js, TypeScript and DatoCMS by adding new features, fixing bugs and updating dependencies."
     ]
   },
 
@@ -33,7 +34,11 @@
     "url": "https://www.mathworks.com",
     "tenure": "Summer 2016",
     "location": "Glasgow, United Kingdom",
-    "bulletPoints": []
+    "bulletPoints": [
+      "Implemented complex signal-processing algorithms for an innovative FMCW radar proof-of-concept to demonstrate Mathworks offerings to customers. The proof-of-concept used a Xilinx Zynq SoC consisting of an ARM microprocessor and FPGA programmable logic.",
+      "Created new Simulink examples and wrote documentation for the Xilinx Zynq hardware support package.",
+      "Supported customers by providing technical support and finding elegant solutions to challenging problems."
+    ]
   },
   {
     "employer": "University of Bristol",
@@ -41,6 +46,9 @@
     "url": "https://bristol.ac.uk",
     "tenure": "Summer 2015",
     "location": "Bristol, United Kingdom",
-    "bulletPoints": []
+    "bulletPoints": [
+      "Worked on an interdisciplinary autonomous UAV (drone) used for volcanology research on Ascension Island, sponsored by Boeing.",
+      "Designed and tested the UAV's communications system for live video and telemetry data. The system utilised on-board video processing and transmitted data via long range Wi-Fi transceivers."
+    ]
   }
 ]
