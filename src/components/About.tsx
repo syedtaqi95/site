@@ -1,6 +1,10 @@
 import clsx from "clsx";
-import React from "react";
+import React, { type ReactNode } from "react";
 import Link from "@/components/Link";
+
+const Paragraph = ({ children }: { children: ReactNode }) => (
+  <p className="font-mono mb-4">{children}</p>
+);
 
 const About = () => {
   return (
@@ -26,7 +30,7 @@ const About = () => {
             "ring ring-teal-700 dark:ring-green-350"
           )}
         />
-        <p className="mb-4">
+        <Paragraph>
           I'm a{" "}
           <Link href="https://en.wikipedia.org/wiki/Third_culture_kid">
             third culture kid
@@ -41,8 +45,8 @@ const About = () => {
             drone
           </Link>{" "}
           that flew into volcanoes!
-        </p>
-        <p className="mb-4">
+        </Paragraph>
+        <Paragraph>
           Fresh out of university in 2017, I fulfilled my childhood dream of
           working with cars for a living by joining Jaguar Land Rover's graduate
           engineering programme in Warwickshire. I undertook various engineering
@@ -55,8 +59,8 @@ const About = () => {
             Range Rover
           </Link>
           .
-        </p>
-        <p className="mb-4">
+        </Paragraph>
+        <Paragraph>
           Although I learnt a lot during my time at JLR, I realised that I
           wanted to continue improving my programming skills and so I began
           learning web development and built open-source projects in my free
@@ -65,8 +69,8 @@ const About = () => {
             this dashboard
           </Link>
           ).
-        </p>
-        <p>
+        </Paragraph>
+        <Paragraph>
           In 2023, I took the plunge and became a full-time software engineer
           when I joined the team at{" "}
           <Link href="https://cambustion.com">Cambustion</Link> in Cambridge.
@@ -74,7 +78,7 @@ const About = () => {
           as well as cross-platform apps that drive data visualisation and
           scientific computing for groundbreaking scientific instruments, used
           by customers across academia and industry.
-        </p>
+        </Paragraph>
       </div>
     </section>
   );

@@ -32,7 +32,7 @@ const Hero = () => {
         >
           I turn caffeine into code.
         </h1>
-        <p className="max-w-prose mb-4">
+        <p className="font-mono mb-4">
           I'm a software engineer with a background in electronic engineering
           dedicated to building well-engineered and user-friendly products -
           from{" "}
