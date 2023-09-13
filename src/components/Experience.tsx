@@ -16,7 +16,7 @@ const JobButton = ({
     <button
       onClick={onClick}
       className={clsx(
-        "flex-none p-4 text-sm",
+        "font-sans flex-none p-4 text-sm",
         "md:border-l-2",
         "hover:bg-slate-200 dark:hover:bg-light-navy ",
         "transition-colors duration-300 ",
@@ -84,7 +84,7 @@ const Experience = () => {
             <ul className="list-disc space-y-4 ml-4 mt-8">
               {experience.bulletPoints.map((bulletPoint) => {
                 return (
-                  <li key={bulletPoint} className="dark:text-gray-400">
+                  <li key={bulletPoint} className="prose prose-sm dark:prose-invert">
                     {bulletPoint}
                   </li>
                 );
