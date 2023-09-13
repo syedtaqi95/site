@@ -1,5 +1,7 @@
 import clsx from "clsx";
 import type { ReactNode } from "react";
+import skills from "@/data/skills.json";
+import { Icon } from "@iconify/react";
 
 const CardHeading = ({ children }: { children: ReactNode }) => {
   return (
@@ -24,7 +26,7 @@ const Card = ({ children }: { children: ReactNode }) => {
 
 const SkillsList = ({ children }: { children: ReactNode }) => {
   return (
-    <ul className="px-12 list-disc font-medium text-sm sm:text-base">
+    <ul className="list-none flex justify-center flex-wrap gap-4">
       {children}
     </ul>
   );
@@ -35,7 +37,7 @@ const Skills = () => {
     <section className="pb-20">
       <h2
         className={clsx(
-          "text-3xl font-semibold mb-12",
+          "font-sans text-3xl font-semibold mb-12",
           "after:block after:relative after:-top-5 after:ml-24",
           "after:max-w-full after:h-0.5",
           "after:bg-gradient-to-r after:from-blue-500 after:to-fuchsia-600",
@@ -45,42 +47,26 @@ const Skills = () => {
         Skills
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
-          <CardHeading>Programming Languages</CardHeading>
-          <SkillsList>
-            <li>C</li>
-            <li>C++</li>
-            <li>JavaScript (ES6+)</li>
-            <li>TypeScript</li>
-            <li>Python</li>
-          </SkillsList>
-        </Card>
-        <Card>
-          <CardHeading>Web Technologies</CardHeading>
-          <SkillsList>
-            <li>React</li>
-            <li>Next.js</li>
-            <li>Astro</li>
-            <li>Storybook</li>
-            <li>REST</li>
-            <li>GraphQL</li>
-            <li>Node.js</li>
-            <li>GitHub Actions</li>
-            <li>AWS</li>
-          </SkillsList>
-        </Card>
-        <Card>
-          <CardHeading>Competencies</CardHeading>
-          <SkillsList>
-            <li>Full-Stack Development</li>
-            <li>Scientific Computing</li>
-            <li>Data Visualisation</li>
-            <li>System Design</li>
-            <li>Agile (Scrum)</li>
-            <li>TDD</li>
-          </SkillsList>
-        </Card>
+      <div className="grid grid-cols-1 gap-4">
+        {skills.map((section) => (
+          <Card key={section.category}>
+            <CardHeading>{section.category}</CardHeading>
+            <SkillsList>
+              {section.skills.map((skill) => (
+                <li
+                  className={clsx(
+                    "flex items-center gap-2  p-3",
+                    "border-2 rounded-full border-white dark:border-blue-900"
+                  )}
+                  key={skill.name}
+                >
+                  <Icon icon={skill.icon} width="36" />
+                  {skill.name}
+                </li>
+              ))}
+            </SkillsList>
+          </Card>
+        ))}
       </div>
     </section>
   );

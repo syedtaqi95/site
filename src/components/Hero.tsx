@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="mb-8">
         <p
           className={clsx(
-            "mb-2 font-mono text-lg font-medium",
+            "mb-2  text-lg font-medium",
             "text-teal-700 dark:text-green-350"
           )}
         >
@@ -18,7 +18,7 @@ const Hero = () => {
         <h1
           className={clsx(
             "text-2xl md:text-4xl lg:text-6xl",
-            "font-extrabold py-2 text-transparent bg-clip-text",
+            "font-sans font-extrabold py-2 text-transparent bg-clip-text",
             "bg-gradient-to-r from-blue-500 to-fuchsia-500"
           )}
         >
@@ -27,15 +27,14 @@ const Hero = () => {
         <h1
           className={clsx(
             "text-2xl md:text-4xl lg:text-6xl",
-            "font-extrabold py-2 mb-4"
+            "font-sans font-extrabold py-2 mb-4"
           )}
         >
           I turn caffeine into code.
         </h1>
-        <p className="font-mono mb-4">
+        <p className=" prose dark:prose-invert mb-4">
           I'm a software engineer with a background in electronic engineering
-          dedicated to building well-engineered and user-friendly products -
-          from{" "}
+          that loves building well-engineered and user-friendly products - from{" "}
           <span
             className={clsx(
               "inline-block transition-transform duration-300 hover:scale-50",

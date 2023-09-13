@@ -10,7 +10,7 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -30,7 +30,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
 
-  <body class="bg-white dark:bg-navy text-gray-700 dark:text-slate-300">
+  <body class="bg-white dark:bg-navy font-mono text-gray-700 dark:text-slate-300">
     <NavigationMenu client:only="react" />
     <main class={clsx("px-6 md:px-24 lg:px-32 max-w-6xl mx-auto")}>
       <slot />
