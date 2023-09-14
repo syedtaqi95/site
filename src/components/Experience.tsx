@@ -84,7 +84,7 @@ const Experience = () => {
             <ul className="list-disc space-y-4 ml-4 mt-8">
               {experience.bulletPoints.map((bulletPoint) => {
                 return (
-                  <li key={bulletPoint} className="prose prose-sm dark:prose-invert">
+                  <li key={bulletPoint} className="prose prose-sm max-w-none dark:prose-invert">
                     {bulletPoint}
                   </li>
                 );

@@ -3,7 +3,7 @@ import React, { type ReactNode } from "react";
 import Link from "@/components/Link";
 
 const Paragraph = ({ children }: { children: ReactNode }) => (
-  <p className=" prose dark:prose-invert max-w-none mb-4">
+  <p className="prose dark:prose-invert max-w-none mb-4">
     {children}
   </p>
 );
