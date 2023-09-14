@@ -1,0 +1,67 @@
+---
+import NavigationMenu from "@/components/NavigationMenu";
+import clsx from "clsx";
+import "@/styles/main.css";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="sy3d.dev portfolio website" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+
+  <body
+    class="bg-white dark:bg-navy font-mono text-gray-700 dark:text-slate-300"
+  >
+    <NavigationMenu client:load />
+    <main class={clsx("px-6 md:px-24 lg:px-32 max-w-6xl mx-auto")}>
+      <slot />
+    </main>
+
+    <script is:inline>
+      if (!window.theme) {
+        window.theme = (() => {
+          if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("theme")
+          ) {
+            return localStorage.getItem("theme");
+          }
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return "dark";
+          }
+          return "light";
+        })();
+
+        if (window.theme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
+        }
+        window.localStorage.setItem("theme", window.theme);
+      }
+    </script>
+  </body>
+</html>

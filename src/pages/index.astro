@@ -1,0 +1,18 @@
+---
+import Hero from "@/components/Hero";
+import Layout from "@/layouts/Layout.astro";
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Footer from "@/components/Footer";
+import Experience from "@/components/Experience";
+import Contact from "@/components/Contact";
+---
+
+<Layout title="Syed Taqi Haider">
+  <Hero />
+  <About />
+  <Skills client:visible />
+  <Experience client:idle />
+  <Contact />
+  <Footer />
+</Layout>

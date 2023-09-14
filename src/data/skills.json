@@ -1,0 +1,41 @@
+[
+  {
+    "category": "Programming Languages",
+    "skills": [
+      {
+        "name": "C",
+        "icon": "devicon:c"
+      },
+      {
+        "name": "C++",
+        "icon": "devicon:cplusplus"
+      },
+      {
+        "name": "JavaScript",
+        "icon": "devicon:javascript"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "devicon:typescript"
+      },
+      {
+        "name": "Python",
+        "icon": "devicon:python"
+      }
+    ]
+  },
+  {
+    "category": "Web Technologies",
+    "skills": [
+      { "name": "React", "icon": "devicon:react" },
+      { "name": "Next.js", "icon": "devicon:nextjs" },
+      { "name": "Astro", "icon": "devicon:astro" },
+      { "name": "Storybook", "icon": "devicon:storybook" },
+      { "name": "REST", "icon": "material-symbols:http" },
+      { "name": "GraphQL", "icon": "logos:graphql" },
+      { "name": "Node.js", "icon": "devicon:nodejs-wordmark" },
+      { "name": "GitHub Actions", "icon": "devicon:githubactions" },
+      { "name": "AWS", "icon": "fontisto:aws" }
+    ]
+  }
+]

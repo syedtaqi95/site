@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .thin-scrollbar::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    /* Foreground */
+    background: theme("colors.teal.700");
+  }
+  .thin-scrollbar::-webkit-scrollbar-track {
+    /* Background */
+    background: theme("colors.slate.300");
+  }
+
+  .dark-thin-scrollbar::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .dark-thin-scrollbar::-webkit-scrollbar-thumb {
+    /* Foreground */
+    background: theme("colors.green.350");
+  }
+  .dark-thin-scrollbar::-webkit-scrollbar-track {
+    /* Background */
+    background: theme("colors.blue.950");
+  }
+}
