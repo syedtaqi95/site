@@ -105,7 +105,7 @@ const NavigationMenu = () => {
           aria-label="home"
           className="transition-transform duration-300 hover:-translate-y-1"
         >
-          <img alt="logo" src="apple-touch-icon.png" className="w-10 h-10" />
+          <img alt="logo" src="/apple-touch-icon.png" className="w-10 h-10" />
         </a>
 
         {/* Links - displayed on wide screen widths */}
