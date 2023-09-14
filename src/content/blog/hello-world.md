@@ -2,7 +2,7 @@
 title: Hello World 👋
 tags:
   - Introduction
-published: 14 September 2023
+published: 12 September 2023
 description: Testing, testing...
 ---
 

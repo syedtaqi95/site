@@ -19,16 +19,31 @@ const blogEntries = await getCollection("blog");
     >
       Blog Posts
     </h2>
-    {
-      blogEntries.map((entry) => (
-        <a href={`/blog/${entry.slug}`}>
-          <section class="p-4 bg-slate-200 dark:bg-light-navy rounded-xl">
-            <h3 class="font-bold text-xl">{entry.data.title}</h3>
-            <p class="italic text-sm">{entry.data.published.toDateString()}</p>
-            <p class="mt-8">{entry.data.description}</p>
-          </section>
-        </a>
-      ))
-    }
+    <section class="flex flex-col gap-8">
+      {
+        blogEntries
+          // @ts-ignore
+          .sort((a, b) => b.data.published - a.data.published) // newest first
+          .map((entry) => (
+            <a href={`/blog/${entry.slug}`}>
+              <div
+                class={clsx(
+                  "p-4 rounded-xl border-2 border-slate-200 dark:border-light-navy",
+                  "hover:bg-slate-200 dark:hover:bg-light-navy",
+                  "transition-colors duration-300"
+                )}
+              >
+                <h3 class="font-bold text-xl text-teal-700 dark:text-green-350">
+                  {entry.data.title}
+                </h3>
+                <p class="italic text-sm">
+                  {entry.data.published.toDateString()}
+                </p>
+                <p class="mt-8">{entry.data.description}</p>
+              </div>
+            </a>
+          ))
+      }
+    </section>
   </article>
 </Layout>
