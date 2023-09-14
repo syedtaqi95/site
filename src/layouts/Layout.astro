@@ -2,6 +2,7 @@
 import NavigationMenu from "@/components/NavigationMenu";
 import clsx from "clsx";
 import "@/styles/main.css";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -28,6 +29,7 @@ const { title } = Astro.props;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
 
   <body
@@ -37,24 +39,29 @@ const { title } = Astro.props;
     <main class={clsx("px-6 md:px-24 lg:px-32 max-w-6xl mx-auto")}>
       <slot />
     </main>
+
+    <script is:inline>
+      if (!window.theme) {
+        window.theme = (() => {
+          if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("theme")
+          ) {
+            return localStorage.getItem("theme");
+          }
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return "dark";
+          }
+          return "light";
+        })();
+
+        if (window.theme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
+        }
+        window.localStorage.setItem("theme", window.theme);
+      }
+    </script>
   </body>
 </html>
-
-<script is:inline>
-const theme = (() => {
-  if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-    return localStorage.getItem("theme");
-  }
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    return "dark";
-  }
-  return "light";
-})();
-
-if (theme === "light") {
-  document.documentElement.classList.remove("dark");
-} else {
-  document.documentElement.classList.add("dark");
-}
-  window.localStorage.setItem("theme", theme);
-</script>
