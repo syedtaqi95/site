@@ -25,7 +25,7 @@ const JobButton = ({
               "bg-slate-200 dark:bg-light-navy " +
               "md:border-l-teal-700 md:dark:border-l-green-350 "
           : "hover:text-teal-700 hover:dark:text-green-350 " +
-              "border-l-slate-200 dark:border-l-blue-950 "
+              "border-l-slate-200 dark:border-l-blue-950 ",
       )}
     >
       {employer}
@@ -46,7 +46,7 @@ const Experience = () => {
           "after:block after:relative after:-top-5 after:ml-72",
           "after:max-w-full after:h-0.5",
           "after:bg-gradient-to-r after:from-blue-500 after:to-fuchsia-600",
-          "after:-z-10"
+          "after:-z-10",
         )}
       >
         Where I've Worked
@@ -58,7 +58,7 @@ const Experience = () => {
           className={clsx(
             "flex flex-row md:flex-col overflow-x-auto",
             "thin-scrollbar dark:dark-thin-scrollbar",
-            "max-w-full"
+            "max-w-full",
           )}
         >
           {experiences.map(({ employer }, index) => (
@@ -73,18 +73,21 @@ const Experience = () => {
 
         {/* Detailed description */}
         <div className="w-full p-2">
-          <p className="font-semibold text-lg">
+          <p className="font-sans font-semibold text-lg">
             {experience.jobTitle}{" "}
             <Link href={experience.url}>@ {experience.employer}</Link>
           </p>
 
           <div className="text-sm mt-4">
             <p className="">{experience.tenure}</p>
-            <p className=" text-sm">{experience.location}</p>
+            <p className="text-sm">{experience.location}</p>
             <ul className="list-disc space-y-4 ml-4 mt-8">
               {experience.bulletPoints.map((bulletPoint) => {
                 return (
-                  <li key={bulletPoint} className="prose prose-sm max-w-none dark:prose-invert">
+                  <li
+                    key={bulletPoint}
+                    className="prose prose-sm max-w-none dark:prose-invert"
+                  >
                     {bulletPoint}
                   </li>
                 );

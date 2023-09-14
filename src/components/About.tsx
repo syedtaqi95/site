@@ -3,9 +3,7 @@ import React, { type ReactNode } from "react";
 import Link from "@/components/Link";
 
 const Paragraph = ({ children }: { children: ReactNode }) => (
-  <p className="prose dark:prose-invert max-w-none mb-4">
-    {children}
-  </p>
+  <p className="prose dark:prose-invert max-w-none mb-4">{children}</p>
 );
 
 const About = () => {
@@ -17,7 +15,7 @@ const About = () => {
           "after:block after:relative after:-top-5 after:ml-40",
           "after:max-w-full after:h-0.5",
           "after:bg-gradient-to-r after:from-blue-500 after:to-fuchsia-600",
-          "after:-z-10"
+          "after:-z-10",
         )}
       >
         About Me
@@ -29,7 +27,7 @@ const About = () => {
           alt="profile photo"
           className={clsx(
             "rounded-full w-72 md:float-left mx-auto md:mx-8 my-8",
-            "ring ring-teal-700 dark:ring-green-350"
+            "ring ring-teal-700 dark:ring-green-350",
           )}
         />
         <Paragraph>

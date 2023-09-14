@@ -14,7 +14,7 @@ const ThemeToggle = ({
     <svg
       className={clsx(
         "transition-all duration-300 origin-center",
-        "hover:animate-spin-slow"
+        "hover:animate-spin-slow",
       )}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -32,7 +32,7 @@ const ThemeToggle = ({
     <svg
       className={clsx(
         "transition-all duration-300 origin-center",
-        "hover:scale-125 fill-gray-700 hover:fill-teal-700"
+        "hover:scale-125 fill-gray-700 hover:fill-teal-700",
       )}
       xmlns="http://www.w3.org/2000/svg"
       width="24"

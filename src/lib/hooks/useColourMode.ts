@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 
 export default function useColourMode(): [
   string,
-  React.Dispatch<React.SetStateAction<string>>
+  React.Dispatch<React.SetStateAction<string>>,
 ] {
   const [theme, setTheme] = useState<string>(
-    localStorage.getItem("theme") ?? "light"
+    localStorage.getItem("theme") ?? "light",
   );
 
   useEffect(() => {
