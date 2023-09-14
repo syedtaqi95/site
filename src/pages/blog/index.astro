@@ -21,9 +21,13 @@ const blogEntries = await getCollection("blog");
     </h2>
     {
       blogEntries.map((entry) => (
-        <section class="hover:border rounded-2xl border-gray-300 cursor-pointer">
-          <a href={`/blog/${entry.slug}`}>{entry.data.title}</a>
-        </section>
+        <a href={`/blog/${entry.slug}`}>
+          <section class="p-4 bg-slate-200 dark:bg-light-navy rounded-xl">
+            <h3 class="font-bold text-xl">{entry.data.title}</h3>
+            <p class="italic text-sm">{entry.data.published.toDateString()}</p>
+            <p class="mt-8">{entry.data.description}</p>
+          </section>
+        </a>
       ))
     }
   </article>

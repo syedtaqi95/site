@@ -30,8 +30,10 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
 
-  <body class="bg-white dark:bg-navy font-mono text-gray-700 dark:text-slate-300">
-    <NavigationMenu client:only="react" />
+  <body
+    class="bg-white dark:bg-navy font-mono text-gray-700 dark:text-slate-300"
+  >
+    <NavigationMenu client:load />
     <main class={clsx("px-6 md:px-24 lg:px-32 max-w-6xl mx-auto")}>
       <slot />
     </main>
@@ -54,5 +56,5 @@ if (theme === "light") {
 } else {
   document.documentElement.classList.add("dark");
 }
-window.localStorage.setItem("theme", theme);
+  window.localStorage.setItem("theme", theme);
 </script>

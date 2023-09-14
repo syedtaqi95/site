@@ -5,7 +5,9 @@ export default function useColourMode(): [
   React.Dispatch<React.SetStateAction<string>>,
 ] {
   const [theme, setTheme] = useState<string>(
-    localStorage.getItem("theme") ?? "light",
+    typeof localStorage !== "undefined"
+      ? localStorage.getItem("theme") ?? "light"
+      : "light"
   );
 
   useEffect(() => {
