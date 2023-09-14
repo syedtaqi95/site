@@ -6,11 +6,11 @@
     "tenure": "March 2023 - Present",
     "location": "Cambridge, United Kingdom",
     "bulletPoints": [
-      "Spearheaded the development of web user interfaces and cross-platform applications integral to cutting-edge scientific instruments, including advanced gas and particle analysers.",
-      "Collaborated closely with scientists and engineers to design and deliver robust software that fulfills complex business and technical requirements.",
+      "Spearheaded the development of web UIs and cross-platform applications integral to cutting-edge scientific instruments, including advanced gas and particle analysers.",
+      "Collaborated with a cross-functional team of scientists and engineers to design and deliver robust software that fulfills complex business and technical requirements.",
       "Shipped exciting new customer-centric features into the UI of a novel product using React, Next.js, Zendesk Garden, TypeScript, Node.js and GraphQL.",
-      "Assumed a leadership role in the complete software lifecycle of a high-performance, multi-threaded desktop application for live data capture and visualisation, developed using Python, PySide6 (Qt), Scipy and Numpy. This application speeded up the mechanical development of a new product by 10x.",
-      "Maintained the company website developed using Next.js, TypeScript and DatoCMS by adding new features, fixing bugs and updating dependencies."
+      "Speeded up the R&D process by 10x of a new product by developing a high-performance, multi-threaded dekstop application for live data capture and visualisation. Developed using Python, PySide6 (Qt), Scipy and Numpy.",
+      "Added new features to the corporate website by using Next.js, TypeScript and DatoCMS. Features include vanity URLs for assets, improving SEO, setting up Google Analytics conversion tracking etc."
     ]
   },
 
@@ -35,20 +35,19 @@
     "tenure": "Summer 2016",
     "location": "Glasgow, United Kingdom",
     "bulletPoints": [
-      "Implemented complex signal-processing algorithms for an innovative FMCW radar proof-of-concept to demonstrate Mathworks offerings to customers. The proof-of-concept used a Xilinx Zynq SoC consisting of an ARM microprocessor and FPGA programmable logic.",
-      "Created new Simulink examples and wrote documentation for the Xilinx Zynq hardware support package.",
-      "Supported customers by providing technical support and finding elegant solutions to challenging problems."
+      "Implemented complex signal-processing algorithms for a radar proof-of-concept to demonstrate Mathworks products to customers. It consisted of a Xilinx Zynq SoC with an ARM microprocessor and FPGA programmable logic.",
+      "Created new Simulink examples and authored documentation for the Xilinx Zynq hardware support package."
     ]
   },
   {
     "employer": "University of Bristol",
     "jobTitle": "Software and Electronics Intern",
-    "url": "https://bristol.ac.uk",
+    "url": "https://www.bristol.ac.uk/news/2015/september/unmanned-airborne-system.html",
     "tenure": "Summer 2015",
     "location": "Bristol, United Kingdom",
     "bulletPoints": [
-      "Worked on an interdisciplinary autonomous UAV (drone) used for volcanology research on Ascension Island, sponsored by Boeing.",
-      "Designed and tested the UAV's communications system for live video and telemetry data. The system utilised on-board video processing and transmitted data via long range Wi-Fi transceivers."
+      "Worked on an interdisciplinary autonomous UAV (drone) used for volcanology research on Ascension Island and was funded by Boeing.",
+      "Designed and tested the UAV's communications system for live video and telemetry data. The Linux-based system utilised on-board video processing using gstreamer and transmitted data via long range Ubiquiti Wi-Fi transceivers."
     ]
   }
 ]
