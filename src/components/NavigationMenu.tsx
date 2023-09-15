@@ -13,12 +13,12 @@ export const NavListItem = ({
 }) => {
   return (
     <li className="inline">
-      <a href={href} className="group text-lg md:text-base">
+      <a href={href} className="group font-sans text-lg md:text-base">
         <div
           className={clsx(
             "group-hover:-translate-y-1",
             "group-hover:text-teal-700 dark:group-hover:text-green-350",
-            "transition-transform duration-300",
+            "transition-transform duration-300"
           )}
         >
           {title}
@@ -27,7 +27,7 @@ export const NavListItem = ({
           className={clsx(
             "block max-w-0 group-hover:max-w-full",
             "transition-all duration-300",
-            "h-0.5 bg-teal-700 dark:bg-green-350",
+            "h-0.5 bg-teal-700 dark:bg-green-350"
           )}
         />
       </a>
@@ -130,7 +130,7 @@ const NavigationMenu = () => {
               className={clsx(
                 "stroke-gray-700 dark:stroke-green-350 stroke-2",
                 "transition-transform duration-300 origin-center",
-                `${isMenuOpen ? "rotate-45" : "-translate-y-1/3"}`,
+                `${isMenuOpen ? "rotate-45" : "-translate-y-1/3"}`
               )}
             />
             <line
@@ -141,7 +141,7 @@ const NavigationMenu = () => {
               className={clsx(
                 "stroke-gray-700 dark:stroke-green-350 stroke-2",
                 "transition-transform duration-300 origin-center",
-                `${isMenuOpen ? "scale-x-0" : ""}`,
+                `${isMenuOpen ? "scale-x-0" : ""}`
               )}
             />
             <line
@@ -152,7 +152,7 @@ const NavigationMenu = () => {
               className={clsx(
                 "stroke-gray-700 dark:stroke-green-350 stroke-2",
                 "transition-transform duration-300 origin-center",
-                `${isMenuOpen ? "-rotate-45" : "translate-y-1/3"}`,
+                `${isMenuOpen ? "-rotate-45" : "translate-y-1/3"}`
               )}
             />
           </svg>
@@ -166,12 +166,12 @@ const NavigationMenu = () => {
             "flex md:hidden transition-transform duration-300 origin-right",
             "fixed right-0 top-0 h-screen w-1/2 sm:w-1/3 z-10",
             "bg-slate-200 dark:bg-light-navy",
-            `${isMenuOpen ? "" : "scale-x-0"}`,
+            `${isMenuOpen ? "" : "scale-x-0"}`
           )}
         >
           <ol
             className={clsx(
-              "flex flex-col items-center justify-center gap-10 w-full p-3",
+              "flex flex-col items-center justify-center gap-10 w-full p-3"
             )}
           >
             <NavLinks theme={theme} setTheme={setTheme} />
