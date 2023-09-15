@@ -1,6 +1,6 @@
 import navLinks from "@/data/navLinks.json";
 import { useState, useEffect, useRef } from "react";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "./shared/ThemeToggle";
 import useColourMode from "@/lib/hooks/useColourMode";
 import clsx from "clsx";
 
@@ -13,7 +13,10 @@ export const NavListItem = ({
 }) => {
   return (
     <li className="inline">
-      <a href={href} className="group font-sans font-medium text-lg md:text-base">
+      <a
+        href={href}
+        className="group font-sans font-medium text-lg md:text-base"
+      >
         <div
           className={clsx(
             "group-hover:-translate-y-1",

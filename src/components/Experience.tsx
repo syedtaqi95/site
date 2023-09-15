@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useState } from "react";
-import Link from "./Link";
+import Link from "./shared/Link";
 import experiences from "@/data/experiences.json";
 
 const JobButton = ({
@@ -81,12 +81,12 @@ const Experience = () => {
           <div className="text-sm mt-4">
             <p>{experience.tenure}</p>
             <p>{experience.location}</p>
-            <ul className="list-disc space-y-4 ml-4 mt-8">
+            <ul className="list-disc space-y-4 ml-4 mt-8 text-justify">
               {experience.bulletPoints.map((bulletPoint) => {
                 return (
                   <li
                     key={bulletPoint}
-                    className="prose prose-sm max-w-none dark:prose-invert"
+                    className="prose max-w-none dark:prose-invert"
                   >
                     {bulletPoint}
                   </li>

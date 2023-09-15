@@ -9,7 +9,7 @@ const CardHeading = ({ children }: { children: ReactNode }) => {
       className={clsx(
         "w-full mb-8 text-center text-xl bg-clip-text",
         "font-semibold font-sans text-transparent",
-        "bg-gradient-to-r from-blue-500 to-fuchsia-500",
+        "bg-gradient-to-r from-blue-500 to-fuchsia-500"
       )}
     >
       {children}
@@ -42,7 +42,7 @@ const Skills = () => {
           "after:block after:relative after:-top-5 after:ml-24",
           "after:max-w-full after:h-0.5",
           "after:bg-gradient-to-r after:from-blue-500 after:to-fuchsia-600",
-          "after:-z-10",
+          "after:-z-10"
         )}
       >
         Skills
@@ -57,7 +57,7 @@ const Skills = () => {
                 <li
                   className={clsx(
                     "flex items-center gap-2  p-3",
-                    "border-2 rounded-full border-white dark:border-blue-900",
+                    "border-2 rounded-full border-white dark:border-blue-900"
                   )}
                   key={skill.name}
                 >
