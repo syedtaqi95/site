@@ -10,7 +10,7 @@ const blogEntries = await getCollection("blog");
   <article>
     <h2
       class={clsx(
-        "text-3xl font-semibold my-12",
+        "font-sans text-3xl font-semibold my-12",
         "after:block after:relative after:-top-5 after:ml-44",
         "after:max-w-full after:h-0.5",
         "after:bg-gradient-to-r after:from-blue-500 after:to-fuchsia-600",
@@ -32,7 +32,7 @@ const blogEntries = await getCollection("blog");
                   "hover:bg-slate-200 dark:hover:bg-light-navy",
                 )}
               >
-                <h3 class="font-bold text-xl text-teal-700 dark:text-green-350">
+                <h3 class="font-sans font-bold text-xl text-teal-700 dark:text-green-350">
                   {entry.data.title}
                 </h3>
                 <p class="italic text-sm">
