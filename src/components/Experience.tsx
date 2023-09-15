@@ -78,7 +78,7 @@ const Experience = () => {
             <Link href={experience.url}>@ {experience.employer}</Link>
           </p>
 
-          <div className="mt-4">
+          <div className="text-sm mt-4">
             <p>{experience.tenure}</p>
             <p>{experience.location}</p>
             <ul className="list-disc space-y-4 ml-4 mt-8">
@@ -86,7 +86,7 @@ const Experience = () => {
                 return (
                   <li
                     key={bulletPoint}
-                    className="prose max-w-none dark:prose-invert"
+                    className="prose prose-sm max-w-none dark:prose-invert"
                   >
                     {bulletPoint}
                   </li>
