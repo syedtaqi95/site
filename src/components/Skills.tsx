@@ -61,7 +61,7 @@ const Skills = () => {
                   )}
                   key={skill.name}
                 >
-                  <Icon icon={skill.icon} width="36" />
+                  <Icon icon={skill.icon} width="24" />
                   {skill.name}
                 </li>
               ))}

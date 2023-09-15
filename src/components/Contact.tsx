@@ -19,8 +19,8 @@ const Contact = () => {
 
       <div className="mb-8 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-20">
         <Link href="https://github.com/syedtaqi95">
-          <div className="flex gap-1 items-center">
-            <span className="text-lg">GitHub</span>
+          <div className="flex gap-1 items-center justify-center">
+            <span className="font-medium text-lg">GitHub</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"
@@ -42,8 +42,8 @@ const Contact = () => {
           </div>
         </Link>
         <Link href="https://www.linkedin.com/in/syedtaqi-haider">
-          <div className="flex gap-1 items-center">
-            <span className="text-lg">LinkedIn</span>
+          <div className="flex gap-1 items-center justify-center">
+            <span className="font-medium text-lg">LinkedIn</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"
@@ -59,8 +59,8 @@ const Contact = () => {
           </div>
         </Link>
         <Link href="mailto:syed.taqi95@gmail.com">
-          <div className="flex gap-1 items-center">
-            <span className="text-lg">Email</span>
+          <div className="flex gap-1 items-center justify-center">
+            <span className="font-medium text-lg">Email</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"

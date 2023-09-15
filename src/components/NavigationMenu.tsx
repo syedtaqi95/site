@@ -13,7 +13,7 @@ export const NavListItem = ({
 }) => {
   return (
     <li className="inline">
-      <a href={href} className="group font-sans text-lg md:text-base">
+      <a href={href} className="group font-sans font-medium text-lg md:text-base">
         <div
           className={clsx(
             "group-hover:-translate-y-1",
