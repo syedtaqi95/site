@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import type { ReactNode } from "react";
 
-const Link = ({ href, children }: { href: string; children: ReactNode }) => {
+const Link = ({ href, children, external = false }: { href: string; children: ReactNode; external?: boolean }) => {
   return (
-    <a href={href} target="_blank">
+    <a href={href} target={external ? "_blank" : undefined}>
       <span
         className={clsx(
           "inline-block text-teal-700 dark:text-green-350",

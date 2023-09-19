@@ -37,7 +37,7 @@ const Contact = () => {
 
       <div className="mb-8 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-20">
         {contacts.map((item) => (
-          <ContactItem item={item} />
+          <ContactItem key={item.title} item={item} />
         ))}
       </div>
     </section>
