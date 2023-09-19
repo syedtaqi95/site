@@ -29,15 +29,26 @@ const blogEntries = await getCollection("blog");
               <div
                 class={clsx(
                   "p-4 rounded-xl border-2 border-slate-200 dark:border-light-navy",
-                  "hover:bg-slate-200 dark:hover:bg-light-navy"
+                  "hover:bg-slate-200 dark:hover:bg-light-navy group",
+                  "hover:border-teal-700 dark:hover:border-green-350"
                 )}
               >
                 <h3 class="font-sans font-bold text-xl text-teal-700 dark:text-green-350">
                   {entry.data.title}
                 </h3>
+
                 <p class="italic text-sm">
                   {entry.data.published.toDateString()}
                 </p>
+
+                <ul class="flex flex-wrap gap-2">
+                  {entry.data.tags.map((tag) => (
+                    <li class="mt-4 px-3 border-2 rounded-full border-slate-200 dark:border-light-navy group-hover:border-teal-700 dark:group-hover:border-green-350 group-hover:text-teal-700 dark:group-hover:text-green-350">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+
                 <p class="mt-8">{entry.data.description}</p>
               </div>
             </a>
