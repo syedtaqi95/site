@@ -19,17 +19,17 @@ const blogEntries = await getCollection("blog");
     >
       Blog Posts
     </h2>
-    <section class="flex flex-col gap-8">
+    <section class="flex flex-col gap-8 pb-20">
       {
         blogEntries
           // @ts-ignore
           .sort((a, b) => b.data.published - a.data.published) // newest first
           .map((entry) => (
-            <a href={`/blog/${entry.slug}`}>
+            <a href={`/blog/${entry.slug}`} transition:name={entry.data.title}>
               <div
                 class={clsx(
                   "p-4 rounded-xl border-2 border-slate-200 dark:border-light-navy",
-                  "hover:bg-slate-200 dark:hover:bg-light-navy",
+                  "hover:bg-slate-200 dark:hover:bg-light-navy"
                 )}
               >
                 <h3 class="font-sans font-bold text-xl text-teal-700 dark:text-green-350">

@@ -6,12 +6,12 @@ published: 12 September 2023
 description: Testing, testing...
 ---
 
-import H2 from "@/components/shared/H2.astro";
-export const components = {h2: H2}
-
-
 ## Houston, we have liftoff! 🚀
 
-{/* ![Profile photo](https://avatars.githubusercontent.com/u/15379489?v=4) */}
+![Profile photo](https://avatars.githubusercontent.com/u/15379489?v=4)
 
 If you can read this, the blog is working.
+
+Here are some bullet points:
+- lorem ipsum
+- booyakasha
