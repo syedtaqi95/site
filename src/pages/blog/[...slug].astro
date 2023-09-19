@@ -17,10 +17,7 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-  <section
-    class="prose prose-slate dark:prose-invert pb-20"
-    transition:name={entry.data.title}
-  >
+  <section class="prose prose-slate dark:prose-invert pb-20">
     <Link href="/blog">&lt; Back to blog</Link>
     <h1 class={clsx("text-5xl font-semibold w-full my-10")}>
       {entry.data.title}

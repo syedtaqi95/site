@@ -2,7 +2,6 @@
 import NavigationMenu from "@/components/NavigationMenu";
 import clsx from "clsx";
 import "@/styles/main.css";
-import { ViewTransitions } from "astro:transitions";
 import Footer from "@/components/Footer";
 
 interface Props {
@@ -30,7 +29,6 @@ const { title } = Astro.props;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
   </head>
 
   <body

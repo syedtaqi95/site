@@ -25,7 +25,7 @@ const blogEntries = await getCollection("blog");
           // @ts-ignore
           .sort((a, b) => b.data.published - a.data.published) // newest first
           .map((entry) => (
-            <a href={`/blog/${entry.slug}`} transition:name={entry.data.title}>
+            <a href={`/blog/${entry.slug}`}>
               <div
                 class={clsx(
                   "p-4 rounded-xl border-2 border-slate-200 dark:border-light-navy",
