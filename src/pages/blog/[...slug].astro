@@ -14,14 +14,15 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const linkStyles = clsx("prose-a:text-teal-700 prose-a:dark:text-green-350");
 ---
 
 <Layout title={entry.data.title}>
-  <section class="prose prose-slate dark:prose-invert pb-20">
+  <section
+    class=`prose prose-slate dark:prose-invert pb-20 max-w-none ${linkStyles}`
+  >
     <Link href="/blog">&lt; Back to blog</Link>
-    <h1 class={clsx("text-5xl font-semibold w-full my-10")}>
-      {entry.data.title}
-    </h1>
     <Content />
   </section>
 </Layout>
