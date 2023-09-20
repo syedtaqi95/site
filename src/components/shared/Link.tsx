@@ -4,10 +4,11 @@ import type { ReactNode } from "react";
 const Link = ({
   href,
   children,
+  className,
 }: {
   href: string;
   children: ReactNode;
-  external?: boolean;
+  className?: string;
 }) => {
   const external: boolean = href.startsWith("http") ? true : false;
   return (
@@ -16,7 +17,8 @@ const Link = ({
         className={clsx(
           "inline-block text-teal-700 dark:text-green-350",
           "hover:text-teal-500 dark:hover:text-emerald-400",
-          "transition-transform duration-300 hover:-translate-y-0.5"
+          "transition-transform duration-300 hover:-translate-y-0.5",
+          className
         )}
       >
         {children}

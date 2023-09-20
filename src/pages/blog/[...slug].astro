@@ -17,10 +17,10 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-  <section
+  <Link className="my-4" href="/blog">&lt; Back to blog</Link>
+  <article
     class="prose prose-slate dark:prose-invert pb-20 max-w-none md:prose-p:text-justify prose-headings:text-teal-700 prose-headings:dark:text-green-350"
   >
-    <Link href="/blog">&lt; Back to blog</Link>
     <Content />
-  </section>
+  </article>
 </Layout>
