@@ -81,7 +81,7 @@ const Experience = () => {
           <div className="text-sm mt-4">
             <p>{experience.tenure}</p>
             <p>{experience.location}</p>
-            <ul className="list-disc space-y-4 ml-4 mt-8 text-justify">
+            <ul className="list-disc space-y-4 ml-4 mt-8 md:text-justify">
               {experience.bulletPoints.map((bulletPoint) => {
                 return (
                   <li
