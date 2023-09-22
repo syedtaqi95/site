@@ -21,7 +21,7 @@ const BlogCard = ({
         className={clsx(
           "flex flex-col-reverse sm:flex-row justify-between items-center sm:items-start gap-4",
           "p-4 rounded-xl shadow-lg dark:shadow-light-navy",
-          "border dark:border-light-navy dark:hover:border-green-350",
+          "border dark:border-light-navy",
           "hover:bg-slate-100 dark:hover:bg-light-navy ",
           "group",
           "transition-transform duration-300 hover:scale-105"
