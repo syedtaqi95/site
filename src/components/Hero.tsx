@@ -9,15 +9,15 @@ const Hero = () => {
       <div className="mb-8">
         <p
           className={clsx(
-            "mb-2  text-lg font-medium",
+            "mb-2 text-lg md:text-2xl font-bold",
             "text-teal-700 dark:text-green-350"
           )}
         >
-          Hello world, I am
+          Hello world, my name is
         </p>
         <h1
           className={clsx(
-            "text-2xl md:text-4xl lg:text-6xl",
+            "text-3xl md:text-6xl",
             "font-sans font-extrabold py-2 text-transparent bg-clip-text",
             "bg-gradient-to-r from-blue-500 to-fuchsia-500"
           )}
@@ -26,7 +26,7 @@ const Hero = () => {
         </h1>
         <h1
           className={clsx(
-            "text-2xl md:text-4xl lg:text-6xl",
+            "text-3xl md:text-6xl",
             "font-sans font-extrabold py-2 mb-4"
           )}
         >

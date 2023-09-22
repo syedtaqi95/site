@@ -17,10 +17,22 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-  <Link className="my-4" href="/blog">&lt; Back to blog</Link>
   <article
-    class="prose prose-slate dark:prose-invert pb-20 max-w-none md:prose-p:text-justify prose-headings:text-teal-700 prose-headings:dark:text-green-350"
+    class="mx-auto prose prose-slate dark:prose-invert pb-20 md:prose-p:text-justify"
   >
+    <Link className="my-4" href="/blog">&lt; Back to blog</Link>
+    <h1>{entry.data.title}</h1>
+    <p class="italic">{entry.data.published.toDateString()}</p>
+    <p>{entry.data.description}</p>
+    <ul class="flex flex-wrap gap-2 list-none p-0">
+      {
+        entry.data.tags.map((tag: string) => (
+          <li class="mt-4 px-3 border-2 rounded-full border-slate-200 dark:border-light-navy group-hover:border-teal-700 dark:group-hover:border-green-350 group-hover:text-teal-700 dark:group-hover:text-green-350">
+            {tag}
+          </li>
+        ))
+      }
+    </ul>
     <Content />
   </article>
 </Layout>
