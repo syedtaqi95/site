@@ -22,7 +22,7 @@ const { Content } = await entry.render();
   <section
     class="mx-auto prose prose-slate dark:prose-invert md:prose-p:text-justify"
   >
-    <Link className="my-4" href="/blog">&lt; Back to blog</Link>
+    <Link className="my-4" href="/blog">&lt; Back</Link>
     <h1 class="text-center mt-16">{entry.data.title}</h1>
     <ul class="flex flex-wrap justify-center gap-2 list-none p-0">
       {entry.data.tags.map((tag: string) => <BlogTag text={tag} />)}

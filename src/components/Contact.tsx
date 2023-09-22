@@ -12,7 +12,7 @@ interface contactItem {
 const ContactItem = ({ item }: { item: contactItem }) => (
   <Link href={item.url}>
     <div className="flex gap-1 items-center justify-center">
-      <span className="font-medium text-xl">{item.title}</span>
+      <span className="text-lg">{item.title}</span>
       <Icon width={30} icon={item.iconRef} />
     </div>
   </Link>
