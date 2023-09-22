@@ -32,7 +32,7 @@ const Hero = () => {
         >
           I turn caffeine into code.
         </h1>
-        <p className="prose prose-lg dark:prose-invert mb-4">
+        <p className="prose dark:prose-invert mb-4">
           I'm a software engineer with a background in electronic engineering
           that loves building well-engineered and user-friendly products - from{" "}
           <span
