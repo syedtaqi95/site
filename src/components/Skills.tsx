@@ -75,7 +75,7 @@ const Skills = () => {
             <CardHeading>{section.category}</CardHeading>
             <SkillsList>
               {section.skills.map((skill) => (
-                <SkillsListItem skill={skill} />
+                <SkillsListItem key={skill.name} skill={skill} />
               ))}
             </SkillsList>
           </Card>
