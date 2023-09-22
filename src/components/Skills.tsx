@@ -57,7 +57,7 @@ const Skills = () => {
                 <li
                   className={clsx(
                     "flex items-center gap-2  p-3",
-                    "border-2 rounded-full border-white dark:border-blue-900",
+                    "border rounded-full border-white dark:border-blue-900",
                     "transition-transform duration-300 hover:scale-125"
                   )}
                   key={skill.name}

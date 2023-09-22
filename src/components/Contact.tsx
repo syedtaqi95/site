@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import Link from "./shared/Link";
-import type { ReactNode } from "react";
 import contacts from "@/data/contact.json";
 import { Icon } from "@iconify/react";
 

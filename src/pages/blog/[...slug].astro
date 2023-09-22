@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 import clsx from "clsx";
 import { getCollection } from "astro:content";
 import Link from "@/components/shared/Link";
+import Contact from "@/components/Contact";
+import BlogTag from "@/components/shared/BlogTag";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -17,22 +19,22 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
-  <article
-    class="mx-auto prose prose-slate dark:prose-invert pb-20 md:prose-p:text-justify"
+  <section
+    class="mx-auto prose prose-slate dark:prose-invert md:prose-p:text-justify"
   >
     <Link className="my-4" href="/blog">&lt; Back to blog</Link>
-    <h1>{entry.data.title}</h1>
-    <p class="italic">{entry.data.published.toDateString()}</p>
-    <p>{entry.data.description}</p>
-    <ul class="flex flex-wrap gap-2 list-none p-0">
-      {
-        entry.data.tags.map((tag: string) => (
-          <li class="mt-4 px-3 border-2 rounded-full border-slate-200 dark:border-light-navy group-hover:border-teal-700 dark:group-hover:border-green-350 group-hover:text-teal-700 dark:group-hover:text-green-350">
-            {tag}
-          </li>
-        ))
-      }
+    <h1 class="text-center mt-16">{entry.data.title}</h1>
+    <ul class="flex flex-wrap justify-center gap-2 list-none p-0">
+      {entry.data.tags.map((tag: string) => <BlogTag text={tag} />)}
     </ul>
-    <Content />
-  </article>
+    <div class="italic text-center">
+      {entry.data.published.toDateString()}
+    </div>
+    <h3 class="font-light">{entry.data.description}</h3>
+    <div class="h-0.5 bg-gradient-to-r from-blue-500 to-fuchsia-600"></div>
+    <article>
+      <Content />
+    </article>
+    <Contact client:idle />
+  </section>
 </Layout>
