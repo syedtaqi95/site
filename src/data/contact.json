@@ -1,0 +1,17 @@
+[
+  {
+    "title": "GitHub",
+    "url": "https://github.com/syedtaqi95",
+    "iconRef": "iconoir:github"
+  },
+  {
+    "title": "LinkedIn",
+    "url": "https://www.linkedin.com/in/syedtaqi-haider",
+    "iconRef": "mdi:linkedin"
+  },
+  {
+    "title": "Email",
+    "url": "mailto:syed.taqi95@gmail.com",
+    "iconRef": "fontisto:email"
+  }
+]

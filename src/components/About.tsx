@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import React, { type ReactNode } from "react";
-import Link from "@/components/Link";
+import Link from "@/components/shared/Link";
 
 const Paragraph = ({ children }: { children: ReactNode }) => (
-  <p className="prose dark:prose-invert max-w-none mb-4">{children}</p>
+  <p className="prose dark:prose-invert text-justify max-w-none mb-4">{children}</p>
 );
 
 const About = () => {

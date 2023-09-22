@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import Link from "@/components/Link";
+import Link from "@/components/shared/Link";
 
 const Hero = () => {
   return (
@@ -9,36 +9,36 @@ const Hero = () => {
       <div className="mb-8">
         <p
           className={clsx(
-            "mb-2  text-lg font-medium",
-            "text-teal-700 dark:text-green-350",
+            "mb-2 text-lg md:text-2xl font-bold",
+            "text-teal-700 dark:text-green-350"
           )}
         >
-          Hello world, I am
+          Hello world, my name is
         </p>
         <h1
           className={clsx(
-            "text-2xl md:text-4xl lg:text-6xl",
+            "text-3xl md:text-6xl",
             "font-sans font-extrabold py-2 text-transparent bg-clip-text",
-            "bg-gradient-to-r from-blue-500 to-fuchsia-500",
+            "bg-gradient-to-r from-blue-500 to-fuchsia-500"
           )}
         >
           Syed Taqi Haider.
         </h1>
         <h1
           className={clsx(
-            "text-2xl md:text-4xl lg:text-6xl",
-            "font-sans font-extrabold py-2 mb-4",
+            "text-3xl md:text-6xl",
+            "font-sans font-extrabold py-2 mb-4"
           )}
         >
           I turn caffeine into code.
         </h1>
-        <p className=" prose dark:prose-invert mb-4">
+        <p className="prose dark:prose-invert mb-4">
           I'm a software engineer with a background in electronic engineering
           that loves building well-engineered and user-friendly products - from{" "}
           <span
             className={clsx(
               "inline-block transition-transform duration-300 hover:scale-50",
-              "text-teal-700 dark:text-green-350",
+              "text-teal-700 dark:text-green-350"
             )}
           >
             tiny
@@ -47,7 +47,7 @@ const Hero = () => {
           <span
             className={clsx(
               "inline-block transition-transform duration-300 hover:scale-125",
-              "text-teal-700 dark:text-green-350",
+              "text-teal-700 dark:text-green-350"
             )}
           >
             large
