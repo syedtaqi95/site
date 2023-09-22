@@ -33,6 +33,27 @@ const SkillsList = ({ children }: { children: ReactNode }) => {
   );
 };
 
+const SkillsListItem = ({
+  skill,
+}: {
+  skill: {
+    name: string;
+    icon: string;
+  };
+}) => (
+  <li
+    className={clsx(
+      "flex items-center gap-2 p-3",
+      "opacity-100 bg-slate-200 dark:bg-light-navy border rounded-full border-white dark:border-blue-900",
+      "transition-transform duration-300 hover:scale-125"
+    )}
+    key={skill.name}
+  >
+    <Icon icon={skill.icon} width="24" />
+    {skill.name}
+  </li>
+);
+
 const Skills = () => {
   return (
     <section className="pb-20">
@@ -54,17 +75,7 @@ const Skills = () => {
             <CardHeading>{section.category}</CardHeading>
             <SkillsList>
               {section.skills.map((skill) => (
-                <li
-                  className={clsx(
-                    "flex items-center gap-2  p-3",
-                    "border rounded-full border-white dark:border-blue-900",
-                    "transition-transform duration-300 hover:scale-125"
-                  )}
-                  key={skill.name}
-                >
-                  <Icon icon={skill.icon} width="24" />
-                  {skill.name}
-                </li>
+                <SkillsListItem skill={skill} />
               ))}
             </SkillsList>
           </Card>

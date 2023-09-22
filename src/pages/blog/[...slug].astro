@@ -30,8 +30,8 @@ const { Content } = await entry.render();
     <div class="italic text-center">
       {entry.data.published.toDateString()}
     </div>
-    <h3 class="font-light">{entry.data.description}</h3>
-    <div class="h-0.5 bg-gradient-to-r from-blue-500 to-fuchsia-600"></div>
+    <p class="my-12">{entry.data.description}</p>
+    <div class="h-0.5 my-12 bg-gradient-to-r from-blue-500 to-fuchsia-600"></div>
     <article>
       <Content />
     </article>
