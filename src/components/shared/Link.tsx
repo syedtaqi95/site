@@ -10,7 +10,8 @@ const Link = ({
   children: ReactNode;
   className?: string;
 }) => {
-  const external: boolean = href.startsWith("http") ? true : false;
+  const external: boolean =
+    href.startsWith("http") || href.startsWith("mailto") ? true : false;
   return (
     <a href={href} target={external ? "_blank" : undefined}>
       <span
