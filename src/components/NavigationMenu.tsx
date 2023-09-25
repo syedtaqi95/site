@@ -7,15 +7,18 @@ import clsx from "clsx";
 export const NavListItem = ({
   title,
   href,
+  setIsMenuOpen,
 }: {
   title: string;
   href: string;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <li className="inline">
       <a
         href={href}
         className="group font-sans font-medium text-lg md:text-base"
+        onClick={(e) => setIsMenuOpen(false)}
       >
         <div
           className={clsx(
@@ -41,14 +44,21 @@ export const NavListItem = ({
 const NavLinks = ({
   theme,
   setTheme,
+  setIsMenuOpen,
 }: {
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <>
       {navLinks.map(({ title, href }) => (
-        <NavListItem key={title} title={title} href={href} />
+        <NavListItem
+          key={title}
+          title={title}
+          href={href}
+          setIsMenuOpen={setIsMenuOpen}
+        />
       ))}
       <li>
         <ThemeToggle theme={theme} setTheme={setTheme} />
@@ -58,7 +68,7 @@ const NavLinks = ({
 };
 
 const NavigationMenu = () => {
-  const [isMenuOpen, setMenuIsOpen] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const sidebarRef = useRef<HTMLElement>(null);
   const hamburgerIconRef = useRef<HTMLButtonElement>(null);
   const [theme, setTheme] = useColourMode();
@@ -71,7 +81,7 @@ const NavigationMenu = () => {
         hamburgerIconRef.current &&
         !hamburgerIconRef.current.contains(event.target as Node)
       ) {
-        setMenuIsOpen(false);
+        setIsMenuOpen(false);
       }
     };
 
@@ -107,13 +117,18 @@ const NavigationMenu = () => {
           href="/"
           aria-label="home"
           className="transition-transform duration-300 hover:-translate-y-1"
+          onClick={(e) => setIsMenuOpen(false)}
         >
           <img alt="logo" src="/apple-touch-icon.png" className="w-10 h-10" />
         </a>
 
         {/* Links - displayed on wide screen widths */}
         <ol className="hidden md:flex justify-between gap-8">
-          <NavLinks theme={theme} setTheme={setTheme} />
+          <NavLinks
+            theme={theme}
+            setTheme={setTheme}
+            setIsMenuOpen={setIsMenuOpen}
+          />
         </ol>
 
         {/* Hamburger icon - displayed on small screen widths */}
@@ -121,7 +136,7 @@ const NavigationMenu = () => {
           ref={hamburgerIconRef}
           className="flex md:hidden z-20"
           onClick={() => {
-            setMenuIsOpen(!isMenuOpen);
+            setIsMenuOpen(!isMenuOpen);
           }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30">
@@ -177,7 +192,11 @@ const NavigationMenu = () => {
               "flex flex-col items-center justify-center gap-10 w-full p-3"
             )}
           >
-            <NavLinks theme={theme} setTheme={setTheme} />
+            <NavLinks
+              theme={theme}
+              setTheme={setTheme}
+              setIsMenuOpen={setIsMenuOpen}
+            />
           </ol>
         </aside>
       </nav>
