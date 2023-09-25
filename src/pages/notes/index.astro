@@ -4,28 +4,28 @@ import clsx from "clsx";
 import { getCollection } from "astro:content";
 import Card from "@/components/shared/Card";
 
-const blogEntries = await getCollection("blog");
+const noteEntries = await getCollection("notes");
 ---
 
-<Layout title="sy3d.dev | Blog">
+<Layout title="sy3d.dev | Notes">
   <article class="max-w-prose mx-auto">
     <h2
       class={clsx(
         "font-sans text-3xl font-semibold my-12",
-        "after:block after:relative after:-top-5 after:ml-24",
+        "after:block after:relative after:-top-5 after:ml-28",
         "after:max-w-full after:h-0.5",
         "after:bg-gradient-to-r after:from-blue-500 after:to-fuchsia-600",
         "after:-z-10"
       )}
     >
-      Blog
+      Notes
     </h2>
     <section class="flex flex-col gap-12 pb-20">
       {
-        blogEntries
+        noteEntries
           // @ts-ignore
           .sort((a, b) => b.data.published - a.data.published) // newest first
-          .map((entry) => <Card type="blog" entry={entry} />)
+          .map((entry) => <Card type="notes" entry={entry} />)
       }
     </section>
   </article>

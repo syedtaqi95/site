@@ -1,22 +1,24 @@
 import clsx from "clsx";
-import BlogTag from "./shared/BlogTag";
+import TagItem from "./TagItem";
 
-const BlogCard = ({
+const Card = ({
+  type,
   entry,
 }: {
+  type: string;
   entry: {
     slug: string;
     data: {
       title: string;
       published: Date;
       tags: string[];
-      description: string;
+      description?: string;
       image?: string | undefined;
     };
   };
 }) => {
   return (
-    <a href={`/blog/${entry.slug}`}>
+    <a href={`/${type}/${entry.slug}`}>
       <div
         className={clsx(
           "flex flex-col-reverse sm:flex-row justify-between items-center sm:items-start gap-4",
@@ -38,11 +40,13 @@ const BlogCard = ({
 
           <ul className="flex flex-wrap gap-2">
             {entry.data.tags.map((tag) => (
-              <BlogTag key={tag} text={tag} />
+              <TagItem key={tag} text={tag} />
             ))}
           </ul>
 
-          <p className="mt-8">{entry.data.description}</p>
+          {entry.data.description ? (
+            <p className="mt-8">{entry.data.description}</p>
+          ) : null}
         </div>
 
         <img className="sm:max-w-[200px] rounded-xl" src={entry.data.image} />
@@ -51,4 +55,4 @@ const BlogCard = ({
   );
 };
 
-export default BlogCard;
+export default Card;
