@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Link from "@/components/shared/Link";
 import Contact from "@/components/Contact";
 import TagItem from "@/components/shared/TagItem";
+import { WEBSITE_NAME } from "@/lib/constants";
 
 export async function getStaticPaths() {
   const noteEntries = await getCollection("notes");
@@ -17,7 +18,7 @@ const { entry } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await entry.render();
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={`${entry.data.title} | ${WEBSITE_NAME}`}>
   <section
     class="mx-auto prose prose-slate dark:prose-invert md:prose-p:text-justify"
   >
@@ -43,4 +44,4 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
     <Contact client:idle />
   </section>
 </Layout>
-@/components/shared/TagItem
+ @/components/shared/TagItem

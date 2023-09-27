@@ -3,11 +3,12 @@ import Layout from "@/layouts/Layout.astro";
 import clsx from "clsx";
 import { getCollection } from "astro:content";
 import Card from "@/components/shared/Card";
+import { WEBSITE_NAME } from "@/lib/constants";
 
 const noteEntries = await getCollection("notes");
 ---
 
-<Layout title="sy3d.dev | Notes">
+<Layout title={`Notes | ${WEBSITE_NAME}`}>
   <article class="max-w-prose mx-auto">
     <h2
       class={clsx(

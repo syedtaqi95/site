@@ -5,9 +5,10 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
+import { WEBSITE_NAME } from "@/lib/constants";
 ---
 
-<Layout title="sy3d.dev | Homepage">
+<Layout title={`Homepage | ${WEBSITE_NAME}`}>
   <Hero />
   <About />
   <Skills client:idle />
