@@ -25,7 +25,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
 
     {entry.data.image ? <img src={entry.data.image} class="mx-auto rounded-xl max-w-[90%]"></img> : null}
 
-    <h1 class="text-center mt-16">{entry.data.title}</h1>
+    <h1 class="text-center mt-16 leading-normal">{entry.data.title}</h1>
     <div class="text-center">
       {remarkPluginFrontmatter.minutesRead}
     </div>

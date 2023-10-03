@@ -23,7 +23,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
   >
     <Link className="my-4" href="/notes">&lt; Back</Link>
 
-    <h1 class="text-center mt-16">{entry.data.title}</h1>
+    <h1 class="text-center mt-16 leading-normal">{entry.data.title}</h1>
     <div class="text-center">
       {remarkPluginFrontmatter.minutesRead}
     </div>
