@@ -1,5 +1,5 @@
 ---
-title: Setting up a Development Environment on Ubuntu 22.04
+title: Setting up a Linux Development Environment on Ubuntu 22.04 LTS
 tags:
   - software
   - devtools
@@ -11,4 +11,66 @@ published: 06 October 2023
 import Link from "@/components/shared/Link.tsx";
 export const components = { a: Link };
 
-Having recently set up a used desktop PC as a development machine, I thought now would be a good time to document the setup for future use. Hopefully this might benefit someone else too.
+Having recently set up a used desktop PC as my remote development machine, I thought now would be a good time to document my setup for future use. Hopefully this might benefit someone else as well.
+
+I mainly develop software using TypeScript, React and Python, so this guide will focus on these technologies. However, other parts of the setup will still be useful regardless of your programming language preferencess. _Except MATLAB developers, you're own your own, sorry_.
+
+![relevant xkcd](https://imgs.xkcd.com/comics/real_programmers.png)
+
+### tl;dr
+
+A bird's eye view of my setup:
+
+- **Hardware:** HP EliteDesk G3 Mini PC with Intel i5-6500T, 16GB RAM, 500GB SSD
+- **Operating system:** Ubuntu 22.04.3 LTS
+- **Font:** JetBrains Mono
+- **IDE:** Visual Studio Code, setup with my [profile](https://gist.github.com/syedtaqi95/4436abdcee43c3c0603ca2bcabc7cf71)
+- **Web browser**: Brave (based on Chromium), with the following extensions:
+  - Apollo Client Devtools
+  - JSON Formatter
+  - React Developer Tools
+  - Redux Devtools
+- **Version control**: Git, bash-git-prompt
+- **Python devtools**: Python 3.x, pyenv, Poetry
+- **TypeScript**: nvm, pnpm
+- **Containers**: Docker, Kubernetes
+
+## Install Ubuntu LTS
+
+Follow the official [instructions](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview). Requires a USB drive to create a bootable USB stick.
+
+## Install JetBrains Mono font
+
+Run this bash script:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
+```
+
+## Install Visual Studio Code
+
+(Recommended) Install using the Snap store. The Snap daemon will automatically manage updates for you.
+
+```bash
+sudo snap install --classic code # or code-insiders
+```
+
+Alternatively, download and install the `.deb` package either through the Ubuntu Software Center (GUI), or through the command line:
+
+Download the [.deb package (64-bit)](https://go.microsoft.com/fwlink/?LinkID=760868).
+
+```bash
+sudo apt install ./<file>.deb
+
+# If you're on an older Linux distribution, you will need to run this instead:
+# sudo dpkg -i <file>.deb
+# sudo apt-get install -f # Install dependencies
+```
+
+### Import user profile
+
+If you already use VSCode on another machine, you can export your entire profile by opening the Settings menu (⚙️) located on the bottom-left side and selecting `Profiles` > `Export Profile...` > `Export`.
+
+Alternatively, use my [profile](https://gist.github.com/syedtaqi95/4436abdcee43c3c0603ca2bcabc7cf71) as a starting point.
+
+To import a profile, open the Settings menu (⚙️) and select Profiles
