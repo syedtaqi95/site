@@ -1,0 +1,275 @@
+---
+title: Setting up a Linux Development Environment on Ubuntu 22.04
+tags:
+  - software
+  - devtools
+  - linux
+  - ubuntu
+published: 06 October 2023
+---
+
+import Link from "@/components/shared/Link.tsx";
+export const components = { a: Link };
+
+Having recently set up a used desktop PC as my remote development machine, I thought now would be a good time to document my setup for future use. Hopefully this might benefit someone else as well.
+
+I mainly develop software using TypeScript, React, Node.js and Python, so this guide will focus on these technologies. However, other parts of the setup will still be useful regardless of your programming language preferencess. _Except MATLAB developers, you're own your own, sorry_.
+
+![Relevant xkcd](https://imgs.xkcd.com/comics/real_programmers.png)
+
+### tl;dr
+
+A bird's eye view of my setup:
+
+- **Hardware:** HP EliteDesk G3 Mini PC with Intel i5-6500T, 16GB RAM, 500GB SSD
+- **Operating system:** Ubuntu 22.04.3 LTS
+- **Font:** JetBrains Mono
+- **IDE:** Visual Studio Code, setup with my [user profile](https://gist.github.com/syedtaqi95/4436abdcee43c3c0603ca2bcabc7cf71)
+- **Web browser**: Brave
+- **Version control**: Git, GitHub, bash-git-prompt, git-lg
+- **Python**: Python 3.x, pyenv, Poetry
+- **TypeScript**: Node.js, nvm, pnpm
+- **Containers**: Docker
+
+## 1. Ubuntu LTS
+
+Install using the official [instructions](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview). Requires a USB drive to create a bootable USB stick.
+
+## 2. JetBrains Mono font
+
+Install via the command line:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
+```
+
+## 3. Visual Studio Code
+
+### 3a. Installation
+
+**Recommended:** Install using the Snap store. The Snap daemon will automatically download and install updates for you.
+
+```bash
+sudo snap install --classic code
+```
+
+Alternatively, download the [.deb package (64-bit)](https://go.microsoft.com/fwlink/?LinkID=760868). Install the package either through the Ubuntu Software Center (GUI), or through the command line:
+
+```bash
+sudo apt install ./<file>.deb
+```
+
+### 3b. Migrate your user profile
+
+If you already use Visual Studio Code on another machine, create and export your profile (containing your settings, keyboard shortcuts, UI state and extensions) by opening the Settings menu (⚙️) located on the bottom-left side and selecting `Profiles` > `Export Profile...` > `Export`.
+
+Alternatively, use my [profile](https://gist.github.com/syedtaqi95/4436abdcee43c3c0603ca2bcabc7cf71) as a starting point.
+
+To import a profile, open the Settings menu (⚙️) and select `Profiles` > `Import Profile...` > `Select File...`
+
+## 4. Brave browser
+
+My suggestion for a web browser is Brave - a privacy-focused browser that gives you control over the data you share online by blocking trackers, ads and cookies.
+
+It is based on Chromium, so it has a similar feel to Google Chrome and is also compatible with Chrome's [extensions](https://chrome.google.com/webstore/category/extensions).
+
+It has a neat widget that displays your browsing stats. I took this screenshot 1 day after installing Brave:
+
+![Brave dashboard](@/assets/brave-dashboard.png)
+
+Really makes you think!
+
+### 4a. Installation
+
+**Recommended:** Install using the Snap store:
+
+```bash
+sudo snap install brave
+```
+
+Alternatively, install via the Ubuntu Software application (GUI).
+
+Set up [Brave Sync](https://support.brave.com/hc/en-us/articles/360021218111-How-do-I-set-up-Sync-) if you use the browser on multiple devices.
+
+### 4a. Extensions
+
+- [Apollo Client Devtools](https://chrome.google.com/webstore/detail/apollo-client-devtools/jdkknkkbebbapilgoeccciglkfbmbnfm)
+- [JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+- [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
+
+## 5. Version Control
+
+### 5a. Install Git
+
+```bash
+sudo apt install git-all
+```
+
+### 5b. Connect to GitHub via SSH
+
+First, generate a new SSH key:
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+Then, start the ssh-agent in the background and add your private key:
+
+```bash
+eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519
+```
+
+Add the new SSH key on GitHub using these [instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account).
+
+Test your SSH connection:
+
+```bash
+ssh -T git@github.com
+```
+
+### 5c. Install `bash-git-prompt`
+
+[bash-git-prompt](https://github.com/magicmonty/bash-git-prompt) displays extra information about the current git repository in your terminal. In particular the branch name, difference with remote branch, number of files staged, changed, etc.
+
+Install via the command line:
+
+```bash
+git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+```
+
+Add the following lines to `~/.bashrc`:
+
+```bash
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source $HOME/.bash-git-prompt/gitprompt.sh
+fi
+```
+
+### 5d. Visualise git logs with `git lg`
+
+Based on this [StackOverflow](http://stackoverflow.com/a/34467298/1003288) answer, you can create some great-looking aliases to display git branches as a graph on the command line.
+
+Add the following to the `~/.gitconfig` file:
+
+```bash
+[alias]
+lg = lg1
+lg1 = lg1-specific --all
+lg2 = lg2-specific --all
+lg3 = lg3-specific --all
+
+lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+```
+
+## 6. Python Development Tools
+
+### 6a. Install pyenv to manage Python versions
+
+Pyenv is a super useful tool that makes it easy to install and switch between Python versions using the command line. It also allows you to automatically switch Python versions on a per-project basis.
+
+Install via the command line:
+
+```bash
+curl https://pyenv.run | bash
+```
+
+Add the following lines to your `~/.bashrc` file:
+
+```bash
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+```
+
+### 6b. Install Python
+
+Install via pyenv:
+
+```bash
+pyenv install <version>
+pyenv global <version>
+```
+
+Running `pyenv install -l` gives the list of all available versions.
+
+### 6c. Install Poetry to manage dependencies
+
+Install via the command line:
+
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
+Add the following lines to your `~/.bashrc` file:
+
+```bash
+# Poetry
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+## 7. TypeScript Development Tools
+
+### 7a. Install nvm to manage Node.js versions
+
+Install via the command line:
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+```
+
+### 7b. Install Node.js
+
+Install the latest Node.js LTS version using nvm:
+
+```bash
+nvm install 'lts/*'
+```
+
+### 7c. Install pnpm to manage dependencies
+
+Install via the command line:
+
+```bash
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+```
+
+## 8. Build and Run Containers with Docker
+
+To install via apt, first set up the Docker's Apt repository:
+
+```bash
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+```
+
+Install the latest version:
+
+```bash
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+Verify the installation:
+
+```bash
+sudo docker run hello-world
+```
+
+## Conclusion
+
+And that's it! You should now have a working environment to develop applications using Python and JavaScript/TypeScript.
