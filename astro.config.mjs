@@ -6,6 +6,7 @@ import { remarkReadingTime } from "./src/lib/remark-reading-time.mjs";
 import swup from '@swup/astro';
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
+import compress from 'vite-plugin-compression';
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,5 +25,9 @@ export default defineConfig({
     }),
     sitemap(),
     robotsTxt()
-  ]
+  ],
+
+  vite: {
+    plugins: [compress({ ext: '.br', algorithm: 'brotliCompress' }), compress({ ext: '.gz', algorithm: 'gzip' })],
+  },
 });
