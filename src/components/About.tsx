@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import React, { type ReactNode } from "react";
 import Link from "@/components/shared/Link";
+import profilePhoto from "@/assets/profile-pic.jpg"
 
 const Paragraph = ({ children }: { children: ReactNode }) => (
   <p className="prose dark:prose-invert text-justify max-w-none mb-4">{children}</p>
@@ -23,7 +24,7 @@ const About = () => {
 
       <div className="mb-8">
         <img
-          src="/profile-pic.jpg"
+          src={profilePhoto.src}
           alt="profile photo"
           className={clsx(
             "rounded-full w-72 md:float-left mx-auto md:mx-8 my-8",

@@ -1,19 +1,23 @@
 ---
-title: Setting up a Linux Development Environment on Ubuntu 22.04
+title: "A Programmer's Guide to setting up a Linux Development Environment on Ubuntu 22.04"
 tags:
-  - software
-  - devtools
   - linux
   - ubuntu
-published: 06 October 2023
+  - devtools
+  - typescript
+  - javascript
+  - web development
+  - python
+  - docker
+published: 11 October 2023
 ---
 
 import Link from "@/components/shared/Link.tsx";
 export const components = { a: Link };
 
-Having recently set up a used desktop PC as my remote development machine, I thought now would be a good time to document my setup for future use. Hopefully this might benefit someone else as well.
+I recently set up a used desktop PC a Linux development machine, so I thought now would be a good time to document my setup for future use. Hopefully this might benefit someone else as well.
 
-I mainly develop software using TypeScript, React, Node.js and Python, so this guide will focus on these technologies. However, other parts of the setup will still be useful regardless of your programming language preferencess. _Except MATLAB developers, you're own your own, sorry_.
+I mainly develop software using TypeScript, React, Node.js and Python, so this guide will focus on these technologies. However, other parts of the setup will still be useful regardless of your programming language preferences _Except MATLAB developers, you're on your own, sorry._ 🙇
 
 ![Relevant xkcd](https://imgs.xkcd.com/comics/real_programmers.png)
 
@@ -30,6 +34,18 @@ A bird's eye view of my setup:
 - **Python**: Python 3.x, pyenv, Poetry
 - **TypeScript**: Node.js, nvm, pnpm
 - **Containers**: Docker
+
+## 0. Hardware
+
+I highly recommend converting an old business desktop PC to a Linux development machine as you get a lot of [bang for your buck](https://www.techaddressed.com/reviews/mini-pc-better-value-raspberry-pi/). I bought an HP EliteDesk G3 Mini PC with an Intel i5-6500T processor, 16GB RAM and a 500GB SSD for my setup, and it cost me all of £150!
+
+Saying that, this guide should work just as well on most PCs out there - from Raspberry Pi's to professional-grade water-cooled servers with Intel Xeon chips. _The latter might be a bit overkill for developing CRUD apps, but you do you._
+
+The main considerations for me were:
+
+- Ability to upgrade components. _I can only [download RAM](https://downloadmoreram.com/) so many times._
+- CPU architecture support for applications. It could be an issue for ARM-based Raspberry Pi's; x86 is more widely supported.
+- Power consumption. I plan to use it as a web server for my hobby projects, so I need the bills to be wallet-friendly.
 
 ## 1. Ubuntu LTS
 
@@ -67,6 +83,15 @@ Alternatively, use my [profile](https://gist.github.com/syedtaqi95/4436abdcee43c
 
 To import a profile, open the Settings menu (⚙️) and select `Profiles` > `Import Profile...` > `Select File...`
 
+### 3c. Add your font
+
+If you didn't use my user profile, don't forget to add JetBrains Mono as the editor's font in your User Settings, for example:
+
+```js
+...
+"editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace",
+```
+
 ## 4. Brave browser
 
 My suggestion for a web browser is Brave - a privacy-focused browser that gives you control over the data you share online by blocking trackers, ads and cookies.
@@ -81,17 +106,31 @@ Really makes you think!
 
 ### 4a. Installation
 
-**Recommended:** Install using the Snap store:
+**Recommended:** Install using apt:
+
+```bash
+sudo apt install curl
+
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+sudo apt update
+
+sudo apt install brave-browser
+```
+
+Alternatively, install using the Snap store:
 
 ```bash
 sudo snap install brave
 ```
 
-Alternatively, install via the Ubuntu Software application (GUI).
-
 Set up [Brave Sync](https://support.brave.com/hc/en-us/articles/360021218111-How-do-I-set-up-Sync-) if you use the browser on multiple devices.
 
-### 4a. Extensions
+### 4b. Extensions
+
+These are the Chrome extensions I find useful for development:
 
 - [Apollo Client Devtools](https://chrome.google.com/webstore/detail/apollo-client-devtools/jdkknkkbebbapilgoeccciglkfbmbnfm)
 - [JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
@@ -165,7 +204,7 @@ lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold b
 lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 ```
 
-## 6. Python Development Tools
+## 6. Python Developer Tools
 
 ### 6a. Install pyenv to manage Python versions
 
@@ -187,6 +226,14 @@ eval "$(pyenv init -)"
 ```
 
 ### 6b. Install Python
+
+Ensure you have the build requirements installed:
+
+```bash
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+    libncurses5-dev libncursesw5-dev xz-utils tk-dev
+```
 
 Install via pyenv:
 
@@ -212,7 +259,7 @@ Add the following lines to your `~/.bashrc` file:
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
-## 7. TypeScript Development Tools
+## 7. TypeScript Developer Tools
 
 ### 7a. Install nvm to manage Node.js versions
 

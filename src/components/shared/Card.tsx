@@ -38,7 +38,7 @@ const Card = ({
             {entry.data.published.toDateString()}
           </p>
 
-          <ul className="flex flex-wrap gap-2">
+          <ul className="flex flex-wrap gap-2 mt-4">
             {entry.data.tags.map((tag) => (
               <TagItem key={tag} text={tag} />
             ))}
