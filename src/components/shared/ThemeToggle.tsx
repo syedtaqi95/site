@@ -13,7 +13,7 @@ const ThemeToggle = ({
   const darkModeIcon = (
     <svg
       className={clsx(
-        "transition-all duration-300 origin-center",
+        "origin-center transition-all duration-300",
         "hover:animate-spin-slow",
       )}
       xmlns="http://www.w3.org/2000/svg"
@@ -31,8 +31,8 @@ const ThemeToggle = ({
   const lightModeIcon = (
     <svg
       className={clsx(
-        "transition-all duration-300 origin-center",
-        "hover:scale-125 fill-gray-700 hover:fill-teal-700",
+        "origin-center transition-all duration-300",
+        "fill-gray-700 hover:scale-125 hover:fill-teal-700",
       )}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
