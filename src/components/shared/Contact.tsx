@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import Link from "./shared/Link";
+import Link from "./Link";
 import contacts from "@/data/contact.json";
 import { Icon } from "@iconify/react";
 

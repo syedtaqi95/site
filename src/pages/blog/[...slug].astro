@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import Link from "@/components/shared/Link";
-import Contact from "@/components/Contact";
+import Contact from "@/components/shared/Contact";
 import TagItem from "@/components/shared/TagItem";
 
 export async function getStaticPaths() {
@@ -47,3 +47,4 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
     <Contact client:idle />
   </section>
 </Layout>
+@/components/shared/Contact
