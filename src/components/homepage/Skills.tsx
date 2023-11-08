@@ -7,9 +7,9 @@ const CardHeading = ({ children }: { children: ReactNode }) => {
   return (
     <h3
       className={clsx(
-        "w-full mb-8 text-center text-xl bg-clip-text",
-        "font-semibold font-sans text-transparent",
-        "bg-gradient-to-r from-blue-500 to-fuchsia-500"
+        "mb-8 w-full bg-clip-text text-center text-xl",
+        "font-sans font-semibold text-transparent",
+        "bg-gradient-to-r from-blue-500 to-fuchsia-500",
       )}
     >
       {children}
@@ -19,7 +19,7 @@ const CardHeading = ({ children }: { children: ReactNode }) => {
 
 const Card = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="bg-slate-200 dark:bg-light-navy rounded-xl p-4">
+    <div className="rounded-xl bg-slate-200 p-4 dark:bg-light-navy">
       {children}
     </div>
   );
@@ -27,7 +27,7 @@ const Card = ({ children }: { children: ReactNode }) => {
 
 const SkillsList = ({ children }: { children: ReactNode }) => {
   return (
-    <ul className="list-none flex justify-center flex-wrap gap-4">
+    <ul className="flex list-none flex-wrap justify-center gap-4">
       {children}
     </ul>
   );
@@ -44,8 +44,8 @@ const SkillsListItem = ({
   <li
     className={clsx(
       "flex items-center gap-2 p-3",
-      "opacity-100 bg-slate-200 dark:bg-light-navy border rounded-full border-white dark:border-blue-900",
-      "transition-transform duration-300 hover:scale-125"
+      "rounded-full border border-white bg-slate-200 opacity-100 dark:border-blue-900 dark:bg-light-navy",
+      "transition-transform duration-300 hover:scale-125",
     )}
     key={skill.name}
   >
@@ -59,11 +59,11 @@ const Skills = () => {
     <section className="pb-20">
       <h2
         className={clsx(
-          "font-sans text-3xl font-semibold mb-12",
-          "after:block after:relative after:-top-5 after:ml-24",
-          "after:max-w-full after:h-0.5",
+          "mb-12 font-sans text-3xl font-semibold",
+          "after:relative after:-top-5 after:ml-24 after:block",
+          "after:h-0.5 after:max-w-full",
           "after:bg-gradient-to-r after:from-blue-500 after:to-fuchsia-600",
-          "after:-z-10"
+          "after:-z-10",
         )}
       >
         Skills

@@ -1,10 +1,12 @@
 import clsx from "clsx";
 import React, { type ReactNode } from "react";
 import Link from "@/components/shared/Link";
-import profilePhoto from "@/assets/profile-pic.jpg"
+import profilePhoto from "@/assets/profile-pic.jpg";
 
 const Paragraph = ({ children }: { children: ReactNode }) => (
-  <p className="prose dark:prose-invert text-justify max-w-none mb-4">{children}</p>
+  <p className="prose mb-4 max-w-none text-justify dark:prose-invert">
+    {children}
+  </p>
 );
 
 const About = () => {
@@ -12,9 +14,9 @@ const About = () => {
     <section className="pb-20">
       <h2
         className={clsx(
-          "font-sans text-3xl font-semibold mb-12",
-          "after:block after:relative after:-top-5 after:ml-40",
-          "after:max-w-full after:h-0.5",
+          "mb-12 font-sans text-3xl font-semibold",
+          "after:relative after:-top-5 after:ml-40 after:block",
+          "after:h-0.5 after:max-w-full",
           "after:bg-gradient-to-r after:from-blue-500 after:to-fuchsia-600",
           "after:-z-10",
         )}
@@ -27,7 +29,7 @@ const About = () => {
           src={profilePhoto.src}
           alt="profile photo"
           className={clsx(
-            "rounded-full w-72 md:float-left mx-auto md:mx-8 my-8",
+            "mx-auto my-8 w-72 rounded-full md:float-left md:mx-8",
             "ring ring-teal-700 dark:ring-green-350",
           )}
         />

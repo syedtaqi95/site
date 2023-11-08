@@ -7,7 +7,7 @@ export default function useColourMode(): [
   const [theme, setTheme] = useState<string>(
     typeof localStorage !== "undefined"
       ? localStorage.getItem("theme") ?? "light"
-      : "light"
+      : "light",
   );
 
   useEffect(() => {

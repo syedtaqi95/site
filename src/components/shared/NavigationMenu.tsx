@@ -1,6 +1,6 @@
 import navLinks from "@/data/navLinks.json";
 import { useState, useEffect, useRef } from "react";
-import ThemeToggle from "./shared/ThemeToggle";
+import ThemeToggle from "./ThemeToggle";
 import useColourMode from "@/lib/hooks/useColourMode";
 import clsx from "clsx";
 
@@ -17,14 +17,14 @@ export const NavListItem = ({
     <li className="inline">
       <a
         href={href}
-        className="group font-sans font-medium text-lg md:text-base"
+        className="group font-sans text-lg font-medium md:text-base"
         onClick={(e) => setIsMenuOpen(false)}
       >
         <div
           className={clsx(
             "group-hover:-translate-y-1",
             "group-hover:text-teal-700 dark:group-hover:text-green-350",
-            "transition-transform duration-300"
+            "transition-transform duration-300",
           )}
         >
           {title}
@@ -33,7 +33,7 @@ export const NavListItem = ({
           className={clsx(
             "block max-w-0 group-hover:max-w-full",
             "transition-all duration-300",
-            "h-0.5 bg-teal-700 dark:bg-green-350"
+            "h-0.5 bg-teal-700 dark:bg-green-350",
           )}
         />
       </a>
@@ -111,7 +111,7 @@ const NavigationMenu = () => {
   }, []);
 
   return (
-    <header className="px-6 md:px-10 lg:px-14 py-3 sticky top-0 backdrop-blur">
+    <header className="sticky top-0 px-6 py-3 backdrop-blur md:px-10 lg:px-14">
       <nav className="flex items-center justify-between">
         <a
           href="/"
@@ -119,11 +119,11 @@ const NavigationMenu = () => {
           className="transition-transform duration-300 hover:-translate-y-1"
           onClick={(e) => setIsMenuOpen(false)}
         >
-          <img alt="logo" src="/apple-touch-icon.png" className="w-10 h-10" />
+          <img alt="logo" src="/apple-touch-icon.png" className="h-10 w-10" />
         </a>
 
         {/* Links - displayed on wide screen widths */}
-        <ol className="hidden md:flex justify-between gap-8">
+        <ol className="hidden justify-between gap-8 md:flex">
           <NavLinks
             theme={theme}
             setTheme={setTheme}
@@ -134,7 +134,7 @@ const NavigationMenu = () => {
         {/* Hamburger icon - displayed on small screen widths */}
         <button
           ref={hamburgerIconRef}
-          className="flex md:hidden z-20"
+          className="z-20 flex md:hidden"
           onClick={() => {
             setIsMenuOpen(!isMenuOpen);
           }}
@@ -146,9 +146,9 @@ const NavigationMenu = () => {
               x2="100%"
               y2="50%"
               className={clsx(
-                "stroke-gray-700 dark:stroke-green-350 stroke-2",
-                "transition-transform duration-300 origin-center",
-                `${isMenuOpen ? "rotate-45" : "-translate-y-1/3"}`
+                "stroke-gray-700 stroke-2 dark:stroke-green-350",
+                "origin-center transition-transform duration-300",
+                `${isMenuOpen ? "rotate-45" : "-translate-y-1/3"}`,
               )}
             />
             <line
@@ -157,9 +157,9 @@ const NavigationMenu = () => {
               x2="100%"
               y2="50%"
               className={clsx(
-                "stroke-gray-700 dark:stroke-green-350 stroke-2",
-                "transition-transform duration-300 origin-center",
-                `${isMenuOpen ? "scale-x-0" : ""}`
+                "stroke-gray-700 stroke-2 dark:stroke-green-350",
+                "origin-center transition-transform duration-300",
+                `${isMenuOpen ? "scale-x-0" : ""}`,
               )}
             />
             <line
@@ -168,9 +168,9 @@ const NavigationMenu = () => {
               x2="100%"
               y2="50%"
               className={clsx(
-                "stroke-gray-700 dark:stroke-green-350 stroke-2",
-                "transition-transform duration-300 origin-center",
-                `${isMenuOpen ? "-rotate-45" : "translate-y-1/3"}`
+                "stroke-gray-700 stroke-2 dark:stroke-green-350",
+                "origin-center transition-transform duration-300",
+                `${isMenuOpen ? "-rotate-45" : "translate-y-1/3"}`,
               )}
             />
           </svg>
@@ -181,15 +181,15 @@ const NavigationMenu = () => {
           ref={sidebarRef}
           autoFocus
           className={clsx(
-            "flex md:hidden transition-transform duration-300 origin-right",
-            "fixed right-0 top-0 h-screen w-1/2 sm:w-1/3 z-10",
+            "flex origin-right transition-transform duration-300 md:hidden",
+            "fixed right-0 top-0 z-10 h-screen w-1/2 sm:w-1/3",
             "bg-slate-200 dark:bg-light-navy",
-            `${isMenuOpen ? "" : "scale-x-0"}`
+            `${isMenuOpen ? "" : "scale-x-0"}`,
           )}
         >
           <ol
             className={clsx(
-              "flex flex-col items-center justify-center gap-10 w-full p-3"
+              "flex w-full flex-col items-center justify-center gap-10 p-3",
             )}
           >
             <NavLinks

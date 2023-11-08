@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import Link from "@/components/shared/Link";
-import Contact from "@/components/Contact";
+import Contact from "@/components/shared/Contact";
 import TagItem from "@/components/shared/TagItem";
 
 export async function getStaticPaths() {
@@ -19,22 +19,22 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
 
 <Layout title={entry.data.title}>
   <section
-    class="mx-auto prose prose-slate dark:prose-invert md:prose-p:text-justify prose-img:mx-auto"
+    class="prose prose-slate mx-auto dark:prose-invert prose-img:mx-auto md:prose-p:text-justify"
   >
     <Link className="my-4" href="/notes">&lt; Back</Link>
 
-    <h1 class="text-center mt-16 leading-normal">{entry.data.title}</h1>
+    <h1 class="mt-16 text-center leading-normal">{entry.data.title}</h1>
     <div class="text-center">
       {remarkPluginFrontmatter.minutesRead}
     </div>
-    <ul class="flex flex-wrap justify-center gap-2 list-none p-0">
+    <ul class="flex list-none flex-wrap justify-center gap-2 p-0">
       {entry.data.tags.map((tag: string) => <TagItem text={tag} />)}
     </ul>
-    <div class="italic text-center">
+    <div class="text-center italic">
       {entry.data.published.toDateString()}
     </div>
 
-    <div class="h-0.5 my-12 bg-gradient-to-r from-blue-500 to-fuchsia-600">
+    <div class="my-12 h-0.5 bg-gradient-to-r from-blue-500 to-fuchsia-600">
     </div>
 
     <article>
@@ -43,3 +43,4 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
     <Contact client:idle />
   </section>
 </Layout>
+ @/components/shared/Contact
