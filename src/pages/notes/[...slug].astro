@@ -38,9 +38,8 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
     </div>
 
     <article>
-      <Content />
+      <Content components={{ a: Link }} />
     </article>
     <Contact client:idle />
   </section>
 </Layout>
- @/components/shared/Contact
