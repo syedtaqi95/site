@@ -1,0 +1,69 @@
+---
+title: "Checklist for setting up Linux"
+tags:
+- linux
+- distrohopping
+- devtools
+published: 29 February 2024
+---
+
+I'm writing this little guide to help me remember what I need to set up a new
+Linux installation (when going distro-hopping or setting up a new PC).
+Could be useful to someone else reading this too, who knows?
+
+![Distro hopping meme](https://i.redd.it/wsjklof1klt21.jpg)
+
+## Useful repos
+
+Use the following repos to automate some of the setup tasks.
+- [Dotfiles](https://github.com/syedtaqi95/.dotfiles)
+  - git, bash, tmux, neovim, starship
+- [Homelab](https://github.com/syedtaqi95/homelab)
+  - docker, caddy, dnsmasq, grafana, prometheus, nextcloud
+
+## Linux
+
+- **Desktop Environment**: KDE Plasma
+- **System theme**: Catppuccin Mocha Lavender
+- **Application theme**: Lightly
+- **Cursor theme**: Catppuccin
+- **Icons**: Papirus Dark
+- **Monospace font**: JetBrains Mono Nerd Font
+- **Wallpaper**: endy_vector_satteliet (EndeavourOS community wallpaper)
+- **Terminal**: default (Gnome, Konsole etc.)
+  - **Terminal multiplexer**: tmux (see dotfiles for config), don't forget to 
+  install tpm
+- **Terminal prompt**: Starship
+- **Web browser**: Brave
+- **Clipboard**: xclip (required for tmux)
+
+## Programming
+
+- **IDE**: Neovim - full config in dotfiles
+  - Telescope requires ripgrep, fd
+  - Do a `checkhealth` after configuration
+- **Git**: check dotfiles for improved log commands (git lg, lg1, lg2 etc.)
+- **JavaScript/TypeScript**:
+  - nvm
+  - pnpm
+- **Python**:
+  - pyenv
+  - poetry
+- **Rust**
+- **Go**
+- ~~**HTML**~~ (not a programming language, fight me)
+
+## Homelab
+
+- **Docker**
+- **Web server**: Caddy
+- **DNS server**: dnsmasq
+- **SSH**
+  - Change default port 
+  - Setup certificate based authentification for access from laptop
+  - Setup another certificate for Github CI access
+- **Nextcloud**
+  - Use Nextcloud AIO image with docker
+  - Ensure the borg backup is itself backed up to an external drive 
+  - Setup a systemd service with a timer to trigger the nextcloud-preview-generator
+- **Firewall**: use ufw to only open up the right ports
