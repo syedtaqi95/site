@@ -1,0 +1,32 @@
+---
+title: Setting up a web server on a Linux homelab
+tags:
+  - homelab
+  - self-hosting
+  - networking
+  - linux
+published: 24 March 2024
+description: A step-by-step guide on setting up a web server on a Linux
+  homelab, helping you get started quickly and easily.
+image: https://tse4.mm.bing.net/th/id/OIG3.QLZlSJo_7ncax6BYdxvI
+---
+
+I'm writing this article as I'm about to move my homelab to another Linux distro
+and will need to come back here for help when I inevitably break prod.
+
+## Overview
+
+These are the steps required to setup a homelab on Linux:
+
+1. Backup, backup, backup.
+2. Install and configure a web server. I use [Caddy](https://caddyserver.com)
+   running inside a docker container.
+3. Start your web services. I use a single `docker-compose.yml` file to 
+   provision my services (web apps, Nextcloud and some observability tools).
+4. Set up port forwarding and set your homelab to a static IP address 
+   in your IP router's control panel.
+5. Open up the required ports on your firewall using `ufw`.
+6. Set up a local DNS server for local access. `dnsmasq` is a good shout,
+   remember to disable systemd-resolved.
+7. Configure and enable dynamic DNS for your domain name. I use ddclient to
+   connect to Namecheap's excellent dynamic DNS API.
