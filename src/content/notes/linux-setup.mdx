@@ -58,10 +58,19 @@ Use the following repos to automate some of the setup tasks.
 - **Docker**
 - **Web server**: Caddy
 - **DNS server**: dnsmasq
+  - Copy over `/etc/dnsmasq.conf` and `/etc/resolv.conf` from homelab repo.
+  - Ensure systemd-resolved service is stopped, disabled and masked.
+  - Start and enabled dnsmasq.
 - **SSH**
-  - Change default port 
-  - Setup certificate based authentification for access from laptop
-  - Setup another certificate for Github CI access
+  - Install `sshd` and enable it: `sudo service ssh enable`
+  - Setup certificate based authentification for access from my other PC:
+    - Create a new key-pair `ssh-keygen -t ed25519 -C "your_email@example.com"`
+    - Append the contents of `id_ed15519.pub` to `authorized_keys` on the host PC
+    - Test your SSH connection
+  - Edit `/etc/ssh/sshd_config` with the following:
+    - Change default port: `Port n`
+    - Disable password authentication: `PasswordAuthentication no`
+  - Setup another certificate for Github CI access using a similar process.
 - **Nextcloud**
   - Use Nextcloud AIO image with docker
   - Ensure the borg backup is itself backed up to an external drive 
