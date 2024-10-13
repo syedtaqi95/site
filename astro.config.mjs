@@ -7,6 +7,7 @@ import swup from "@swup/astro";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 import compress from "vite-plugin-compression";
+import remarkToc from "remark-toc";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,7 +19,10 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     mdx({
-      remarkPlugins: [remarkReadingTime],
+      remarkPlugins: [
+        remarkReadingTime,
+        [remarkToc, { ordered: true }],
+      ],
     }),
     swup({
       theme: "slide",
