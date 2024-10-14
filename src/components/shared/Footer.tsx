@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "./Link";
 
 const Footer = () => {
@@ -8,7 +7,7 @@ const Footer = () => {
         <Link href="https://creativecommons.org/licenses/by-nc/4.0/">
           CC BY-NC 4.0
         </Link>{" "}
-        © Syed Taqi Haider 2023.
+        © Syed Taqi Haider 2024.
       </p>
     </footer>
   );

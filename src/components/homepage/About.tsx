@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { type ReactNode } from "react";
+import { type ReactNode } from "react";
 import Link from "@/components/shared/Link";
 import profilePhoto from "@/assets/profile-pic.jpg";
 
