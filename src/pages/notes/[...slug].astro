@@ -19,7 +19,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
 
 <Layout title={entry.data.title}>
   <section
-    class="prose prose-slate mx-auto dark:prose-invert prose-img:mx-auto md:prose-p:text-justify"
+    class="prose prose-slate mx-auto dark:prose-invert prose-img:mx-auto"
   >
     <Link className="my-4" href="/notes">&lt; Back</Link>
 
@@ -38,7 +38,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
     </div>
 
     <article>
-      <Content components={{ a: Link }} />
+      <Content />
     </article>
     <Contact client:idle />
   </section>
