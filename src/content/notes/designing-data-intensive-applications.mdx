@@ -16,6 +16,46 @@ by Dr. Martin Kleppmann.
 
 ### Reliable, Scalable and Maintainable Applications
 
-To be authored.
+TBC.
 
 ### Data Models and Query Languages
+
+Most software applications are built by layering one data model over another. For
+each layer, the key question is: how is it _represented_ in terms of the next layer?
+For example:
+
+1. Application developers model the real world into data structures, 
+and APIs (algorithms) that manipulate those data structures.
+2. When you want to store these data structures, you convert them into general-purpose
+data models such as JSON, XML, SQL tables, graph models etc.
+3. The database developers decided on a way to convert these data models in terms of
+bytes in memory, on disk, or on a network. They also decided on a way to do operations 
+(like CRUD) on this data.
+4. At the lowest level, hardware engineers represent those bytes in terms of 
+electrical currents, magnetic fields, light pulses etc.
+
+#### Relational Model vs document model
+
+Definition of SQL: data is organized into relations (called tables in SQL), 
+where each relation is an unordered collection of tuples (rows in SQL).
+
+Originally used for business data processing in the 60s and 70s:
+- Transaction processing: sales transactions, airline reservations.
+- Batch processing: customer invoicing, payroll, reporting.
+
+The goal of the relational model was to abstract away the internal representation
+of the data behind a cleaner interface.
+
+NoSQL started in the 2010s to overcome some limitations of the relational model:
+- Scalability, including very large datasets or very high write throughput
+- FOSS over commercial software
+- Specialised query operations not supported by SQL
+- Desire for a more dynamic and expressive schema or data model
+
+Modern applications have an _impedance mismatch_ between the object-oriented 
+application code and the relational data in databases. ORMs can help reduce the
+differences but not completely eliminate them.
+
+For data structures like self-contained documents (e.g. resumes), a JSON 
+representation is more suitable than a relational model due to better locality.
+
