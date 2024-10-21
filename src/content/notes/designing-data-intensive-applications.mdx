@@ -173,3 +173,25 @@ The schema-on-read approach is more advantageous when:
 type of object in its own table
 - The structure of the data is determined by external systems outside the 
 control of the application developers.
+
+**Data locality for queries**
+
+If the entire document needs to be accessed, then there is a performance
+advantage to this _storage locality_. However, this only applies if large parts
+of the document are required at the same time. Only modifications that don't 
+change the encoded size of a document can easily be performed in-place. Hence,
+it is recommended to keep documents fairly small and avoid writes that increase
+the size of the document. This significantly reduces the set of situations where
+document databases are useful.
+
+Google's Spanner database offers this same locality in the relational model, by 
+allowing the schema to declare that a table's rows should be interleaved within
+a parent table. The _column-family_ concept in Bigtable data model has a similar
+purpose of managing locality.
+
+**Convergence of document and relational databases**
+
+Modern relational databases support JSON documents. Also document databases like
+RethinkDB support relational-like joins in their query languages. A hybrid approach
+is a good route for databases to take in the future.
+
