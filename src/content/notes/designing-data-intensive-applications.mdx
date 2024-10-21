@@ -10,6 +10,8 @@ My notes on the quintessential distributed systems book
 [Designing Data-Intensive Applications](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/) 
 by Dr. Martin Kleppmann.
 
+![Designing Data-Intensive Applications book cover.](../../assets/ddia-book-cover.png)
+
 ## Table of Contents
 
 ## Part 1: Foundations of Data Systems
@@ -34,9 +36,9 @@ bytes in memory, on disk, or on a network. They also decided on a way to do oper
 4. At the lowest level, hardware engineers represent those bytes in terms of 
 electrical currents, magnetic fields, light pulses etc.
 
-#### Relational Model vs document model
+#### Relational model vs document model
 
-Definition of SQL: data is organized into relations (called tables in SQL), 
+Relational model: data is organized into relations (called tables in SQL), 
 where each relation is an unordered collection of tuples (rows in SQL).
 
 Originally used for business data processing in the 60s and 70s:
@@ -46,16 +48,40 @@ Originally used for business data processing in the 60s and 70s:
 The goal of the relational model was to abstract away the internal representation
 of the data behind a cleaner interface.
 
+**The Birth of NoSQL**
+
 NoSQL started in the 2010s to overcome some limitations of the relational model:
 - Scalability, including very large datasets or very high write throughput
 - FOSS over commercial software
-- Specialised query operations not supported by SQL
+- Specialised query operations that are not supported by SQL
 - Desire for a more dynamic and expressive schema or data model
+
+**The Object-Relational Mismatch**
 
 Modern applications have an _impedance mismatch_ between the object-oriented 
 application code and the relational data in databases. ORMs can help reduce the
 differences but not completely eliminate them.
 
 For data structures like self-contained documents (e.g. resumes), a JSON 
-representation is more suitable than a relational model due to better locality.
+representation is more suitable than a relational model due to better locality
+and the one-to-many relationships (i.e. a tree structure) is explicit in JSON.
 
+**Many-to-One and Many-to-Many Relationships**
+
+Using an ID vs a string to store data is a question of duplication. When using
+IDs, the data is only stored in one place, and everything refers to the ID. When
+storing the text directly, we duplicate the human-meaningful information in 
+every record. Removing this duplication is the key idea behind _normalisation_
+in databases.
+
+Data normalisation requires many-to-one relationships, which don't fit nicely
+into the document model. In relational databases, we use IDs and join the tables 
+because joins are easy. In document databases, joins are not needed for 
+one-to-many tree structures, and support for joins is weak. 
+
+Moreover, even when document models start off join-free, they have a tendency 
+of becoming more interconnected as features are added to applications. In this 
+case, if joins are not supported by the document database, then they are 
+emulated in application code through multiple queries.
+
+**Are Document Databases Repeating History?**
