@@ -12,15 +12,15 @@ by Dr. Martin Kleppmann.
 
 ![Designing Data-Intensive Applications book cover.](../../assets/ddia-book-cover.png)
 
-## Table of Contents
+# Table of Contents
 
-## Part 1: Foundations of Data Systems
+# Part 1: Foundations of Data Systems
 
-### Reliable, Scalable and Maintainable Applications
+## Reliable, Scalable and Maintainable Applications
 
 TBC.
 
-### Data Models and Query Languages
+## Data Models and Query Languages
 
 Most software applications are built by layering one data model over another. For
 each layer, the key question is: how is it _represented_ in terms of the next layer?
@@ -36,7 +36,7 @@ bytes in memory, on disk, or on a network. They also decided on a way to do oper
 4. At the lowest level, hardware engineers represent those bytes in terms of 
 electrical currents, magnetic fields, light pulses etc.
 
-#### Relational model vs document model
+### Relational model vs document model
 
 Relational model: data is organized into relations (called tables in SQL), 
 where each relation is an unordered collection of tuples (rows in SQL).
@@ -48,7 +48,7 @@ Originally used for business data processing in the 60s and 70s:
 The goal of the relational model was to abstract away the internal representation
 of the data behind a cleaner interface.
 
-**The Birth of NoSQL**
+#### The Birth of NoSQL
 
 NoSQL started in the 2010s to overcome some limitations of the relational model:
 - Scalability, including very large datasets or very high write throughput
@@ -56,7 +56,7 @@ NoSQL started in the 2010s to overcome some limitations of the relational model:
 - Specialised query operations that are not supported by SQL
 - Desire for a more dynamic and expressive schema or data model
 
-**The Object-Relational Mismatch**
+#### The Object-Relational Mismatch
 
 Modern applications have an _impedance mismatch_ between the object-oriented 
 application code and the relational data in databases. ORMs can help reduce the
@@ -66,7 +66,7 @@ For data structures like self-contained documents (e.g. resumes), a JSON
 representation is more suitable than a relational model due to better locality
 and the one-to-many relationships (i.e. a tree structure) is explicit in JSON.
 
-**Many-to-One and Many-to-Many Relationships**
+#### Many-to-One and Many-to-Many Relationships
 
 Using an ID vs a string to store data is a question of duplication. When using
 IDs, the data is only stored in one place, and everything refers to the ID. When
@@ -84,4 +84,92 @@ of becoming more interconnected as features are added to applications. In this
 case, if joins are not supported by the document database, then they are 
 emulated in application code through multiple queries.
 
-**Are Document Databases Repeating History?**
+#### Are Document Databases Repeating History?
+
+The most popular database for business data processing in the 1970s was IBM's
+_Information Management System_ (IMS). It used the hierarchical model, which 
+represents all data as a tree of records nested within records, similar to JSON.
+
+Like document databases, IMS worked well for one-to-many relationships but it 
+made many-to-many relationships difficult and did not support joins.
+
+**Network model**
+
+The network/CODASYL model was a generalisation of the hierarchical model, i.e.
+a record could have multiple parents. This allowed many-to-one and many-to-many
+relationships to be modelled.
+
+The links between records were like pointers. The only way of accessing a record
+was to follow a path from a root record along these chains of links, called an
+_access path_.
+
+A query in CODASYL was done by moving a cursor through the database by iterating
+over lists of records and following access paths. If you didn't have a path to
+the data you wanted, you were in a difficult position.
+
+**The relational model**
+
+In contrast, the relational model laid out all data in the open: a relation 
+(table) is simply a collection of tuples (rows). There are no nested structures 
+or access paths.
+
+The query optimiser automatically decides the execution order of each part of the
+query, so the application developer does not need to think about them.
+
+If you wanted to query your data in new ways, you simply declare a new index,
+and queries will automatically use whichever indexes are most appropriate. Hence,
+the relational model made it much easier to add new features to applications.
+
+**Comparison to document databases**
+
+The network model is similar to document databases in one aspect: storing nested
+records within the parent. They are different in that document databases use
+document references for many-to-one and many-to-many relationships which are 
+resolved at read time using joins or follow-up queries, similar to relational 
+models.
+
+#### Relational vs Document Databases Today
+
+The main advantages of document databases are schema flexibility, better performance
+due to locality, and that for some applications it is closer to the data structures
+used by the application.
+
+The main advantages of relational models are better support for joins, and 
+many-to-one and many-to-many relationships.
+
+**Which data model leads to simpler application code?**
+
+If the data has a document-like structure, then it's best to use a document model.
+The relational technique of _shredding_ (splitting a document structure into 
+multiple tables) can lead to cumbersome schemas and unnecessarily complicated code.
+
+The poor support for joins may or may not be a problem, for example, analytics
+applications using a document database to record events with timestamps will be 
+fine.
+
+However, they are less appealing for modelling many-to-many relationships. The
+code for joins moves into application code, increasing complexity, and is 
+usually slower than specialised code inside the database.
+
+For highly interconnected data, the document model is bad, the relational model
+is acceptable, and graph models are the most natural.
+
+**Schema flexibility in the document model**
+
+Document databases have a _schema-on-read_ while relational models have a 
+_schema-on-write_.
+
+The difference is notable in situations where applications want to change the
+format of its data, for example going from storing a user's full name to
+storing their first and last names separately. 
+
+In document databases, you could simply start writing new documents with the new
+schema and handle reads of the old schema in application code.
+
+In relational models, you would have to perform a database migration.
+
+The schema-on-read approach is more advantageous when:
+- There are many different types of objects and it is impractical to put each
+type of object in its own table
+- The structure of the data is determined by external systems outside the 
+control of the application developers.
