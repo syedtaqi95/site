@@ -195,3 +195,83 @@ Modern relational databases support JSON documents. Also document databases like
 RethinkDB support relational-like joins in their query languages. A hybrid approach
 is a good route for databases to take in the future.
 
+### Query Languages for Data
+
+SQL introduced a declarative syntax for query languages, whereas older query
+languages like CODASYL and IMS use an imperative style.
+
+Some advantages of declarative query languages over imperative alternatives:
+- A declarative query language is typically more concise and easier to work with
+than imperative ones. 
+- It abstracts away implementation details of the database, which makes it easier
+for database systems to introduce performance improvements without requiring any
+changes to queries.
+- Declarative syntax allows for parallel execution of queries. Imperative syntax
+makes parallel execution very difficult as it specifies the order of instructions.
+
+#### Declarative Queries on the Web
+
+CSS/XSL use a declarative syntax for styling HTML elements, wherease the 
+imperative approach would use (ugly and terse) JavaScript code.
+
+#### MapReduce Querying
+
+_MapReduce_ is a programming model for processing large amounts of data in bulk
+across many machines, popularised by Google.
+
+It is neither fully declarative neither fully imperative but somewhere in between:
+the logic of the query is expressed with snippets of code, which are called
+repeatedly by the processing framework.
+
+For example, a PostgreSQL query like:
+
+```sql
+SELECT date_trunc('month', observation_timestamp) AS observation_month,
+ sum(num_animals) AS total_animals
+FROM observations
+WHERE family = 'Sharks'
+GROUP BY observation_month;
+```
+
+Can be expressed as a MongoDB MapReduce query like so:
+
+```typescript
+db.observations.mapReduce(
+  function map() {
+    var year = this.observationTimestamp.getFullYear();
+    var month = this.observationTimestamp.getMonth() + 1;
+    emit(year + "-" + month, this.numAnimals);
+  },
+  function reduce(key, values) {
+    return Array.sum(values);
+  },
+  {
+    query: { family: "Sharks" },
+    out: "monthlySharkReport"
+  }
+);
+```
+
+The `map` and `reduce` functions must be pure functions, i.e. they cannot perform
+additional database queries and they cannot have any side effects. This allows
+them to be run in any order, anywhere, and be rerun on failure.
+
+A usability problem with MapReduce is that you have to write two carefully 
+coordinated JavaScript functions. Moreover, a declarative query language offers
+more opportunities for a query optimiser to improve the performance of a query.
+
+Hence, MongoDB added a declarative query language called `aggregation pipeline`,
+which looks like this:
+
+```typescript
+db.observations.aggregate([
+  { $match: { family: "Sharks" } },
+  { $group: {
+    _id: {
+      year: { $year: "$observationTimestamp" },
+      month: { $month: "$observationTimestamp" }
+    },
+    totalAnimals: { $sum: "$numAnimals" }
+  } }
+]);
+```
