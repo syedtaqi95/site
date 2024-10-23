@@ -238,8 +238,8 @@ Can be expressed as a MongoDB MapReduce query like so:
 ```typescript
 db.observations.mapReduce(
   function map() {
-    var year = this.observationTimestamp.getFullYear();
-    var month = this.observationTimestamp.getMonth() + 1;
+    const year = this.observationTimestamp.getFullYear();
+    const month = this.observationTimestamp.getMonth() + 1;
     emit(year + "-" + month, this.numAnimals);
   },
   function reduce(key, values) {
@@ -275,3 +275,36 @@ db.observations.aggregate([
   } }
 ]);
 ```
+
+### Graph-Like Data Models
+
+A _graph_ consists of two kinds of objects: _vertices_ (aka _nodes_ or _entities_)
+and _edges_ (aka _relationships_ or _arcs_).
+
+Typical examples are:
+- Social graphs: vertices are people, edges indicate which people know each other.
+- The web: vertices are webpages, edges indicate HTML links to other pages.
+- Road or rail networks: vertices are junctions, edges represent roads or railway
+lines.
+
+Well known algorithms can operate on these graphs, for example, navigation systems
+search for the shortest path between two locations, and Google's PageRank can 
+determine the popularity of a webpage.
+
+Graphs can model heterogeneous data, i.e. they can store completely different
+types of objects in a single datastore.
+
+#### Property Graphs
+
+Each **vertex** consists of:
+- A unique ID
+- A set of outgoing edges
+- A set of incoming edges
+- A collection of properties
+
+Each **edge** consists of:
+- A unique ID
+- The vertex at which the edge starts (_head_ vertex)
+- The vertex at which the edge ends (_tail_ vertex)
+- A label to describe the kind of relationship between the vertices
+- A collection of properties
