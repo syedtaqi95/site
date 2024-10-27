@@ -308,3 +308,13 @@ Each **edge** consists of:
 - The vertex at which the edge ends (_tail_ vertex)
 - A label to describe the kind of relationship between the vertices
 - A collection of properties
+
+Important aspects of this model are:
+- Any vertex can have an edge connecting it to any other vertex.
+- You can efficiently traverse the graph, both forward and backward.
+- You can store different kinds of information in a single graph, while still
+maintaining a clean data model.
+
+Graphs are good for evolvability - as features are added to your application,
+a graph can easily be extended to accomodate the changes in the application's
+data structures.
