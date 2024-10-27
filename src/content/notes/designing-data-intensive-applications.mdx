@@ -318,3 +318,38 @@ maintaining a clean data model.
 Graphs are good for evolvability - as features are added to your application,
 a graph can easily be extended to accomodate the changes in the application's
 data structures.
+
+#### The Cypher Query Language
+
+A declarative query language for property graphs, created for the Neo4j graph
+database.
+
+Example query to create Lucy who lives in Idaho:
+
+```sql
+CREATE
+ (NAmerica:Location {name:'North America', type:'continent'}),
+ (USA:Location {name:'United States', type:'country' }),
+ (Idaho:Location {name:'Idaho', type:'state' }),
+ (Lucy:Person {name:'Lucy' }),
+ (Idaho) -[:WITHIN]-> (USA) -[:WITHIN]-> (NAmerica),
+ (Lucy) -[:BORN_IN]-> (Idaho)
+```
+
+Example query to find people's names who emigrated from the US to Europe:
+
+```sql
+MATCH
+ (person) -[:BORN_IN]-> () -[:WITHIN*0..]-> (us:Location {name:'United States'}),
+ (person) -[:LIVES_IN]-> () -[:WITHIN*0..]-> (eu:Location {name:'Europe'})
+RETURN person.name
+```
+
+There are several ways of executing the query:
+- Scanning all the people in the database and return all the people who meet the
+`BORN_IN` and `LIVES_IN` criteria.
+- Start with the two `Location` vertices and work backwards to find all locations
+within the US and Europe and the people who lived in and were born in those places.
+
+As it is a declarative query language, this path will be automatically taken by
+the query optimiser which allows you to focus on the rest of your application.
