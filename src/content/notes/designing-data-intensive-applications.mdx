@@ -419,3 +419,27 @@ SELECT ?personName WHERE {
  ?person :livesIn / :within* / :name "Europe".
 }
 ```
+
+#### The Foundation: Datalog
+
+Datalog's data model is similar to triple-stores, but instead we write it as
+`predication(subject, object)`.
+
+```
+name(namerica, 'North America').
+type(namerica, continent).
+name(usa, 'United States').
+type(usa, country).
+within(usa, namerica).
+name(idaho, 'Idaho').
+type(idaho, state).
+within(idaho, usa).
+name(lucy, 'Lucy').
+born_in(lucy, idaho).
+```
+We define rules that tell the database about new predicates and rules can refer
+to other rules, just like functions can call other functions or recursively call
+themselves.
+
+Rules can be combined and reused in different queries. It’s less convenient for
+simple one-off queries, but it can cope better if your data is complex.
