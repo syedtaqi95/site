@@ -353,3 +353,69 @@ within the US and Europe and the people who lived in and were born in those plac
 
 As it is a declarative query language, this path will be automatically taken by
 the query optimiser which allows you to focus on the rest of your application.
+
+#### Graph Queries in SQL
+
+Graph queries can be executed in SQL but they are difficult. In a relational
+database, you usually know ahead of time how many joins you need in your query.
+Wherease in graph queries, the number of joins is not fixed in advance.
+
+In SQL, variable-length traversal paths can be expressed using _recursive common
+table expressions_ (`WITH RECURSIVE` syntax). It is very clumsy compared to Cypher.
+
+#### Triple-Stores and SPARQL
+
+All information is stored as simple three-part statements: (_subject_, _predicate_,
+_object_). For example, (Jim, likes, bananas).
+
+The **subject** is equivalent to a vertex.
+
+The **object** is one of two things:
+- A value of a primitive type like number or string. In this case, the predicate
+and object are key-value pairs. E.g. (Lucy, age, 33) is a vertex Lucy with properties
+\{"age": 33\}.
+- Another vertex in the graph. In this case, the predicate is the edge, the subject
+is the tail vertex and the object is the head vertex. For example (lucy, marriedTo,
+alain).
+
+Triple-stores in turtle concise syntax:
+
+```
+@prefix : <urn:example:>.
+_:lucy a :Person; :name "Lucy"; :bornIn _:idaho.
+_:idaho a :Location; :name "Idaho"; :type "state"; :within _:usa.
+_:usa a :Location; :name "United States"; :type "country"; :within _:namerica.
+_:namerica a :Location; :name "North America"; :type "continent".
+```
+
+**The semantic web**
+
+The _Resource Description Framework (RDF)_ was intended as a mechanism for 
+different websites to publish data in a consistent format, allowing data from
+different websites to be automatically combined into a web of data - a kind of 
+internet-wide "database of everything". However, this has never caught on.
+
+**The RDF data model**
+
+The Turtle language is a human-readable format for RDF data. Tools like Apache
+Jena can convert between different RDF formats. The subject, predicate and 
+object are often URIs. The predicate is often prefixed with the URI namespace,
+e.g. `<http://my-company.com/namespace#within>`. The URI is usually specified 
+once at the top of the file.
+
+**The SPARQL query language**
+
+SPARQL is a query language for triple-stores using the RDF data model. Its syntax
+looks similar to Cypher.
+
+The Cypher query above can be written in SPARQL as follows:
+
+```
+PREFIX : <urn:example:>
+
+SELECT ?personName WHERE {
+ ?person :name ?personName.
+ ?person :bornIn / :within* / :name "United States".
+ ?person :livesIn / :within* / :name "Europe".
+}
+```
