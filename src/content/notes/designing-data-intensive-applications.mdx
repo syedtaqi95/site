@@ -471,3 +471,29 @@ This is why indexes don't index everything by default. They allow the applicatio
 developer to choose indexes manually based on typical query patterns. Thus, they
 allow choosing the indexes that provide the greatest benefit without introducing
 additional overhead.
+
+#### Hash Indexes
+
+Key-value stores are quite similar to _dictionary_ types, which are usually 
+implemented as hash tables (hash maps).
+
+The simplest possible indexing strategy consists of using an in-memory hash 
+table where the key is mapped to the byte offset of the value in the data file.
+When values are inserted or updated, the index key is updated to the new offset.
+When keys are read, the offset is found in the index, and the data is read at
+the byte offset from the data file.
+
+Bitcask uses this indexing strategy. It is well suited to situations where all
+the keys fit in RAM, and the values are updated frequently. For example, the
+view count for videos.
+
+How do we avoid running out of disk space? Break the log into segments by closing
+a segment file once it reaches a certain size, and make subsequent write to a new
+segment file. Apply _compaction_ and _merging_ on old segments to reduce disk usage
+and the delete the old segments.
+
+Compaction is the process of de-duplicating keys by keeping only the latest entry.
+Merging is the processing of combining multiple segment files into one segment
+file. Both processes can occur together in a background thread. Once it is 
+completed, we can start reading from the newly created segment file and delete
+the old (and larger) segment files..
