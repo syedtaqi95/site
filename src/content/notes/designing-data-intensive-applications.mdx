@@ -423,7 +423,7 @@ SELECT ?personName WHERE {
 #### The Foundation: Datalog
 
 Datalog's data model is similar to triple-stores, but instead we write it as
-`predication(subject, object)`.
+`predicate(subject, object)`.
 
 ```
 name(namerica, 'North America').
@@ -443,3 +443,31 @@ themselves.
 
 Rules can be combined and reused in different queries. It’s less convenient for
 simple one-off queries, but it can cope better if your data is complex.
+
+## Storage and Retrieval
+
+Fundamentally, databases do two things: store data and retrieve the data. There
+is a big difference between storage engines optimised for transactional workloads
+vs those optimised for analytics. This chapter will focus on the two main families
+of storage engines: log-structured storage engines and page-oriented storage 
+engines such as B-trees.
+
+### Data Structures That Power Your Database
+
+Many databases internally use a _log_, which is an append-only data file. Real
+databases have more issues to deal with, such as concurrency control, reclaiming
+disk space, and handling errors and partially written records, but the basic
+principle is still the same.
+
+> A log is an append-only sequence of records. It can be binary and intended 
+only for other programs to read.
+
+In order to efficiently look up records in a database, we need an _index_. An
+index is an additional data structure that is derived from the primary data. It
+does not affect the data but only the performance of queries. Any index usually
+slows down writes, since each write also needs to update the index.
+
+This is why indexes don't index everything by default. They allow the application
+developer to choose indexes manually based on typical query patterns. Thus, they
+allow choosing the indexes that provide the greatest benefit without introducing
+additional overhead.
