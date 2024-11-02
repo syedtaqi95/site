@@ -492,8 +492,42 @@ a segment file once it reaches a certain size, and make subsequent write to a ne
 segment file. Apply _compaction_ and _merging_ on old segments to reduce disk usage
 and the delete the old segments.
 
-Compaction is the process of de-duplicating keys by keeping only the latest entry.
-Merging is the processing of combining multiple segment files into one segment
-file. Both processes can occur together in a background thread. Once it is 
+**Compaction** is the process of de-duplicating keys by keeping only the latest entry.
+
+**Merging** is the processing of combining multiple segment files into one segment
+file.
+
+Both processes can occur together in a background thread. Once it is 
 completed, we can start reading from the newly created segment file and delete
-the old (and larger) segment files..
+the old (and larger) segment files.
+
+Each segment now has its own in-memory hash table. To find the value for a key,
+we first check the most recent segment's hash map; if the key is not present we
+check the older segment's hash maps.
+
+Some of the important issues for a real implementation are:
+- File format: CSV is not the best format for the log, it's better to use a 
+binary format.
+- Deleting records: Append a _tombstone_ (deletion record) to delete keys, which
+tells the merging process to discard previous values for the key.
+- Crash recovery: Bitcask speeds up recovery by storing a snapshot of each segment's
+hash map on disk.
+- Partially written records: Bitcask files include checksums, allowing corrupted
+parts of the log to be detected and ignored.
+- Concurrency control: A common choice is to have only one writer thread. Data
+file segments are append-only and otherwise immutable, so they can be read
+concurrently by multiple threads.
+
+An append-only log design turns out to be good for several reasons:
+- Appending and merging are sequential write operations, which are generally much
+faster than random writes especially on spinning-disk drives. They are also
+marginally faster on flash-based SSDs.
+- Concurrent and crash recovery are much simpler.
+- Merging old segments avoids the problem of fragmentation over time.
+
+Some limitations of this approach are:
+- The hash table must fit in memory. It is awkward to make an on-disk hash map
+perform well. It requires a lot of random access I/O, it is expensive to grow
+when it becomes full, and hash collisions require fiddly logic.
+- Range queries are not efficient. For example, it is not easy to scan over all
+keys between _kitty000_ and _kitty999_. They have to scanned individually.
