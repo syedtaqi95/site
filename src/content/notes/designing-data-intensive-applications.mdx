@@ -530,4 +530,87 @@ Some limitations of this approach are:
 perform well. It requires a lot of random access I/O, it is expensive to grow
 when it becomes full, and hash collisions require fiddly logic.
 - Range queries are not efficient. For example, it is not easy to scan over all
-keys between _kitty000_ and _kitty999_. They have to scanned individually.
+keys between _kitty000_ and _kitty999_.
+
+#### SSTables and LSM-Trees
+
+**SSTable**, or Sorted String Table is a log-structured storage segment in which
+key-value pairs appear in sequential write order, the key-value pairs are _sorted 
+by key_, and each key only appears once within each merged segment file.
+
+This has several big advantages over hash indexes:
+- Merging segments is simple and efficient, even if the files are bigger than the
+available memory. This is similar to the _mergesort_ algorithm.
+- You can use a sparse index, i.e. not all keys need to be stored in memory. For
+example, when searching for _handiwork_, you can start searching from the key
+_handbag_ until the key _handsome_ because we know it will be between these two 
+keys (or not, if the key is not present). Usually one key for every few kilobytes
+is sufficient.
+- The group of records for each key range can be compressed before being written
+to disk. Each key then points to the start of the compressed block. It saves on
+both disk space and I/O bandwidth.
+
+**Construction and maintaining SSTables**
+
+Data structures such as red-black trees or AVL trees can be used to sort keys.
+They allow you to insert keys in any order and read them back in sorted order.
+
+We can now make our storage engine work as follows:
+- When a new write comes in, write to the balanced tree data structure (red-black
+tree). This tree is also called a **memtable**.
+- When the memtable becomes larger than a threshold, write it out to disk as an
+SSTable file. This can be done efficiently since the keys are already sorted.
+The new SSTable file becomes the most recent segment of the database. While this
+is happening, writes can continue in the background to a new memtable instance.
+- In order to serve a read request, first try the memtable, then the segments in
+reverse order.
+- Periodically, run a merging and compaction process in the background to combine
+segment files and discard overwritten or deleted values.
+
+This works very well, but there is only one problem: if the database crashes, then
+the latest writes are lost. In order to avoid this, we can keep a separate log on
+disk to which every write is immediately appended. This log is not sorted by key,
+but that is fine because its only purpose is to restore the memtable in the event
+of a crash. Every time a memtable is written out to an SSTable, this log
+can be discarded.
+
+**Making an LSM-tree out of SSTables**
+
+This algorithm is used in LevelDB, RocksDB, Cassandra and HBase, which were all
+inspired by Google's Bigtable paper (which introduced the terms _memtable_ and 
+_SSTable_).
+
+This indexing structure was named **Log-Structured Merge-Tree** (or LSM-Tree),
+building on earlier work on log-structured filesystems. Storage engines based on
+this principle of merging and compacting sorted files are often called LSM storage
+engines.
+
+Lucene, an indexing engine for full-text search used by Elasticsearch and Solr,
+uses a similar method for storing its _term dictionary_. A full-text index is much
+more complex than a simple key-value index but is based on a similar idea: given
+a word in a search query, find all documents that mention the word. This is 
+implemented with a key-value structure, where the key is the search term and the
+value is the list of document IDs containing the search term. In Lucene, this
+mapping is kept in SSTable-like sorted files, which are merged in the background
+as needed.
+
+**Performance optimisations**
+
+The LSM-tree algorithm can be slow when looking up keys that do not exist in the
+database. For this scenario, _Bloom filters_ are used. A **Bloom filter** is a 
+memory-efficient data structure for approximating the contents of a set. It can
+tell you if a key definitely does not appear in a database, hence saving time and
+disk reads searching for non-existent keys.
+
+Different strategies are used to determine the order and timing of SSTable
+merging and compaction. The most common options are _size-tiered_ and _leveled_
+compaction. In **size-tiered** compaction, newer and smaller SSTables are 
+successively merged into older and larger SSTables. In **leveled compaction**, the 
+key range is split up into smaller SSTables and older data is moved into separate 
+"levels", which allows the comapction to proceed more incrementally and use less
+disk space.
+
+This algorithm is simple and effective. Even when the dataset is much larger than
+the available memory it continues to work well. Since data is stored in sorted 
+order, you can efficiently perform range queries and because the disk writes are
+sequential the LSM-tree can support remarkably high write throughput.
