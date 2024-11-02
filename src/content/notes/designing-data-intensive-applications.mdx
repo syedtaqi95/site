@@ -700,3 +700,71 @@ left and right, which allows scanning keys in order without jumping back to the
 parent pages.
 - B-tree variants like _fractal trees_ borrow some log-structured ideas to reduce
 disk seeks.
+
+#### Comparing B-Trees and LSM-Trees
+
+As a rule of thumb, **LSM-trees are faster for writes, while B-trees are faster
+for reads**. Reads are typically slower on LSM-trees because they have to check
+several different data structures and SSTables at different stages of compaction.
+
+**Advantages of LSM-trees**
+
+A B-tree index must write every piece of data at least twice: once to the WAL,
+and once to the tree page itself. There is also overhead from having to write an
+entire page at a time even if only a few bytes in the page changed.
+
+LSM-trees also rewrite data multiple times due to repeated compaction and merging
+of SSTables. This effect - one write to the database resulting in multiple writes
+to disk - is known as **write amplification**. It affects SSDs mostly.
+
+In write-heavy applications, the performance bottleneck might be the rate at 
+which the database can write to disk. In this case, write amplification has a 
+direct performance cost: the more writes to disk, the fewer writes per second
+the database can handle within the available disk bandwidth.
+
+Moreover, LSM-trees are typically able to sustain higher write throughput than
+B-trees, partly because they sometimes have lower write amplification and partly
+because they sequentially write compact SSTable files rather than having to overwrite
+several pages in the tree. This is especially the case when using disk drives
+where sequentially writes are much faster than random writes.
+
+LSM-trees can be compressed better and thus produce smaller files on disk. B-trees
+leave some disk space unused due to fragmentation: when a page is split or when
+a row cannot fit into an existing page, some space in a page remains unused.
+LSM-trees have lower storage overheads especially when using leveled compaction.
+
+On many SSDs, the firmware internally uses a log-structured algorithm to turn
+random writes into sequential writes on the underlying storage chips, so the
+impact of the storage engine's write pattern is less pronounced. However, lower
+write amplification and reduced fragmentation are still advantages on SSDs:
+representing more data compactly allows more read and write requests within the
+available I/O bandwidth.
+
+**Downsides of LSM-trees**
+
+Even though storage engines try to perform compaction incrementally and without
+affecting concurrent access, disks have limited resources, so it can easily 
+happen that a request needs to wait while the disk finishes an expensive
+compaction operation. The impact on throughput and average response times is 
+usually small, but at higher percentiles the response times of queries can be 
+quite high. B-trees are more predictable in this regard.
+
+Another issue with compaction arises at high write throughput: the disk's finite
+write bandwidth needs to be shared between the initial write (logging and flushing
+a memtable to disk) and the compaction threads running in the background. As the
+database gets bigger, more disk bandwidth is required for compaction.
+
+It can happen that compaction cannot keep up with the rate of incoming writes. In
+this case, the number of unmerged segments on disk keeps growing until the database
+server runs out of memory, and reads slow down as they have to check more segment
+files. Typically, SSTable-based storage engines do not throttle the rate of
+incoming writes, so you need to explicitly monitor and detect for this situation.
+
+In B-trees, each key exists in only one place in the index. This is advantageous
+for strong transactional semantics: in many relational databases, transaction
+isolation is implemented using locks on ranges of keys, and in a B-tree index,
+those locks can be directly attached to the tree.
+
+B-trees have performed well for a variety of workloads over the years, while
+log-structured indexes are becoming increasingly popular in newer datastores.
+There is no quick and easy rule to determine which is better, so test empirically.
