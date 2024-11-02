@@ -607,10 +607,49 @@ merging and compaction. The most common options are _size-tiered_ and _leveled_
 compaction. In **size-tiered** compaction, newer and smaller SSTables are 
 successively merged into older and larger SSTables. In **leveled compaction**, the 
 key range is split up into smaller SSTables and older data is moved into separate 
-"levels", which allows the comapction to proceed more incrementally and use less
+"levels", which allows the compaction to proceed more incrementally and use less
 disk space.
 
 This algorithm is simple and effective. Even when the dataset is much larger than
 the available memory it continues to work well. Since data is stored in sorted 
 order, you can efficiently perform range queries and because the disk writes are
 sequential the LSM-tree can support remarkably high write throughput.
+
+#### B-Trees
+
+Log-structured indexes are gaining acceptance, but the most popular indexing 
+structure is the B-tree. They are used in almost all relational databases, as well
+as some non-relational databases.
+
+B-tress are similar to LSM-trees only in that they store key-value pairs sorted 
+by key, which allows efficient key-value lookups and range queries. Apart from
+this, B-trees have a very different design philosophy.
+
+B-trees break the database down into fixed-size _blocks_ or _pages_, traditionally
+4 KB in size, and read or write one page at a time. This corresponds more closely
+to the underlying hardware, as disks are also arranged in fixed-size blocks.
+
+Each page can be identified using an address or location, which allows pages to
+refer to each other, similar to a pointer. We can use these page references to
+construct a tree of pages.
+
+One page is designated as the root of the B-tree. The page contains several keys
+and references to child pages. Each child page is responsible for continuous range
+of keys, and the keys between references indicate the boundary of the ranges.
+
+The final page containing the individual keys is called a _leaf page_.
+
+The number of references to child pages in one page is called the _branching 
+factor_. It depends on the amount of space required to store the page references
+and the range boundaries, but typically it is several hundred.
+
+To update an existing key in a B-tree, search for the leaf containing that key,
+change the value in the page, and write the page back to disk. To add a new key,
+find the page whose range encompasses the new key and add it to the page. If there
+isn't enough space in the page, split it into two half-full pages, and update the
+parent page to account for the new sub-division of key ranges.
+
+This algorithm ensures that the tree remains balanced: a B-tree with n keys always
+has a depth of O(log n). Most databases can fit into a B-tree that is three or four
+levels deep. A four-level tree of 4 KB pages with a branching factor of 500 can
+store up to 256 TB.
