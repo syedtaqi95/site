@@ -653,3 +653,50 @@ This algorithm ensures that the tree remains balanced: a B-tree with n keys alwa
 has a depth of O(log n). Most databases can fit into a B-tree that is three or four
 levels deep. A four-level tree of 4 KB pages with a branching factor of 500 can
 store up to 256 TB.
+
+**Making B-trees reliable**
+
+The basic underlying write operation of a B-tree is to overwrite a page on disk
+with new data. It is assumed that the overwrite does not change the location of
+the page, unlike log-structured indexes such as LSM-trees which only append to 
+files.
+
+Some operations require several different pages to be overwritten. For example,
+if a page is split because it is full, we need to write the two pages that were
+split, and also overwrite the parent page to update the references to the two
+child pages. This is a dangerous operation, because if the database crashes in 
+the middle of this operation, then the index gets corrupted.
+
+In order to make this reliable, B-tree implementations include a _write-ahead log_
+(WAL, or _redo log_). This is an append-only log to which every B-tree modification
+is written to before it can be applied to the pages. When the database comes back
+up, the WAL is used to restore the B-tree back to a consistent state.
+
+Another complication of updating the pages in-place is that careful concurrency
+control is required. This is done by protecting the tree's data structures with
+_latches_ (lightweight locks). Log-structured indexes are simpler for this, as
+the merging happens in the background without affecting incoming queries and
+atomically swap segments periodically.
+
+**B-tree optimisations**
+
+Many optimisations have been developed over the years:
+- Copy-on-write scheme: a modified page is written to a different location, and
+a new version of the parent pages in the tree is created, pointing at the new
+location. This is useful for concurrency control.
+- We can save space in pages by not storing the entire key, but abbreviating it.
+Especially in the interior pages, we only need enough information for the keys
+to act as boundaries between key ranges. Packing more keys into a page allows 
+a higher branching factor, and thus fewer levels.
+- Pages can be stored anywhere on disk.  If a query needs to scan a large part of
+the key range in sorted order, the page-by-page layout can be inefficient, because
+a disk seek may be required for every page. Thus, many B-tree implementations
+try to lay out the tree so that leaf pages appear in sequential memory order.
+However, it is difficult to maintain this order as the tree grows. By contrast,
+since LSM-trees rewrite large segments during merging, it is easier for them to
+keep sequential keys close to each other in memory.
+- Additional pointers have been added to the tree, such as sibling pages to the
+left and right, which allows scanning keys in order without jumping back to the
+parent pages.
+- B-tree variants like _fractal trees_ borrow some log-structured ideas to reduce
+disk seeks.
