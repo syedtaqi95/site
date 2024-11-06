@@ -772,4 +772,29 @@ There is no quick and easy rule to determine which is better, so test empiricall
 #### Other Indexing Structures
 
 So far we have covered **primary indexes**. There are also **secondary indexes** 
-which are useful for performing joins effectively.
+which are useful for performing joins efficiently.
+
+A secondary index can be constructed from a key-value index. The main difference
+is that the keys are not unique. We can get around this by using the row ID
+as the value of the index, or by appending the row ID to the key to make it
+unique.
+
+**Storing values within the index**
+
+The value in an index can either be the actual row of data, or a reference to 
+the row stored elsewhere.
+
+The place where the actual data is stored is called the **heap file**. It stores
+data in no particular order. It is a popular approach because the data is not 
+duplicated. If we need to overwrite data in a heap file such that the new data 
+is larger than the available space, then all indexes need to point at a new location 
+for this data, or a forwarding pointer is left in the old heap location.
+
+If the actual row data is stored in the index, it is known as a **clustered index**.
+
+A compromise between the two approaches is called a **covering index** or **index
+with included columns**.
+
+Clustered and covering indexes can speed up reads at the cost of additional 
+memory usage and overhead on writes. They are also worse for transactions as 
+multiple memory locations need to be updated.
