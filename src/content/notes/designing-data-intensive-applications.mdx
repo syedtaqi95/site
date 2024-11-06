@@ -454,7 +454,7 @@ engines such as B-trees.
 
 ### Data Structures That Power Your Database
 
-Many databases internally use a _log_, which is an append-only data file. Real
+Many databases internally use a **log**, which is an append-only data file. Real
 databases have more issues to deal with, such as concurrency control, reclaiming
 disk space, and handling errors and partially written records, but the basic
 principle is still the same.
@@ -462,7 +462,7 @@ principle is still the same.
 > A log is an append-only sequence of records. It can be binary and intended 
 only for other programs to read.
 
-In order to efficiently look up records in a database, we need an _index_. An
+In order to efficiently look up records in a database, we need an **index**. An
 index is an additional data structure that is derived from the primary data. It
 does not affect the data but only the performance of queries. Any index usually
 slows down writes, since each write also needs to update the index.
@@ -474,7 +474,7 @@ additional overhead.
 
 #### Hash Indexes
 
-Key-value stores are quite similar to _dictionary_ types, which are usually 
+Key-value stores are quite similar to **dictionary** types, which are usually 
 implemented as hash tables (hash maps).
 
 The simplest possible indexing strategy consists of using an in-memory hash 
@@ -489,7 +489,7 @@ view count for videos.
 
 How do we avoid running out of disk space? Break the log into segments by closing
 a segment file once it reaches a certain size, and make subsequent write to a new
-segment file. Apply _compaction_ and _merging_ on old segments to reduce disk usage
+segment file. Apply **compaction** and **merging** on old segments to reduce disk usage
 and the delete the old segments.
 
 **Compaction** is the process of de-duplicating keys by keeping only the latest entry.
@@ -508,7 +508,7 @@ check the older segment's hash maps.
 Some of the important issues for a real implementation are:
 - File format: CSV is not the best format for the log, it's better to use a 
 binary format.
-- Deleting records: Append a _tombstone_ (deletion record) to delete keys, which
+- Deleting records: Append a **tombstone** (deletion record) to delete keys, which
 tells the merging process to discard previous values for the key.
 - Crash recovery: Bitcask speeds up recovery by storing a snapshot of each segment's
 hash map on disk.
@@ -535,12 +535,12 @@ keys between _kitty000_ and _kitty999_.
 #### SSTables and LSM-Trees
 
 **SSTable**, or Sorted String Table is a log-structured storage segment in which
-key-value pairs appear in sequential write order, the key-value pairs are _sorted 
-by key_, and each key only appears once within each merged segment file.
+key-value pairs appear in sequential write order, the key-value pairs are **sorted 
+by key**, and each key only appears once within each merged segment file.
 
 This has several big advantages over hash indexes:
 - Merging segments is simple and efficient, even if the files are bigger than the
-available memory. This is similar to the _mergesort_ algorithm.
+available memory. This is similar to the **mergesort** algorithm.
 - You can use a sparse index, i.e. not all keys need to be stored in memory. For
 example, when searching for _handiwork_, you can start searching from the key
 _handbag_ until the key _handsome_ because we know it will be between these two 
@@ -577,8 +577,8 @@ can be discarded.
 **Making an LSM-tree out of SSTables**
 
 This algorithm is used in LevelDB, RocksDB, Cassandra and HBase, which were all
-inspired by Google's Bigtable paper (which introduced the terms _memtable_ and 
-_SSTable_).
+inspired by Google's Bigtable paper (which introduced the terms **memtable** and 
+**SSTable**).
 
 This indexing structure was named **Log-Structured Merge-Tree** (or LSM-Tree),
 building on earlier work on log-structured filesystems. Storage engines based on
@@ -586,7 +586,7 @@ this principle of merging and compacting sorted files are often called LSM stora
 engines.
 
 Lucene, an indexing engine for full-text search used by Elasticsearch and Solr,
-uses a similar method for storing its _term dictionary_. A full-text index is much
+uses a similar method for storing its **term dictionary**. A full-text index is much
 more complex than a simple key-value index but is based on a similar idea: given
 a word in a search query, find all documents that mention the word. This is 
 implemented with a key-value structure, where the key is the search term and the
@@ -597,13 +597,13 @@ as needed.
 **Performance optimisations**
 
 The LSM-tree algorithm can be slow when looking up keys that do not exist in the
-database. For this scenario, _Bloom filters_ are used. A **Bloom filter** is a 
+database. For this scenario, **Bloom filters** are used. A **Bloom filter** is a 
 memory-efficient data structure for approximating the contents of a set. It can
 tell you if a key definitely does not appear in a database, hence saving time and
 disk reads searching for non-existent keys.
 
 Different strategies are used to determine the order and timing of SSTable
-merging and compaction. The most common options are _size-tiered_ and _leveled_
+merging and compaction. The most common options are **size-tiered** and **leveled**
 compaction. In **size-tiered** compaction, newer and smaller SSTables are 
 successively merged into older and larger SSTables. In **leveled compaction**, the 
 key range is split up into smaller SSTables and older data is moved into separate 
@@ -625,7 +625,7 @@ B-tress are similar to LSM-trees only in that they store key-value pairs sorted
 by key, which allows efficient key-value lookups and range queries. Apart from
 this, B-trees have a very different design philosophy.
 
-B-trees break the database down into fixed-size _blocks_ or _pages_, traditionally
+B-trees break the database down into fixed-size **blocks** or **pages**, traditionally
 4 KB in size, and read or write one page at a time. This corresponds more closely
 to the underlying hardware, as disks are also arranged in fixed-size blocks.
 
@@ -637,10 +637,10 @@ One page is designated as the root of the B-tree. The page contains several keys
 and references to child pages. Each child page is responsible for continuous range
 of keys, and the keys between references indicate the boundary of the ranges.
 
-The final page containing the individual keys is called a _leaf page_.
+The final page containing the individual keys is called a **leaf page**.
 
-The number of references to child pages in one page is called the _branching 
-factor_. It depends on the amount of space required to store the page references
+The number of references to child pages in one page is called the **branching 
+factor**. It depends on the amount of space required to store the page references
 and the range boundaries, but typically it is several hundred.
 
 To update an existing key in a B-tree, search for the leaf containing that key,
@@ -667,14 +667,14 @@ split, and also overwrite the parent page to update the references to the two
 child pages. This is a dangerous operation, because if the database crashes in 
 the middle of this operation, then the index gets corrupted.
 
-In order to make this reliable, B-tree implementations include a _write-ahead log_
-(WAL, or _redo log_). This is an append-only log to which every B-tree modification
+In order to make this reliable, B-tree implementations include a **write-ahead log**
+(WAL, or **redo log**). This is an append-only log to which every B-tree modification
 is written to before it can be applied to the pages. When the database comes back
 up, the WAL is used to restore the B-tree back to a consistent state.
 
 Another complication of updating the pages in-place is that careful concurrency
 control is required. This is done by protecting the tree's data structures with
-_latches_ (lightweight locks). Log-structured indexes are simpler for this, as
+**latches** (lightweight locks). Log-structured indexes are simpler for this, as
 the merging happens in the background without affecting incoming queries and
 atomically swap segments periodically.
 
@@ -698,7 +698,7 @@ keep sequential keys close to each other in memory.
 - Additional pointers have been added to the tree, such as sibling pages to the
 left and right, which allows scanning keys in order without jumping back to the
 parent pages.
-- B-tree variants like _fractal trees_ borrow some log-structured ideas to reduce
+- B-tree variants like **fractal trees** borrow some log-structured ideas to reduce
 disk seeks.
 
 #### Comparing B-Trees and LSM-Trees
@@ -768,3 +768,8 @@ those locks can be directly attached to the tree.
 B-trees have performed well for a variety of workloads over the years, while
 log-structured indexes are becoming increasingly popular in newer datastores.
 There is no quick and easy rule to determine which is better, so test empirically.
+
+#### Other Indexing Structures
+
+So far we have covered **primary indexes**. There are also **secondary indexes** 
+which are useful for performing joins effectively.
