@@ -798,3 +798,17 @@ with included columns**.
 Clustered and covering indexes can speed up reads at the cost of additional 
 memory usage and overhead on writes. They are also worse for transactions as 
 multiple memory locations need to be updated.
+
+**Multi-column indexes**
+
+A **concatenated index** combines several fields into one key by appending one 
+column to another. E.g. in a phone book, (`lastname`, `firstname`) maps to a phone
+number.
+
+Multi-column indexes are used to store geospatial data (i.e. latitudes and 
+longitudes). One option is to translate the location into a single number using
+a space-filling curve, and then use a regular B-tree. More commonly, R-trees
+are used.
+
+Other applications include indexing the RGB colours of products and weather data
+(date, temperature).
