@@ -812,3 +812,17 @@ are used.
 
 Other applications include indexing the RGB colours of products and weather data
 (date, temperature).
+
+**Full-text search and fuzzy indexes**
+
+Full-text search engines expand the search for a word to include synonyms, ignore
+grammatical variations, and search for occurrences of words near each other in 
+the same document. Lucene is able to search for words within a certain edit distance.
+
+Lucene uses an SSTable-like data structure for its term dictionary. The in-memory
+index is a finite-state automation over the characters in the keys, similar to a
+_trie_. This automation can be transferred to a _Levenshtein automation_, which 
+supports efficient search for words within a given edit distance.
+
+Other fuzzy search techniques go in the direction of document classification and
+machine learning.
