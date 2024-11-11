@@ -915,3 +915,49 @@ however star schemas are simpler for analysts to work with.
 
 Tables are often very wide, often over 100 columns, sometimes several hundred.
 Dimension tables can also be very wide as they include a lot of metadata.
+
+### Column-Oriented Storage
+
+The idea behind column-oriented storage is to store all the values from each
+column together (instead of storing all values of a row as done in OLTP). It relies
+on each column file containing the rows in the same order.
+
+#### Column Compression
+
+Columns generally have repetitive values which is good for compression. We can
+use bitmap encoding for each value, where 1 means present and 0 means absent.
+This will give us 1 bit per row.
+
+If the data is sparse, we can also use run length encoding (RLE) to save
+additional space.
+
+_Note:_ the Bigtable model used in Cassandra and HBase use a row-oriented storage:
+they store all columns from a row together along with a row key, and they don't
+use column compression.
+
+**Memory bandwidth and vectorised processing**
+
+A big bottleneck is the bandwidth for getting data from disk into memory. Another
+is efficiently using the bandwidth from main memory in the CPU cache, avoiding 
+branch mispredictions and bubbles in the CPU instruction processing pipeline,
+and making use of SIMD instructions in modern CPUs.
+
+Column-oriented storage makes efficient use of CPU cycles. The query engine can
+take a chunk of compressed column data that fits comfortably in the CPU's L1
+cache and iterate through it in a tight loop (i.e. no function calls). Bitwise
+operators like AND and OR can be designed to operate on chunks of compressed
+column data directly: this technique is called **vectorised processing**.
+
+#### Sort Order in Column Storage
+
+DBAs generally sort the rows by the columns that are used most frequently, for
+example the dates. Another column can be used to sort for rows that have the same
+date, like product key. This helps queries to group or filter sales by products
+within a certain date range.
+
+This also helps with column compression, as these columns will have long repetitive
+sequences. RLE can compress this down to a few KB even for billions of rows.
+
+Compression works best on the first sort key, and less for further sort keys.
+But this still a win.
+
