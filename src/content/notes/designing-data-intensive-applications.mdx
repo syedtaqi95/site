@@ -983,3 +983,28 @@ Queries need to examine both the column data on disk and the recent writes in
 memory, and combine the two. Query optimisers hide this distinction from the
 user.
 
+#### Aggregation: Data Cubes and Materialised Views
+
+A **materialised aggregate** is the caching of aggregate functions like count,
+sum, average etc.
+
+This can be created using a **materialised view**. In a relational model, it is
+defined like a standard (virtual) view: a table-like object whose contents are 
+the results of a query. The difference is that the data is an actual copy of the
+data, written to disk.
+
+This needs to be kept up to date with any data changes. This makes writes more
+expensive and hence they are not used much in OLTP databases. They are good for
+read-heavy OLAP databases.
+
+A common special case of a materialised view is called a **data cache** or **OLAP
+cube**: a grid of aggregates grouped by different dimensions. Each cell contains
+the aggregate result for the combination of column values. The entire row
+or column can be aggregated to provide the aggregate result for that column value
+(i.e. it reduces a dimension by 1).
+
+Certain queries, like "total sales per store yesterday", become very fast.
+
+The disadvantage is that a data cube does not have the same flexibility as 
+querying the raw data, like "which proportion of sales comes from items that cost
+more than $100", because the price is not one of the dimensions.
