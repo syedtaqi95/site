@@ -961,3 +961,25 @@ sequences. RLE can compress this down to a few KB even for billions of rows.
 Compression works best on the first sort key, and less for further sort keys.
 But this still a win.
 
+**Several different sort orders**
+
+We can store the same data sorted in different ways, across different machines.
+We can then use the best version that fits the query.
+
+#### Writing to Column-Oriented Storage
+
+The above optimisations are good for analytical queries as they speed up data 
+reads. However, they make writes more difficult.
+
+An update-in-place approach like in B-trees is not possible: if we want to insert
+a row in the middle of a sorted table then we would have to rewrite all the 
+column files.
+
+This can be solved using **LSM-trees**. All writes first go to an in-memory sorted
+data structure. When writing to disk, they are merged with column files and 
+written to new files in bulk. Vertica does this.
+
+Queries need to examine both the column data on disk and the recent writes in
+memory, and combine the two. Query optimisers hide this distinction from the
+user.
+
