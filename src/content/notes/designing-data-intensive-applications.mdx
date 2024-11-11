@@ -826,3 +826,37 @@ supports efficient search for words within a given edit distance.
 
 Other fuzzy search techniques go in the direction of document classification and
 machine learning.
+
+**Keeping everything in memory**
+
+Disks have two advantages: they are durable (e.g. during power loss), and their
+cost per gigabyte is lower than RAM. As RAM becomes cheaper, _in-memory databases_ 
+have been developed as it is feasible to keep entire databases loaded into RAM,
+potentially distributed across machines.
+
+**Memcahed** is intended for caching use only, i.e. data can be lost on power
+loss.
+
+When an in-memory database is restarted, it needs to reload its state from disk
+or from a replica over the network.
+
+**VoltDB, MemSQL** and **Oracle TimesTen** are in-memory databases with a relational
+model; they can provide big performance improvements by removing the overheads
+associated with managing on-disk data structures.
+
+**Redis** and **Couchbase** provide weak durability by writing to disk 
+asynchronously.
+
+The performance advantage is because they can avoid the overheads of encoding
+in-memory data structures in a form that can be written to disk. Not because of
+the lack of disk read/writes.
+
+Redis provides a database-like interface to data structures like priority queues
+and sets.
+
+**Anti-caching** approach allows in-memory databases to support datasets larger
+than the available memory by evicting the least recently used data from memory
+to disk, and loading it back when it is accessed again in the future. It still
+requires the index to be able to fit in memory.
+
+One area for the future is the adoption of **non-volatile memory (NVM)**.
