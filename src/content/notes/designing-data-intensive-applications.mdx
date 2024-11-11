@@ -860,3 +860,58 @@ to disk, and loading it back when it is accessed again in the future. It still
 requires the index to be able to fit in memory.
 
 One area for the future is the adoption of **non-volatile memory (NVM)**.
+
+### Transaction Processing or Analytics?
+
+A **transaction** is a group of reads and writes that form a logical unit.
+
+**Online transaction processing (OLTP)** is the access pattern of interactively
+looking up a small number of records by some key, using an index. Records are 
+inserted or updated based on the user's input.
+
+Databases also started being used for data analytics. This involves an analytical
+query that scans over a large number of records, reading a few columns, to 
+calculate aggregate statistics (count, sum, average). This is called **online
+analytical processing (OLAP)**. Data warehouses are used to run analytical
+queries.
+
+#### Data Warehousing
+
+OLTP systems are usually expected to be highly available and to process transactions
+with low latency, hence they are not ideal for analysts to run ad hoc queries as
+these queries are often expensive, scanning large parts of the dataset, which
+can hurt the performance of concurrently executing transactions.
+
+A **data warehouse** is a separate database where analysts can run their queries
+without affecting OLTP operations. Data is extracted from OLTP databases, 
+transformed into an analysis-friendly schema, cleaned up, and loaded into the
+data warehouse. This process is called **Extract-Transform-Load (ETL)**.
+
+#### The divergence between OLTP databases and data warehouses
+
+The data model used by OLAP systems is usually SQL because it is a good fit for 
+analytic queries. However the internals are different because of the different query
+patterns.
+
+There are now open-source SQL-on-Hadoop projects like Apache Hive, Spark SQL,
+Cloudera etc. Some of them are based on ideas from Google's Dremel.
+
+#### Stars and Snowflakes: Schemas for Analytics
+
+A **star schema** is a common OLAP schema, also called dimensional modelling. At 
+its centre is a _fact table_, which represents events such as a sale or website 
+visit. These fact tables can become extremely large (petabytes in the case of Walmart, 
+Apple, eBay).
+
+Some columns are **attributes**, while others are foreign key references to other
+tables, called **dimension tables**.
+
+Even date and time are often represented using dimension tables, because this 
+allows additional information about dates such as public holidays to be encoded.
+
+A variation of this is called **snowflake schema**, where dimensions are further
+broken down into sub-dimensions. They are more normalised than star schemas,
+however star schemas are simpler for analysts to work with.
+
+Tables are often very wide, often over 100 columns, sometimes several hundred.
+Dimension tables can also be very wide as they include a lot of metadata.
