@@ -1050,3 +1050,38 @@ code execution in the worst case.
 - They are not versioned well, and don't cater for forward or backward 
 compatibility.
 - They are not efficient and suffer from bad performance.
+
+#### JSON, XML, and Binary Variants
+
+JSON, XML and CSV are textual formats, and are hence somewhat human-readable.
+
+They have some advantages though:
+- Numbers are ambiguous: in XML and CSV, you cannot distinguish between a number
+and a string of digits without using an external schema. JSON does not distinguish
+between integers and floats, and does not specify a precision. E.g. Twitter uses
+a 64-bit tweet ID (> 2^53 IEEE 754 floating point limit), and has to use both
+number and string representations in its API to work around JavaScript clients.
+- While they have good support for Unicode characters, they don't support binary
+strings. To work around this, binary data is encoded into text using Base64.
+This is somewhat hacky and increases data size by 33%.
+- There is optional schema support which is quite powerful, but many JSON-based 
+tools do not both using them and hardcode the encoding/decoding logic instead.
+- CSV does not have a schema, does not handle commas or newlines well, and
+requires applications to handle new rows and columns themselves.
+
+Despite this, they are useful for many purposes such as **data interchange 
+formats**, i.e. for sending data from one organisation to another.
+
+
+**Binary encoding**
+
+For data used internally within an organisation, it is better to use a format
+that is more compact and faster to parse. For large datasets, this can have a 
+large impact.
+
+There are some binary variants of JSON such as MessagePack, BSON, BJSON, BISON 
+etc. and for XML such as WBXML and Infoset. They are not as widely adopted as
+their textual counterparts.
+
+Some of them extend the set of data types (e.g. support for floats or binary 
+strings), but otherwise keep the same JSON/XML data model.
