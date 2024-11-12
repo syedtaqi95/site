@@ -1085,3 +1085,28 @@ their textual counterparts.
 
 Some of them extend the set of data types (e.g. support for floats or binary 
 strings), but otherwise keep the same JSON/XML data model.
+
+#### Thrift and Protocol Buffers
+
+Protocol Buffers was developed at Google, while Thrift was developed at Facebook,
+and open-sourced in 2007-08. Both use schemas to encode/decode data.
+
+Thrift uses an IDL to define a schema like below:
+
+```
+struct Person {
+  1: required string       userName,
+  2: optional i64          favouriteNumber,
+  3: optional list<string> interests,
+}
+```
+
+Protobuf schema looks like this:
+
+```
+message Person {
+  required string user_name        = 1;
+  optional int64  favourite_number = 2;
+  repeated string interests        = 3;
+}
+```
