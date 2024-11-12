@@ -1008,3 +1008,45 @@ Certain queries, like "total sales per store yesterday", become very fast.
 The disadvantage is that a data cube does not have the same flexibility as 
 querying the raw data, like "which proportion of sales comes from items that cost
 more than $100", because the price is not one of the dimensions.
+
+## Encoding and Evolution
+
+In large applications, data format or schema changes cannot happen simultaneously:
+- **Rolling upgrades** in server-side applications (staged roll-out). This allows
+new versions to be deployed without service downtime, and thus encourages more
+frequent releases and better evolvability.
+- In client-side applications, users may not install the update for some time.
+
+To continue running smoothly, we need to maintain both:
+- Backward compatibility: newer code can read data written by older code. This is
+easier to do as we know ahead of time what to handle.
+- Forward compatibility: old code can read data written by newer code. This is 
+harder to do as we need older code to ignore the changes introduced by newer code.
+
+### Formats for Encoding Data
+
+Programs work with data in (at least) 2 different representations:
+- In memory using data structures like objects, lists, arrays, hash tables etc.
+They are optimised for efficient read and/or writes by the CPU.
+- When writing to a file or sending it over a network, they need to be encoded
+into a self-contained sequence of bytes (e.g. JSON).
+
+The translation from the in-memory representation to a byte sequence is called
+**encoding** (serialisation or marshalling). The reverse is **decoding** (parsing,
+deserialisation or unmarshalling).
+
+#### Language-Specific Formats
+
+Examples: Java has `java.io.Serializable`, Ruby has `Marshal`, Python has `pickle`.
+
+They are convenient as they have encoding/decoding built into the language.
+
+Disadvantages:
+- The encoding is tied to a particular programming language, which makes reading
+into a different language difficult.
+- The decoding process needs to be able to instantiate arbitrary classes to restore
+data to object types, which is a security concern. It can allow remote arbitrary
+code execution in the worst case.
+- They are not versioned well, and don't cater for forward or backward 
+compatibility.
+- They are not efficient and suffer from bad performance.
