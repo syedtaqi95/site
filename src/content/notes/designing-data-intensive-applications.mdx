@@ -1248,3 +1248,22 @@ files. This is especially use with dynamically typed processing languages like
 Apache Pig, in which you can open Avro files, start analysing them, and write
 derived datasets to output files in Avro format without even thinking about
 schemas.
+
+#### The Merits of Schemas
+
+Schema languages of Thrift, Protocol Buffers and Avro are much simpler than XML
+or JSON, which support much more detailed validation rules. 
+
+Their ideas are not new - see ASN.1 used for encoding SSL certificates (X.509).
+
+Many databases also have their own proprietary binary encoding for their data,
+e.g. ODBC and JDBC APIs.
+
+Advantages of binary encoding protocols:
+- Much more compact than the "binary JSON" variants, due to not storing field
+names.
+- The schema is valuable form of documentation.
+- Keeping a database of schemas allows you to check forward and backward
+compatibility of schema changes before deploying anything.
+- Useful for code generation in statically typed languages.
+
