@@ -1148,4 +1148,103 @@ Thrift does not have this feature, but it does have the advantage of nested list
 
 #### Avro
 
+Avro has two schema languages: Avro IDL for human editing, and a JSON representation
+that is more machine-readable.
 
+In Avro IDL:
+
+```
+record Person {
+  string               userName;
+  union { null, long } favoriteNumber = null;
+  array<string>        interests;
+}
+```
+
+The equivalent JSON representation is:
+
+```js
+{
+  "type": "record",
+  "name": "Person",
+  "fields": [
+    {"name": "userName", "type", "string"},
+    {"name": "favoriteNumber", "type", ["null", "long"], "default": null},
+    {"name": "interests", "type", {"type": "array", "items": "string"}}
+  ]
+}
+```
+
+The encoded data simply consists of values concatenated together, separated by
+their lengths. Strings are UTF-8 encoded prefixed by the length, while integers
+are encoded using a variable-length encoding.
+
+**The writer's schema and the reader's schema**
+
+The writer's schema and the reader's schema don't have to be the same - they only
+need to be compatible. The Avro library resolves the differences between the two
+schemas.
+
+The field names can be re-ordered - Avro matches the fields by their names. If the
+field appears in the writer's schema but is missing in the reader's schema it is 
+ignored. If the reader's schema expects a field that is missing from the writer's
+schema is is filled in with a default value in the reader's schema.
+
+**Schema evolution rules**
+
+To maintain compatibility, you can only add or remove a field that has a default
+value.
+
+Avro is explicit about which fields can be `null`. This is done by using a `union`
+type: `union {null, long} field;`. As a result it does not have `optional` or 
+`required` markers.
+
+Data types can be changed provided that Avro can convert between the two. Changing
+the name of a field is possible but tricky: the reader's schema can contain aliases
+for field names. This means that changing the field names is backward compatible
+but not forward compatible. Similarly, adding a union type is backward compatible
+but not forward compatible.
+
+**But what is the writer's schema?**
+
+- Large files with lots of records: e.g. Hadoop. The writer can simply include
+the writer's schema once at the beginning of the file. Avro specifies a file
+format (object container files) to do this.
+- Database with individually written records: the simple solution involves prefixing
+a version number at the start of every record and keep a list of schema versions
+in the database.
+- Sending records over a network connection: Two processes communicating over a 
+bidirectional network can negotiate the schema version on connection setup and
+then use that schema for the lifetime of the connection. The Avro RPC protocol
+works like this.
+
+**Dynamically generated schemas**
+
+Avro doesn't contain any field tags. The advantage of this is that Avro is friendlier
+to dynamically generated schemas. E.g. dumping a SQL database to a file. If the 
+database schema changes, a new Avro schema file can be generated and we can export
+data in the new Avro schema - Avro will convert between the old and new schemas.
+
+By contrast, using Thrift or Protocol Buffers means the field tags would have to
+be assigned by hand: every time the database schema changes, an admin would have
+to manually update the mapping from database column names to field tags.
+
+This feature was a design goal for Avro.
+
+**Code generation and dynamically typed languages**
+
+Thrift and Protocol Buffers rely on code generation to implement schemas in different
+programming languages. This allows statically typed languages like Java, C++ etc.
+to have efficient in-memory data structures to be used for the decoded data. It
+also allows type checking and autocompletion in IDEs.
+
+This does not really matter in dynamically typed languages like JavaScript, Ruby
+or Python since there is generally no compile-time type checker. Code generation
+is generally frowned upon in these languages since it requires an up-front
+compilation step.
+
+Avro object container files can be used without code generation similar to JSON 
+files. This is especially use with dynamically typed processing languages like
+Apache Pig, in which you can open Avro files, start analysing them, and write
+derived datasets to output files in Avro format without even thinking about
+schemas.
