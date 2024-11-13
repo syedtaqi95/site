@@ -1110,3 +1110,42 @@ message Person {
   repeated string interests        = 3;
 }
 ```
+
+Thrift has two different binary encoding formats:
+- BinaryProtocol: each field has a field tag and length (where applicable)
+- CompactProtocol: same as above but it packs the field tag and type into a single
+byte, and uses variable-length integers.
+
+Protocol Buffers encode data very similarly to CompactProtocol. Note that the 
+`required` or `optional` flags are not encoded - they are used by runtime check
+tools.
+
+**Field tags and schema evolution**
+
+If a field value is not set, it is simply omitted from the encoded record. We can
+change a field's name in the schema, but not its tag, since that would make all
+existing encoded data invalid.
+
+New fields can be added provided they are given a new field tag. This maintains
+forward compatibility.
+
+For backward compatibility, as long as each field has a unique tag, new code can
+always read old data. The only constraint is that if we add a new field, we cannot
+make it required. Therefore, all fields added after the initial deployment must
+be optional or have a default value.
+
+Removing the fields has the same concerns with the forward and backward compatibility
+concerns reversed, i.e. we can only remove optional fields, and we can never re-use
+the same field tag again.
+
+**Datatypes and schema evolution**
+
+One quirk of Protocol Buffers is that it's okay to change an `optional` field into
+a `repeated` field. New code reading old data sees a list with zero or one elements;
+old code reading new data only sees the last element in the list.
+
+Thrift does not have this feature, but it does have the advantage of nested lists.
+
+#### Avro
+
+
