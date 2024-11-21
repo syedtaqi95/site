@@ -1244,7 +1244,7 @@ is generally frowned upon in these languages since it requires an up-front
 compilation step.
 
 Avro object container files can be used without code generation similar to JSON 
-files. This is especially use with dynamically typed processing languages like
+files. This is especially useful with dynamically typed processing languages like
 Apache Pig, in which you can open Avro files, start analysing them, and write
 derived datasets to output files in Avro format without even thinking about
 schemas.
@@ -1262,8 +1262,41 @@ e.g. ODBC and JDBC APIs.
 Advantages of binary encoding protocols:
 - Much more compact than the "binary JSON" variants, due to not storing field
 names.
-- The schema is valuable form of documentation.
+- The schema is a valuable form of documentation.
 - Keeping a database of schemas allows you to check forward and backward
 compatibility of schema changes before deploying anything.
 - Useful for code generation in statically typed languages.
 
+### Modes of Dataflow
+
+#### Dataflow Through Databases
+
+When a single process is reading from and writing to a database, **backward
+compatibility** is important to allow newer versions of the process to read 
+what it previously wrote.
+
+When multiple processes are using a database, **forward compatibility** is required
+as a newer version can write data that an older version can read.
+
+There is an additional snag - if a newer version process adds a new field and writes
+some data, we want an older version to be able to overwrite the record without
+deleting the new field, even if it cannot interpret the field.
+
+**Different values written at different times**
+
+Data outlives code.
+
+Migrating databases is expensive, so most databases avoid it if possible. They 
+usually fill in null default values for new columns where the data is missing.
+
+Schema evolution allows the entire database to appear like it was encoded using
+a single schema even though the underlying storage was encoded with multiple
+schema versions.
+
+**Archival storage**
+
+When creating a database snapshot (e.g. for a data warehouse), the data is 
+encoded using the latest schema.
+
+As the data dump is written in one go and is immmutable, formats like Avro
+container files are a good choice.
