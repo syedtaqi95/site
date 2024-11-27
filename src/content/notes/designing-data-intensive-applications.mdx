@@ -14,7 +14,7 @@ by Dr. Martin Kleppmann.
 
 # Table of Contents
 
-# Part 1: Foundations of Data Systems
+# Part I: Foundations of Data Systems
 
 ## Reliable, Scalable and Maintainable Applications
 
@@ -1416,3 +1416,26 @@ already assumes that messages can be lost.
 
 A distributed actor framework integrates a message broker and the actor model 
 into a single framework.
+
+# Part II: Distributed Data
+
+Reasons to scale a database across machines:
+- Scalability
+- Fault tolerance/high availability
+- Latency
+
+Types of scaling architectures:
+- Shared-memory, i.e. vertical scaling
+- Shared-disk, e.g. NAS
+- Shared-nothing, i.e. horizontal scaling
+
+Replication: keeping the same data on multiple nodes, provides redundancy.
+
+Partitioning: Splitting a large database into smaller subsets, aka sharding.
+
+## Replication
+
+Why?
+- To reduce latency
+- To increase availability
+- To increase read throughput
