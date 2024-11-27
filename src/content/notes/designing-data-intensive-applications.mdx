@@ -1378,3 +1378,41 @@ There is no agreed way of versioning APIs. For REST APIs, we can have the versio
 in the URL or in the HTTP `Accept` header. Another option is to store the version
 for a client in the backend and use an admin interface to select the version for
 the particular client.
+
+#### Message-Passing Dataflow
+
+Asynchronous message-passing systems are somewhere between databases and RPC.
+The message is delivered with low latency, similar to RPC, but it is delivered
+through a message broker (message queue/message-oriented middleware), similar
+to databases.
+
+Some of its advantages are:
+- Improves system reliability by acting as a buffer.
+- Automatically redelivers messages to crashed processes.
+- Decouples the sender and receiver (don't need to know IP address/port numbers).
+- Can send one message to multiple recipients.
+
+**Message brokers**
+
+RabbitMQ, ActiveMQ, Apache Kafka etc.
+
+Sender sends a message to a named queue or topic, broker ensures the message is 
+delivered to the subscribers or consumers of that topic.
+
+Topics provide one-way dataflow.
+
+There is no enforced data model so any encoding can be used.
+
+**Distributed actor frameworks**
+
+Actor model is a programming model for concurrency in a single process. Logic is
+encapsulated within actors - each actor has its own internal state, and communicates
+with other actors by sending and receiving asynchronous messages.
+
+It avoids the issues in multi-threading (race conditions, locking, deadlocks).
+
+Location transparency works better in the actor model than RPC because the model
+already assumes that messages can be lost.
+
+A distributed actor framework integrates a message broker and the actor model 
+into a single framework.
