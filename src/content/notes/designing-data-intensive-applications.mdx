@@ -1439,3 +1439,22 @@ Why?
 - To reduce latency
 - To increase availability
 - To increase read throughput
+
+### Leaders and Followers
+
+Simplest solution is called leader-based replication (aka active/passive or 
+master-slave replication):
+- One replica is designated the leader. Clients write to the leader which first
+writes the new data to its local storage.
+- The leader sends the data change to all of its followers as part of a replication
+log or change stream. Each follower updates its local copy of the database by 
+applying all writes in the same order as they were processed on the leader.
+- Reads work on all replicas, while writes go through the leader first.
+
+#### Synchronous Versus Asynchronous Replication
+
+If all nodes are made synchronous, then even one node failure will cause the entire
+database to halt. Hence, in practice one of the followers is synchronous
+and the others are asynchronous. If the synchronous node is unavailable or slow,
+then one of the asynchronous followers is made synchronous. This is called
+semi-synchronous.
