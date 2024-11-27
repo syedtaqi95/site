@@ -1300,3 +1300,81 @@ encoded using the latest schema.
 
 As the data dump is written in one go and is immmutable, formats like Avro
 container files are a good choice.
+
+#### Dataflow through Services: REST and RPC
+
+Most common way to communicate over a network is to use a client-server model
+using well-known protocols and data formats like HTTP, HTML, URLs, SSL/TLS etc.
+This technique supports different types of clients like web browsers, mobile,
+desktop etc.
+
+Another option is to decompose a large backend into microservices. Here services
+communicate with each other over the network.
+
+Services provide encapsulation: services can impose fine-grained restrictions on
+what clients can and cannot do.
+
+Microservices make the application easier to change and maintain by making
+services independently deployable and evolvable. 
+
+We can have multiple versions of servers and clients to be running at the same 
+time, so the data encoding must be compatible across versions of the service API.
+
+**Web services**
+
+Generally means that HTTP is being used as the underlying protocol.
+
+Two popular approaches are REST and SOAP. They are almost diametrically opposed 
+in terms of their philosophy.
+
+REST uses HTTP features, simple data formats, URLs for identifying resources etc.
+
+SOAP is XML-based and independent from HTTP. The API is described using WSDL (
+Web Services Description Language). It relies heavily on tool support, code 
+generation and IDEs. 
+
+RESTful APIs can be described using OpenAPI (Swagger) which can also generate
+documentation.
+
+**The problems with remote procedure calls (RPC)**
+
+RPCs have been around since the 1970s.
+
+It aims to make a remote request look the same as a local function call (location
+transparency).
+
+This approach is fundamentally flawed as they are very different:
+- Network requests are unpredictable: the request/response may be lost, or the
+remote machine may be slow or unavailable.
+- Network requests can timeout which is an additional result compared to local
+function calls. In this case we simply don't know what happened. 
+- Retrying multiple requests need to be handled properly, i.e. they need to be
+idempotent.
+- Network latency can vary wildly between milliseconds to multiple seconds.
+- Parameters need to be encoded into bytes which can be problematic for large
+objects.
+- The data types will be converted into slightly different types if using 
+different programming languages.
+
+**Current directions for RPC**
+
+The new generation of RPC frameworks (Thrift, Avro, gRPC, Finagle, Rest.li etc.)
+don't try to hide the fact that it's a remote network request, e.g. by using
+futures (promises) which can fail.
+
+Futures are also useful for making multiple parallel requests.
+
+gRPC supports streams, i.e. multiple requests and multiple responses over time.
+
+RPC has better performance while JSON over REST is better for debugging and public
+facing APIs.
+
+**Data encoding and evolution for RPC**
+
+Backward and forward compatibility of an RPC scheme are inherited from the 
+encoding it uses (Avro, Thrift, protobuf etc.).
+
+There is no agreed way of versioning APIs. For REST APIs, we can have the version
+in the URL or in the HTTP `Accept` header. Another option is to store the version
+for a client in the backend and use an admin interface to select the version for
+the particular client.
