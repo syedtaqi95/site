@@ -1458,3 +1458,45 @@ database to halt. Hence, in practice one of the followers is synchronous
 and the others are asynchronous. If the synchronous node is unavailable or slow,
 then one of the asynchronous followers is made synchronous. This is called
 semi-synchronous.
+
+Fully asynchronous replication is also popular. Here, if the leader fails, any
+writes that have not been replicated by followers are lost. On the other hand, 
+it can continue processing writes even if all the followers have fallen behind.
+
+#### Setting Up New Followers
+
+A new follower can be setup without any downtime using the process below:
+- Take a consistent snapshot of the leader's database at some point in time, if
+possible, without locking the database.
+- Copy the snapshot to the new follower node.
+- The follower requests all the data from the leader since the snapshot. This
+requires the snapshot to be associated with an exact line in the leader's
+replication log, usually called a log sequence number or binlog coordinate.
+- When the follower has processed the backlog of changes, it has caught up.
+
+#### Handling Node Outages
+
+The goal is to keep the system as a whole running despite individual failures and
+to keep the impact of a node outage as small as possible.
+
+**Follower failure: Catch-up recovery**
+
+Each follower keeps a log of the data changes from the leader. When a failed node
+recovers, it can use the log to know the last transaction that was processed
+before the failure. It can request any changes from the leader from this point
+and catch up.
+
+**Leader failure: failover**
+
+Failover is the process of electing a new leader when the original one fails,
+after which clients are reconfigured to send writes to the new leader, and other
+followers start consuming changes from this new leader.
+
+Failover can happen manually using a system administrator or automatically.
+
+Automatic failover process:
+- Use a timeout to detect when a leader has failed.
+- Choose a new leader: either through election, or appointed by a controller node.
+The best candidate is the one with the latest changes from the old leader.
+- Reconfigure clients to send writes to the new leader. If the old leader comes
+back, it should realise there is a new leader and hence become a follower.
