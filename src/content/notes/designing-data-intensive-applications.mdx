@@ -1500,3 +1500,74 @@ Automatic failover process:
 The best candidate is the one with the latest changes from the old leader.
 - Reconfigure clients to send writes to the new leader. If the old leader comes
 back, it should realise there is a new leader and hence become a follower.
+
+Things that can go wrong with failover:
+- If asynchronous replication is used, the new leader may not have the latest
+changes from the old leader. Commonly, the unreplicated writes are discarded,
+which could violate clients' durability expectations.
+- Discarding writes can be especially dangerous if other storage systems outside
+of the database need to be coordinated with the database contents. E.g. GitHub
+issue with MySQL and Redis going out of sync on primary keys, leading to private
+data being disclosed to the wrong users.
+- Split brain. If there is no process for resolving conflicts it can lead to
+data loss or corruption. Usually there is a safety mechanism to shut down one of
+the leaders.
+- Determining the right timeout can be a challenge.
+
+#### Implementation of Replication Logs
+
+**Statement-based replication**
+
+Leader logs every statement(write request) and sends those statements to its
+followers.
+
+Issues with this approach:
+- Non-deterministic functions like `NOW()` and `RAND()` generate different values
+on each replica.
+- When using auto-incrementing columns where they depend on existing data in the 
+database, they must be executed in the same order in each replica. This can be
+limiting when there are multiple concurrently executing transactions.
+- Triggers, stored procedures etc. may have different side effects on each replica,
+unless the side effects are deterministic.
+
+Not too popular these days due to edge cases. Was used in MySQL till v5.1, now
+uses row-based replication.
+
+**Write-ahead log (WAL) shipping**
+
+WALs used in SSTables, LSM-trees and B-trees can also be shipped to followers
+to build a replica on another node.
+
+The main disadvantage is that the log describes the data on a very low level: a 
+WAL contains details of which bytes were changed in which disk blocks.
+
+**Logical (row-based) log replication**
+
+Use different log formats for replication and for the storage engine, which 
+allows the replication log to be decoupled from the storage engine internals.
+
+A logical log for a relational database is usually a sequence of records describing
+writes to database tables at the granularity of a row.
+
+A transaction contains generates multiple records, including a record indicating
+that the transaction was committed.
+
+This approach is backwards compatible since it is decoupled from the storage engine
+and allows the leader and followers to run different versions, or even different
+database engines.
+
+Allows change data capture (CDC).
+
+**Trigger-based replication**
+
+Moves replication to the application layer, using triggers and stored procedures.
+
+A trigger allows your to register custom code that runs when a data change occurs
+in a database. The trigger can log this change to a separate table, from where it
+can be read by an external process. The external process can then apply any application
+logic and replicate the data change to another system.
+
+It has greater overheads and can be prone to bugs than built-in replication 
+methods. However, it is still a flexible approach.
+
+### Problems with Replication Log
