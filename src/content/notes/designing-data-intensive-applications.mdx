@@ -1571,3 +1571,32 @@ It has greater overheads and can be prone to bugs than built-in replication
 methods. However, it is still a flexible approach.
 
 ### Problems with Replication Log
+
+Leader-based replication is ideal for a read-scaling architecture (many reads
+and few writes) and asynchronous replication.
+
+Using an asynchronous follower leads to eventual consistency behaviour.
+
+Three main types of problems explained below.
+
+#### Reading Your Own Writes
+
+Writes go to leader while reads come from a follower. Solving this requires 
+read-after-write consistency. Ensures the writer can immediately read its writes.
+
+Techniques to do this:
+- When user has modified any data, read it from the leader instead of the
+follower.
+- If most things are editable by the user, use some criteria to determine when
+to read from the leader (e.g. one minute since last update).
+- The client can remember the timestamp of the most recent write and ensure that
+any replicas serving it are up-to-date till at least this timestamp. Can use
+logical timestamps for this.
+- If replicas are geographically distributed, any request that needs to be served
+by the leader needs to be routed to the right datacenter.
+
+If users can use multiple devices, then we need cross-device read-after-write
+consistency.
+- Remembering the last update timestamp needs to be centralised.
+- If devices are using different networks, requests need to be routed to the same
+datacenter.
