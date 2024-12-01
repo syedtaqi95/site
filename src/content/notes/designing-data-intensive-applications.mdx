@@ -1570,7 +1570,7 @@ logic and replicate the data change to another system.
 It has greater overheads and can be prone to bugs than built-in replication 
 methods. However, it is still a flexible approach.
 
-### Problems with Replication Log
+### Problems with Replication Lag
 
 Leader-based replication is ideal for a read-scaling architecture (many reads
 and few writes) and asynchronous replication.
@@ -1600,3 +1600,32 @@ consistency.
 - Remembering the last update timestamp needs to be centralised.
 - If devices are using different networks, requests need to be routed to the same
 datacenter.
+
+#### Monotonic Reads
+
+When using asynchronous reads, clients can sometimes see things moving backwards
+in time.
+
+Monotonic reads guarantee that this situation does not happen. It is a lesser
+guarantee than strong consistency, but a stronger guarantee than eventual
+consistency.
+
+One way to do this is to ensure each user only reads data from the same replica.
+
+#### Consistent Prefix Reads
+
+Prefix read consistency requires that if a sequence of writes happen in a certain
+order, then anyone reading those writes will see them appear in the same order.
+
+This is a particular problem in partitioned (sharded) databases.
+
+One solution is to make sure any writes that are causally related are written to
+the same partition. There are also algorithms that keep track of causal dependencies.
+
+#### Solutions for Replication Lag
+
+Transactions allow application developers to not worry about replication lag.
+
+Single-node transactions are easy - distributed databases have abandoned 
+transactions as they think they are too expensive in terms of performance and
+availability.
